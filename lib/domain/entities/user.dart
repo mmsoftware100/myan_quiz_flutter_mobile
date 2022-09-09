@@ -41,6 +41,6 @@ class User{
 
 
   static User get sample{
-    return User(id: 0, name: "name", rank: "rank", level: 0, nextLevel: "nextLevel", levelProgress: 0, questionTotal: 0, questionPassed: 0, questionFailed: 0, coinTotal: 0, coinExchanged: 0, coinCurrent: 0, createdAt: DateTime.now(), modifiedAt: DateTime.now(), createdAgo: "createdAgo", modifiedAgo: "modifiedAgo", accessToken: "accessToken");
+    return User(id: 0, name: "name", rank: "rank", level: "level", nextLevel: "nextLevel", levelProgress: 0, questionTotal: 0, questionPassed: 0, questionFailed: 0, coinTotal: 0, coinExchanged: 0, coinCurrent: 0, createdAt: DateTime.now(), modifiedAt: DateTime.now(), createdAgo: "createdAgo", modifiedAgo: "modifiedAgo", accessToken: "accessToken");
   }
 }
