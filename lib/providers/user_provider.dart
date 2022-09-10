@@ -8,28 +8,16 @@ import '../core/error/failures.dart';
 import '../domain/usecases/user_login.dart';
 
 class UserProvider extends ChangeNotifier{
-  /* list of data */
-  /*
-      1. logged in user
-
-   */
-  /* list of use case */
-  /*
-    1. user login
-        @input
-         access token
-        @output
-          user data
-    2.
-  */
+  // use case list
   final UserLogin userLogin;
-
+  // constructor
   UserProvider({
     required this.userLogin
   });
-
+  // data repo
   User user = User.sample;
 
+  // methods
   Future<bool> login({required String accessToken, required String fcmToken})async{
     bool status = true;
     final Either<Failure, User> userEither = await userLogin(UserLoginParams(accessToken: accessToken, fcmToken: fcmToken));
@@ -48,11 +36,6 @@ class UserProvider extends ChangeNotifier{
           return status;
         }
     );
-    return Future.delayed(Duration(seconds: 5),(){
-      user.accessToken = accessToken;
-      user.name = "Logged In User";
-      return status;
-    });
   }
 }
 
