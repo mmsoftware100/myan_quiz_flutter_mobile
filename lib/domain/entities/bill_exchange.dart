@@ -1,9 +1,11 @@
 import 'package:myan_quiz/domain/entities/bill_exchange_rate.dart';
+import 'package:myan_quiz/domain/entities/bill_exchange_status.dart';
 import 'package:myan_quiz/domain/entities/telephone_operator.dart';
 
-class BillExchangeStatus{
+class BillExchange{
 
   int id;
+  String phoneNo;
   int telephoneOperatorId;
   int billExchangeRateId;
   int billExchangeStatusId;
@@ -15,8 +17,9 @@ class BillExchangeStatus{
   String createdAgo;
   String modifiedAgo;
 
-  BillExchangeStatus({
+  BillExchange({
     required this.id,
+    required this.phoneNo,
     required this.telephoneOperatorId,
     required this.billExchangeRateId,
     required this.billExchangeStatusId,
@@ -31,12 +34,13 @@ class BillExchangeStatus{
 
 
 
-  static BillExchangeStatus get sample {
-    return BillExchangeStatus(
+  static BillExchange get sample {
+    return BillExchange(
         id: 0,
+        phoneNo: "phoneNo",
         telephoneOperatorId: TelephoneOperator.sample.id,
         billExchangeRateId: BillExchangeRate.sample.id,
-        billExchangeStatusId: BillExchangeStatus.sample.id,
+        billExchangeStatusId: BillExchange.sample.id,
         telephoneOperator: TelephoneOperator.sample,
         billExchangeRate: BillExchangeRate.sample,
         billExchangeStatus: BillExchangeStatus.sample,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myan_quiz/domain/entities/answer.dart';
+import 'package:myan_quiz/domain/entities/bill_exchange.dart';
 import 'package:myan_quiz/domain/entities/bill_exchange_rate.dart';
+import 'package:myan_quiz/domain/entities/bill_exchange_status.dart';
 import 'package:myan_quiz/domain/entities/category.dart';
 import 'package:myan_quiz/domain/entities/description.dart';
 import 'package:myan_quiz/domain/entities/telephone_operator.dart';
@@ -18,6 +20,8 @@ class RewardProvider extends ChangeNotifier{
   List<BillExchangeRate> billExchangeRates = [];
   BillExchangeRate billExchangeRate = BillExchangeRate.sample;
 
+  List<BillExchange> billExchanges = [];
+  BillExchange billExchange = BillExchange.sample;
 
 
   // methods
@@ -57,6 +61,71 @@ class RewardProvider extends ChangeNotifier{
   void setBillExchangeRate(BillExchangeRate billExchangeRateUpdate){
     billExchangeRate = billExchangeRateUpdate;
     notifyListeners();
+  }
+
+
+  Future<bool> selectBillExchanges({required String accessToken}){
+    bool status = true;
+    return Future.delayed(Duration(seconds: 5),(){
+      billExchanges = [
+        BillExchange(
+            id: 1,
+            phoneNo: "phoneNo",
+            telephoneOperatorId: 1,
+            billExchangeRateId: 1,
+            billExchangeStatusId: 1,
+            telephoneOperator: telephoneOperator,
+            billExchangeRate: billExchangeRate,
+            billExchangeStatus: BillExchangeStatus(id: 1, name: "Pending", image: "image"),
+            createdAt: DateTime.now(),
+            modifiedAt: DateTime.now(),
+            createdAgo: "createdAgo",
+            modifiedAgo: "modifiedAgo"
+        ),
+        BillExchange(
+            id: 2,
+            phoneNo: "phoneNo",
+            telephoneOperatorId: 1,
+            billExchangeRateId: 1,
+            billExchangeStatusId: 1,
+            telephoneOperator: telephoneOperator,
+            billExchangeRate: billExchangeRate,
+            billExchangeStatus: BillExchangeStatus(id: 2, name: "ထည့်ပေးလိုက်ပါပြီ", image: "image"),
+            createdAt: DateTime.now(),
+            modifiedAt: DateTime.now(),
+            createdAgo: "createdAgo",
+            modifiedAgo: "modifiedAgo"
+        ),
+      ];
+      notifyListeners();
+      return status;
+    });
+  }
+  void setBillExchange(BillExchange billExchangeUpdate){
+    billExchange = billExchangeUpdate;
+    notifyListeners();
+  }
+
+  Future<bool> exchangeBill({required String accessToken, required int telephoneOperatorId, required int billExchangeRateId, required String phoneNo}){
+    bool status = true;
+    return Future.delayed(Duration(seconds: 5),(){
+      billExchange = BillExchange(
+          id: 1,
+          phoneNo: phoneNo,
+          telephoneOperatorId: telephoneOperatorId,
+          billExchangeRateId: billExchangeRateId,
+          billExchangeStatusId: 1,
+          telephoneOperator: telephoneOperator,
+          billExchangeRate: billExchangeRate,
+          billExchangeStatus: BillExchangeStatus(id: 1, name: "Pending", image: "image"),
+          createdAt: DateTime.now(),
+          modifiedAt: DateTime.now(),
+          createdAgo: "createdAgo",
+          modifiedAgo: "modifiedAgo"
+      );
+      notifyListeners();
+      return status;
+    });
   }
 
 }
