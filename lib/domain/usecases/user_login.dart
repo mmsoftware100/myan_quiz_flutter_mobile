@@ -14,7 +14,7 @@ class UserLogin implements UseCase<User,UserLoginParams>{
 
   @override
   Future<Either<Failure, User>> call(UserLoginParams params) async{
-    return await userRepository.login(accessToken: params.accessToken);
+    return await userRepository.login(accessToken: params.accessToken, fcmToken: params.fcmToken);
   }
 }
 
