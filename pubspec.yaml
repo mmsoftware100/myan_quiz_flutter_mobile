@@ -35,6 +35,15 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   font_awesome_flutter:
+#  card_selector: ^0.1.0
+  circular_countdown_timer: ^0.2.0
+
+  flutter_neumorphic: ^3.1.0
+#  audioplayers: ^0.18.0
+  cached_network_image: ^3.0.0
+
+  flutter_spinning_wheel: ^1.1.0
+
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +72,8 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
+    - assets/sound/
+    - assets/images/
     - assets/images/myan_quiz_logo.png
     - assets/images/myan_quiz_background_image.png
 

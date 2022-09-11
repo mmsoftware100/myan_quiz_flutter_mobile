@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myan_quiz/components/custom_widgets.dart';
 import 'package:myan_quiz/utils/global.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:myan_quiz/view/profile_page.dart';
 import 'package:myan_quiz/view/sign_up_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -180,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                           // minWidth: MediaQuery.of(context).size.width/1.5,
                           height:40,
                           onPressed: (){
-                            // Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
                           },
                           // color: Colors.indigoAccent[400],
                           color: Color(getColorHexFromStr('#FFCE55')),

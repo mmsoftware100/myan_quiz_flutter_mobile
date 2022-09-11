@@ -4,6 +4,7 @@ import 'package:myan_quiz/components/custom_widgets.dart';
 import 'package:myan_quiz/components/toggle_button.dart';
 import 'package:myan_quiz/utils/global.dart';
 import 'package:myan_quiz/view/login_page.dart';
+import 'package:myan_quiz/view/setting_page.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -61,17 +62,17 @@ class _SignUpPageState extends State<SignUpPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const SizedBox(),
-                          // Align(
-                          //   alignment: Alignment.bottomCenter,
-                          //   child: CircleAvatar(
-                          //     backgroundColor: Color(getColorHexFromStr('#9CCB5B')),
-                          //     radius: 60.0,
-                          //     child: ClipRRect(
-                          //       child: Image.asset('assets/images/myan_quiz_logo.png'),
-                          //       borderRadius: BorderRadius.circular(100.0),
-                          //     ),
-                          //   ),
-                          // ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: CircleAvatar(
+                              backgroundColor: Color(getColorHexFromStr('#9CCB5B')),
+                              radius: 60.0,
+                              child: ClipRRect(
+                                child: Image.asset('assets/images/myan_quiz_logo.png'),
+                                borderRadius: BorderRadius.circular(100.0),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -177,7 +178,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           // minWidth: MediaQuery.of(context).size.width/1.5,
                           height:40,
                           onPressed: (){
-                            // Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>SettingPage()));
                           },
                           // color: Colors.indigoAccent[400],
                           color: Color(getColorHexFromStr('#FFCE55')),
