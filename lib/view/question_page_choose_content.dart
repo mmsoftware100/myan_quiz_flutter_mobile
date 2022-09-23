@@ -97,6 +97,7 @@ class _QuestionPageChooseContentState extends State<QuestionPageChooseContent> {
             ),
           ),
         ),
+        /*
         bottomNavigationBar:  BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           fixedColor: Color(0xff2398C3),
@@ -131,6 +132,8 @@ class _QuestionPageChooseContentState extends State<QuestionPageChooseContent> {
             ),
           ],
         )
+
+         */
     );
 
   }

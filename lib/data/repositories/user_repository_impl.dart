@@ -1,30 +1,25 @@
 import 'package:dartz/dartz.dart';
 import 'package:myan_quiz/core/error/failures.dart';
+import 'package:myan_quiz/data/datasources/user_remote_datasource.dart';
 import 'package:myan_quiz/domain/entities/user.dart';
 import 'package:myan_quiz/domain/repositories/user_repository.dart';
 
-/*
-class UserRepositoryImpl implements UserRepository{
-  BankInfoRemoteDataSource bankInfoRemoteDataSource;
 
-  BankInfoRepositoryImpl({required this.bankInfoRemoteDataSource});
+class UserRepositoryImpl implements UserRepository{
+  UserRemoteDataSource userRemoteDataSource;
+
+  UserRepositoryImpl({required this.userRemoteDataSource});
+
+
   @override
-  Future<Either<Failure, List<BankInfo>>> getBankInfoList() async{
+  Future<Either<Failure, User>> login({required String accessToken, required String fcmToken}) async{
     try{
-      List<BankInfo> bankInfoList =  await bankInfoRemoteDataSource.getBankInfoList();
-      return Right(bankInfoList);
+      User user =  await userRemoteDataSource.login(accessToken: accessToken, fcmToken: fcmToken);
+      return Right(user);
     }
     catch(exp){
       return Left(ServerFailure());
     }
   }
 
-  @override
-  Future<Either<Failure, User>> login({required String accessToken, required String fcmToken}) {
-    // TODO: implement login
-    throw UnimplementedError();
-  }
-
 }
-
- */

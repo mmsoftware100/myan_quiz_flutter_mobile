@@ -3,6 +3,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:myan_quiz/domain/entities/user.dart';
+import 'package:myan_quiz/domain/repositories/user_repository.dart';
 
 import '../core/error/failures.dart';
 import '../domain/usecases/user_login.dart';
@@ -19,6 +20,7 @@ class UserProvider extends ChangeNotifier{
 
   // methods
   Future<bool> login({required String accessToken, required String fcmToken})async{
+
     bool status = true;
     final Either<Failure, User> userEither = await userLogin(UserLoginParams(accessToken: accessToken, fcmToken: fcmToken));
     return userEither.fold(

@@ -8,6 +8,19 @@ abstract class UserRemoteDataSource{
   Future<User> login({required String accessToken, required String fcmToken});
 }
 
+class UserRemoteDataSourceImpl implements UserRemoteDataSource{
+  final Dio client;
+  UserRemoteDataSourceImpl({required this.client});
+
+  @override
+  Future<User> login({required String accessToken, required String fcmToken}) {
+    // TODO: implement login
+    throw UnimplementedError();
+  }
+
+
+
+}
 /*
 class BankInfoRemoteDataSourceImpl implements BankInfoRemoteDataSource{
   final Dio client;

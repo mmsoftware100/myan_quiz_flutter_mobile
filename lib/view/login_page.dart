@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:myan_quiz/components/custom_widgets.dart';
+import 'package:myan_quiz/providers/user_provider.dart';
 import 'package:myan_quiz/utils/global.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:myan_quiz/view/profile_page.dart';
 import 'package:myan_quiz/view/sign_up_page.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -180,8 +182,19 @@ class _LoginPageState extends State<LoginPage> {
                           minWidth: double.infinity,
                           // minWidth: MediaQuery.of(context).size.width/1.5,
                           height:40,
-                          onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
+                          onPressed: ()async{
+                            String accessToken = "accessToken"; //TODO: firebase auth plugin
+                            String fcmToken = "fcmToken";
+                            // show loading indicator
+
+                            bool status = await Provider.of<UserProvider>(context, listen:false).login(accessToken: accessToken, fcmToken: fcmToken);
+                            // hide loading indicator
+                            if(status == true){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
+                            }
+                            else{
+                              //
+                            }
                           },
                           // color: Colors.indigoAccent[400],
                           color: Color(getColorHexFromStr('#FFCE55')),
