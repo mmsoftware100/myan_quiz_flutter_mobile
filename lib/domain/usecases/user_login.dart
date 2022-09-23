@@ -25,5 +25,5 @@ class UserLoginParams extends Equatable {
   const UserLoginParams({required this.accessToken,required this.fcmToken});
 
   @override
-  List<Object> get props => [accessToken];
+  List<Object> get props => [accessToken, fcmToken];
 }
