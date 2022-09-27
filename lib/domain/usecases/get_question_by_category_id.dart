@@ -24,10 +24,11 @@ class GetQuestionByCategoryId implements UseCase<Question,GetQuestionByCategoryi
 
 class GetQuestionByCategoryid extends Equatable {
   final String accessToken;
+  final int gamePlayTypeId;
   final int categoryId;
 
-  const GetQuestionByCategoryid({required this.accessToken,required this.categoryId});
+  const GetQuestionByCategoryid({required this.accessToken,required this.gamePlayTypeId, required this.categoryId});
 
   @override
-  List<Object> get props => [accessToken, categoryId];
+  List<Object> get props => [accessToken,gamePlayTypeId, categoryId];
 }
