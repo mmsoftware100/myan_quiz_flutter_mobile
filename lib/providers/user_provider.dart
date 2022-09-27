@@ -22,6 +22,15 @@ class UserProvider extends ChangeNotifier{
   Future<bool> login({required String accessToken, required String fcmToken})async{
 
     bool status = true;
+    return Future.delayed(Duration(seconds: 5),(){
+      if(accessToken == "accessToken"){
+        return true;
+      }
+      else{
+        return false;
+      }
+    });
+    /*
     final Either<Failure, User> userEither = await userLogin(UserLoginParams(accessToken: accessToken, fcmToken: fcmToken));
     return userEither.fold(
             (failure)  {
@@ -38,6 +47,8 @@ class UserProvider extends ChangeNotifier{
           return status;
         }
     );
+
+     */
   }
 }
 
