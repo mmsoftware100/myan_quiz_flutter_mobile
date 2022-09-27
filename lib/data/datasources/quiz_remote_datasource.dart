@@ -1,5 +1,6 @@
 
 import 'package:myan_quiz/data/models/category_model.dart';
+import 'package:myan_quiz/data/models/question_model.dart';
 
 import '../../domain/entities/category.dart';
 import '../../domain/entities/question.dart';
@@ -49,9 +50,22 @@ class QuizRemoteDatasourceImpl implements QuizRemoteDatasource{
   }
 
   @override
-  Future<Question> selectQuestionByCategoryId({required String accessToken, required int categoryId}) {
-    // TODO: implement selectQuestionByCategoryId
-    throw UnimplementedError();
+  Future<Question> selectQuestionByCategoryId({required String accessToken, required int categoryId}) async{
+    Map<String, dynamic> data = {
+        "category_id" : categoryId
+    };
+    dynamic response = await networkInterface.postRequest(url: getQuestionByCategoryIdEndpoint, data: data, bearerToken: accessToken);
+    try{
+      //bool status = response['status'];
+      //String message = response['msg'];
+      Map<String,dynamic> data = response['data'];
+      QuestionModel questionModel = QuestionModel.fromJson(data);
+      return questionModel.toEntity();
+    }
+    catch(e,stackTrace){
+      print(stackTrace);
+      rethrow;
+    }
   }
 
   @override
