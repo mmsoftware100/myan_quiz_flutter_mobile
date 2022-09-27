@@ -80,7 +80,7 @@ class NetworkInterfaceImpl implements NetworkInterface {
       if(bearerToken != null){
         client.options.headers["Authorization"] = "Bearer $bearerToken";
       }
-      Response<dynamic> response = await client.delete(endPoint);
+      Response<dynamic> response = await client.post(endPoint, data: data);
       return response.data;
     }
     catch(exp){
@@ -96,9 +96,23 @@ class NetworkInterfaceImpl implements NetworkInterface {
   @override
   Future<dynamic> putRequest(
       {required String url, required int id, required Map<String,
-          dynamic> data, String? bearerToken}) {
-    // TODO: implement putRequest
-    throw UnimplementedError();
+          dynamic> data, String? bearerToken}) async{
+    try{
+      String endPoint = url + "/$id";
+      if(bearerToken != null){
+        client.options.headers["Authorization"] = "Bearer $bearerToken";
+      }
+      Response<dynamic> response = await client.put(endPoint, data: data);
+      return response.data;
+    }
+    catch(exp){
+      if(exp is DioError){
+        print("exp is DioError");
+        print(exp.response);
+      }
+      print(exp);
+      throw ServerException();
+    }
   }
 
 }
