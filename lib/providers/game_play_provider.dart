@@ -3,11 +3,15 @@ import 'package:myan_quiz/domain/entities/answer.dart';
 import 'package:myan_quiz/domain/entities/category.dart';
 import 'package:myan_quiz/domain/entities/description.dart';
 import 'package:myan_quiz/domain/entities/user.dart';
+import 'package:myan_quiz/domain/usecases/get_random_categories.dart';
 
 import '../domain/entities/game_type.dart';
 import '../domain/entities/question.dart';
 
 class GamePlayProvider extends ChangeNotifier{
+  final GetRandomCategories getRandomCategories;
+
+  GamePlayProvider({required this.getRandomCategories});
   /* list of data */
   /*
       1. list of game type

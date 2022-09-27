@@ -22,7 +22,9 @@ void main()async{
             ChangeNotifierProvider(create: (_) => UserProvider(
               userLogin: di.sl()
             )),
-            ChangeNotifierProvider(create: (_) => GamePlayProvider()),
+            ChangeNotifierProvider(create: (_) => GamePlayProvider(
+              getRandomCategories: di.sl()
+            )),
             ChangeNotifierProvider(create: (_) => RewardProvider()),
           ],
           child: MaterialApp(
