@@ -5,3 +5,4 @@ const bool devMode  = true;
 const String backendApiServer = devMode ? 'https://mmsoftware100.com/mq/public' : 'https://mmsoftware100.com/mq/public';
 const String apiVersion = backendApiServer + '/api/v1';
 const String loginEndpoint = apiVersion + '/login';
+const String randomCategoryEndpoint = apiVersion + '/gameplay/categories';
