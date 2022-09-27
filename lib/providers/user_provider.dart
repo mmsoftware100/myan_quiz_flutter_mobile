@@ -10,14 +10,13 @@ import '../domain/usecases/user_login.dart';
 
 class UserProvider extends ChangeNotifier{
   // use case list
-  // final UserLogin userLogin;
+  final UserLogin userLogin;
   // constructor
-  /*
+
   UserProvider({
-    // required this.userLogin
+    required this.userLogin
   });
 
-   */
   // data repo
   User user = User.sample;
 

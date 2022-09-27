@@ -12,14 +12,16 @@ import 'package:myan_quiz/view/spin_whell_page.dart';
 import 'package:myan_quiz/view/splash_screen_page.dart';
 import 'package:provider/provider.dart';
 
-//import 'injection_container.dart' as di;
+import 'injection_container.dart' as di;
 
 void main()async{
-  //await di.init();
+  await di.init();
   runApp(
       MultiProvider(
           providers: [
-            ChangeNotifierProvider(create: (_) => UserProvider()),
+            ChangeNotifierProvider(create: (_) => UserProvider(
+              userLogin: di.sl()
+            )),
             ChangeNotifierProvider(create: (_) => GamePlayProvider()),
             ChangeNotifierProvider(create: (_) => RewardProvider()),
           ],

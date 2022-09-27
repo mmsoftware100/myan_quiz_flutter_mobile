@@ -1,13 +1,23 @@
 
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:myan_quiz/data/datasources/network_interface.dart';
+import 'package:myan_quiz/data/datasources/user_remote_datasource.dart';
+import 'package:myan_quiz/data/repositories/user_repository_impl.dart';
+import 'package:myan_quiz/domain/repositories/user_repository.dart';
+import 'package:myan_quiz/domain/usecases/user_login.dart';
 import 'package:myan_quiz/providers/game_play_provider.dart';
 import 'package:myan_quiz/providers/reward_provider.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
-/*
+
 final sl = GetIt.instance;
 
 
 Future<void> init() async {
+
+
+  /* Factory ဆိုတာက App တစ်ခုလုံးမှာမှ တစ်ခုပဲ ရှိမယ့် ဟာမျိုးကို ဆိုလိုတာလား မသိ */
+  /// Providers
   sl.registerFactory(
           () => UserProvider(userLogin: sl())
   );
@@ -17,9 +27,21 @@ Future<void> init() async {
   sl.registerFactory(
           () => RewardProvider()
   );
+  /// Use Cases
+  sl.registerLazySingleton<UserLogin>(() =>  UserLogin(userRepository: sl()));
 
-  /* Factory ဆိုတာက App တစ်ခုလုံးမှာမှ တစ်ခုပဲ ရှိမယ့် ဟာမျိုးကို ဆိုလိုတာလား မသိ */
-  /// Providers
+  /// Repositories
+  sl.registerLazySingleton<UserRepository>(() => UserRepositoryImpl(userRemoteDataSource: sl()));
+
+  // Data Sources
+  sl.registerLazySingleton<UserRemoteDataSource>(() => UserRemoteDataSourceImpl(networkInterface: sl()));
+
+  // Network
+  sl.registerLazySingleton<NetworkInterface>(() => NetworkInterfaceImpl(client: sl()));
+
+
+  sl.registerLazySingleton(() => Dio());
+
   ///
   /*
   sl.registerFactory(
@@ -218,4 +240,3 @@ Future<void> init() async {
    */
 }
 
- */
