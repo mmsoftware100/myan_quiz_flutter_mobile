@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myan_quiz/providers/game_play_provider.dart';
+import 'package:myan_quiz/providers/reward_provider.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
 
 import 'package:myan_quiz/view/exchange/bills/bills_page.dart';
@@ -20,6 +21,7 @@ void main()async{
           providers: [
             ChangeNotifierProvider(create: (_) => UserProvider(userLogin: di.sl())),
             ChangeNotifierProvider(create: (_) => GamePlayProvider()),
+            ChangeNotifierProvider(create: (_) => RewardProvider()),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,

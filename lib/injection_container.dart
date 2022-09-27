@@ -1,6 +1,7 @@
 
 import 'package:get_it/get_it.dart';
 import 'package:myan_quiz/providers/game_play_provider.dart';
+import 'package:myan_quiz/providers/reward_provider.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
 
 final sl = GetIt.instance;
@@ -12,6 +13,9 @@ Future<void> init() async {
   );
   sl.registerFactory(
           () => GamePlayProvider()
+  );
+  sl.registerFactory(
+          () => RewardProvider()
   );
 
   /* Factory ဆိုတာက App တစ်ခုလုံးမှာမှ တစ်ခုပဲ ရှိမယ့် ဟာမျိုးကို ဆိုလိုတာလား မသိ */

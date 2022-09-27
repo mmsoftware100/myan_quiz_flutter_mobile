@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinning_wheel/flutter_spinning_wheel.dart';
+//import 'package:flutter_spinning_wheel/flutter_spinning_wheel.dart';
 import 'package:myan_quiz/utils/global.dart';
 
 // class MyHomePage extends StatelessWidget {
@@ -143,6 +143,7 @@ class Roulette extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            /*
             SpinningWheel(
               Image.asset('assets/images/roulette-8-300.png'),
               width: 310,
@@ -159,6 +160,8 @@ class Roulette extends StatelessWidget {
               secondaryImageWidth: 110,
               shouldStartOrStop: _wheelNotifier.stream,
             ),
+
+             */
             SizedBox(height: 30),
             StreamBuilder(
               stream: _dividerController.stream,
