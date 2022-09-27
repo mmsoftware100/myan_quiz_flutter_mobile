@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myan_quiz/providers/user_provider.dart';
 import 'package:myan_quiz/view/exchange/bills/choose_operator_for_bill_page.dart';
 import 'package:myan_quiz/view/match_page.dart';
 import 'package:myan_quiz/view/question_choose_page.dart';
 import 'package:myan_quiz/view/status_page.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -36,6 +38,12 @@ class _ProfilePageState extends State<ProfilePage> {
     return val;
   }
 
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +79,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SizedBox(height: 30,),
-                          Text("Khin Wint Wah",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                          // Text("Khin Wint Wah",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                          Text(Provider.of<UserProvider>(context,listen: true).user.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+
                           SizedBox(height: 10,),
                           Card(
                             elevation: 5,
@@ -87,7 +97,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                       SizedBox(height: 5,),
                                       Text("Coins"),
                                       SizedBox(height: 5,),
-                                      Text("360",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
+                                      // Text("360",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
+                                      Text(Provider.of<UserProvider>(context,listen: true).user.coinCurrent.toString(),style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
                                     ],
                                   ),
                                   Container(
@@ -99,7 +110,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                       SizedBox(height: 5,),
                                       Text("Rank"),
                                       SizedBox(height: 5,),
-                                      Text("ပညာသင်",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),)
+                                      // Text("ပညာသင်",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),)
+                                      Text(Provider.of<UserProvider>(context,listen: true).user.rank,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),)
                                     ],
                                   ),
                                   Container(
@@ -111,7 +123,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                       SizedBox(height: 5,),
                                       Text("Levels"),
                                       SizedBox(height: 5,),
-                                      Text("360",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
+                                      // Text("360",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
+                                      Text(Provider.of<UserProvider>(context,listen: true).user.level,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
                                     ],
                                   ),
                                 ],
@@ -156,7 +169,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text("Level"),
-                                      Text("22"),
+                                      // Text("22"),
+                                      Text(Provider.of<UserProvider>(context,listen: true).user.nextLevel.toString()),
 
                                     ],
                                   ),
@@ -167,7 +181,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.all(Radius.circular(10)),
                                       child: LinearProgressIndicator(
-                                        value: 0.7,
+                                        // value: 0.7,
+                                        value: double.parse(Provider.of<UserProvider>(context,listen: true).user.levelProgress.toString()),
                                         valueColor: AlwaysStoppedAnimation<Color>(
                                             // Color(0xff00ff00)
                                             Color(getColorHexFromStr('#FFCE55'))
@@ -204,9 +219,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                               children: [
-                                                Text("850",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
-                                                Text("520",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
-                                                Text("330",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
+                                                Text(Provider.of<UserProvider>(context,listen: true).user.questionTotal.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
+                                                Text(Provider.of<UserProvider>(context,listen: true).user.questionPassed.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
+                                                Text(Provider.of<UserProvider>(context,listen: true).user.questionFailed.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
                                               ],
                                             ),
                                           ),
@@ -245,9 +260,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                               children: [
-                                                Text("11500",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
-                                                Text("13000",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
-                                                Text("360",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
+                                                Text(Provider.of<UserProvider>(context,listen: true).user.coinTotal.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
+                                                Text(Provider.of<UserProvider>(context,listen: true).user.coinExchanged.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
+                                                Text(Provider.of<UserProvider>(context,listen: true).user.coinCurrent.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
                                               ],
                                             ),
                                           ),
