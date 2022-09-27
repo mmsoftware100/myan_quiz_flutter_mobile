@@ -10,26 +10,25 @@ import '../../core/usercase/usecase.dart';
 import '../entities/user.dart';
 import '../repositories/user_repository.dart';
 
-class SubmitAnswer implements UseCase<Question,SubmitAnswerParams>{
+class SubmitAnswer implements UseCase<User,SubmitAnswerParams>{
   final QuizRepository quizRepository;
 
   SubmitAnswer({required this.quizRepository});
 
   @override
-  Future<Either<Failure, Question>> call(SubmitAnswerParams params) async{
-    //throw UnimplementedError();
-    return await quizRepository.selectQuestionByCategoryId(accessToken: params.accessToken, categoryId: params.categoryId);
+  Future<Either<Failure, User>> call(SubmitAnswerParams params) async{
+    return await quizRepository.submitAnswer(accessToken: params.accessToken, gameTypeId: params.gameTypeId, questionId: params.questionId, answerId: params.answerId);
   }
 }
 
 class SubmitAnswerParams extends Equatable {
   final String accessToken;
-  final int gamePlayTypeId;
+  final int gameTypeId;
   final int questionId;
   final int answerId;
 
-  const SubmitAnswerParams({required this.accessToken,required this.gamePlayTypeId, required this.questionId, required this.answerId});
+  const SubmitAnswerParams({required this.accessToken,required this.gameTypeId, required this.questionId, required this.answerId});
 
   @override
-  List<Object> get props => [accessToken,gamePlayTypeId, questionId, answerId];
+  List<Object> get props => [accessToken,gameTypeId, questionId, answerId];
 }
