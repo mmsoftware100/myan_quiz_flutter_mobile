@@ -1,7 +1,10 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myan_quiz/providers/game_play_provider.dart';
+import 'package:myan_quiz/providers/user_provider.dart';
 import 'package:myan_quiz/view/setting_page.dart';
+import 'package:provider/provider.dart';
 
 class QuestionPageAnswer extends StatefulWidget {
   const QuestionPageAnswer({Key? key}) : super(key: key);
@@ -126,7 +129,8 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Text("အိုးစားဖက်တွင် စုစုပေါင်း _____________ ဦး ပါဝင်သည်။",
+                                  child: Text(Provider.of<GamePlayProvider>(context,listen:true).question.name,
+                                  // child: Text("အိုးစားဖက်တွင် စုစုပေါင်း _____________ ဦး ပါဝင်သည်။",
                                     style: TextStyle(
                                       // fontWeight: FontWeight.bold,
                                         fontSize: 14),
@@ -221,6 +225,21 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                     ),
 
                     ListView(
+                      children: Provider.of<GamePlayProvider>(context, listen: true).question.answers.map(
+                              (e) => ListTile(
+                                onTap: (){
+                                  // submit answer
+                                  String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                                  int questionId = Provider.of<GamePlayProvider>(context, listen: false).question.id;
+                                  int answerId = e.id;
+                                  Provider.of<GamePlayProvider>(context, listen: false).answer(accessToken: accessToken, gameTypeId: 1, questionId: questionId, answerId: answerId);
+                                },
+                                title: Text(e.name),
+                              )
+                      ).toList(),
+                    ),
+                    /*
+                    ListView(
                       shrinkWrap: true,
                       physics: ScrollPhysics(),
                       children: amount.map((e) {
@@ -264,6 +283,8 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                         );
                       }).toList(),
                     ),
+
+                     */
                     SizedBox(
                       height: 20,
                     ),

@@ -64,6 +64,7 @@ class GamePlayProvider extends ChangeNotifier{
       return status;
     });
   }
+
   void setCategory(Category categoryUpdate){
     category = categoryUpdate;
     notifyListeners();

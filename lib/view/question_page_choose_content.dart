@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:myan_quiz/providers/game_play_provider.dart';
+import 'package:myan_quiz/providers/user_provider.dart';
 import 'package:myan_quiz/utils/global.dart';
 import 'package:myan_quiz/view/question_page_answer.dart';
+import 'package:provider/provider.dart';
 
 class QuestionPageChooseContent extends StatefulWidget {
   const QuestionPageChooseContent({Key? key}) : super(key: key);
@@ -42,21 +45,31 @@ class _QuestionPageChooseContentState extends State<QuestionPageChooseContent> {
                     child: Text("မေးခွန်းခေါင်းစဉ်တစ်ခုကိုရွေးချယ်ပါ",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
                   ),
 
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 60,
-                      width: MediaQuery.of(context).size.width/1.5,
-                      child: InkWell(
-                        child: Card(
-                          child: Center(child: Text("ကိုးကွယ်ရာဘာသာ")),
-                        ),
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>QuestionPageAnswer()));
-                        },
-                      ),
-                    ),
-                  ),
+
+
+                  ...Provider.of<GamePlayProvider>(context , listen: true).categories.map(
+                          (e) => Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: 60,
+                              width: MediaQuery.of(context).size.width/1.5,
+                              child: InkWell(
+                                child: Card(
+                                  child: Center(child: Text(e.name)),
+                                  //child: Center(child: Text("ကိုးကွယ်ရာဘာသာ")),
+                                ),
+                                onTap: (){
+                                  String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                                  int categoryId= e.id;
+                                  Provider.of<GamePlayProvider>(context, listen: false).selectQuestionByCategoryId(accessToken: accessToken, gameTypeId: 1, categoryId: categoryId);
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>QuestionPageAnswer()));
+                                },
+                              ),
+                            ),
+                          )
+                  ).toList(),
+
+
 
                   Padding(
                     padding: const EdgeInsets.all(8.0),

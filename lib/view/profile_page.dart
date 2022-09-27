@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myan_quiz/providers/user_provider.dart';
 import 'package:myan_quiz/view/exchange/bills/choose_operator_for_bill_page.dart';
 import 'package:myan_quiz/view/match_page.dart';
 import 'package:myan_quiz/view/question_choose_page.dart';
 import 'package:myan_quiz/view/status_page.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -71,7 +73,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SizedBox(height: 30,),
-                          Text("Khin Wint Wah",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                          Text(Provider.of<UserProvider>(context, listen:true).user.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                          //Text("Khin Wint Wah",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
                           SizedBox(height: 10,),
                           Card(
                             elevation: 5,
@@ -99,7 +102,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                       SizedBox(height: 5,),
                                       Text("Rank"),
                                       SizedBox(height: 5,),
-                                      Text("ပညာသင်",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),)
+                                      Text(Provider.of<UserProvider>(context,listen: true).user.rank,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),)
+                                      // Text("ပညာသင်",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),)
                                     ],
                                   ),
                                   Container(
@@ -111,7 +115,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                       SizedBox(height: 5,),
                                       Text("Levels"),
                                       SizedBox(height: 5,),
-                                      Text("360",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
+                                      //Text(Provider.of<UserProvider>(context, listen: true).user.level,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
+                                      Text(Provider.of<UserProvider>(context, listen: true).user.level,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
                                     ],
                                   ),
                                 ],

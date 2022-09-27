@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:myan_quiz/providers/game_play_provider.dart';
+import 'package:myan_quiz/providers/user_provider.dart';
 import 'package:myan_quiz/utils/global.dart';
 import 'package:myan_quiz/view/question_page_choose_content.dart';
+import 'package:provider/provider.dart';
 
 class QuestionChoosePage extends StatefulWidget {
   const QuestionChoosePage({Key? key}) : super(key: key);
@@ -54,6 +57,8 @@ class _QuestionChoosePageState extends State<QuestionChoosePage> {
                         child: Center(child: Text("အလွတ်တမ်းကစားမည်")),
                       ),
                       onTap: (){
+                        String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                        Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>QuestionPageChooseContent()));
                       },
                     ),
