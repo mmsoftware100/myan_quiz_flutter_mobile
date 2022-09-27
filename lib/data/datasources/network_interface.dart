@@ -1,39 +1,104 @@
+import 'package:dio/dio.dart';
+
+import '../../core/error/exceptions.dart';
 import '../../domain/entities/category.dart';
 import '../../domain/entities/question.dart';
 import '../../domain/entities/user.dart';
 
-abstract class NetworkInterface{
-  Future<Map<String,dynamic>> getRequest({required String url,required Map<String,dynamic> data, String? barrierToken});
-  Future<Map<String,dynamic>> postRequest({required String url,required Map<String,dynamic> data, String? barrierToken});
-  Future<Map<String,dynamic>> putRequest({required String url,required int id, required Map<String,dynamic> data, String? barrierToken});
-  Future<Map<String,dynamic>> deleteRequest({required String url,required int id, String? barrierToken});
+abstract class NetworkInterface {
+  Future<dynamic> getRequest({required String url, required Map<
+      String,
+      dynamic> data, String? bearerToken});
+
+  Future<dynamic> postRequest({required String url, required Map<
+      String,
+      dynamic> data, String? bearerToken});
+
+  Future<dynamic> putRequest(
+      {required String url, required int id, required Map<String,
+          dynamic> data, String? bearerToken});
+
+  Future<dynamic> deleteRequest(
+      {required String url, required int id, String? bearerTplem});
 }
-/*
-class NetworkInterfaceImpl implements NetworkInterface{
+
+class NetworkInterfaceImpl implements NetworkInterface {
+  final Dio client;
+  NetworkInterfaceImpl({
+    required this.client
+  });
+
   @override
-  Future<Map<String, dynamic>> deleteRequest({required String url, required Map<String, dynamic> data}) {
-    // TODO: implement deleteRequest
-    throw UnimplementedError();
+  Future<dynamic> deleteRequest({required String url, required int id, String? bearerTplem}) async{
+    try{
+      String endPoint = url + "/$id";
+      Map<String,dynamic> data = {};
+      if(bearerTplem != null){
+        client.options.headers["Authorization"] = "Bearer $bearerTplem";
+      }
+      Response<dynamic> response = await client.delete(endPoint);
+      data = response.data;
+      return data;
+    }
+    catch(exp){
+      if(exp is DioError){
+        print("exp is DioError");
+        print(exp.response);
+      }
+      print(exp);
+      throw ServerException();
+    }
+
   }
 
   @override
-  Future<Map<String, dynamic>> getRequest({required String url, required Map<String, dynamic> data}) {
-    // TODO: implement getRequest
-    throw UnimplementedError();
+  Future<dynamic> getRequest({required String url, required Map<String,dynamic> data, String? bearerToken}) async{
+    try{
+      String endPoint = url;
+      if(bearerToken != null){
+        client.options.headers["Authorization"] = "Bearer $bearerToken";
+      }
+      Response<dynamic> response = await client.delete(endPoint);
+      return response.data;
+    }
+    catch(exp){
+      if(exp is DioError){
+        print("exp is DioError");
+        print(exp.response);
+      }
+      print(exp);
+      throw ServerException();
+    }
   }
 
   @override
-  Future<Map<String, dynamic>> postRequest({required String url, required Map<String, dynamic> data}) {
-    // TODO: implement postRequest
-    throw UnimplementedError();
+  Future<dynamic> postRequest({required String url, required Map<
+      String,
+      dynamic> data, String? bearerToken}) async{
+    try{
+      String endPoint = url;
+      if(bearerToken != null){
+        client.options.headers["Authorization"] = "Bearer $bearerToken";
+      }
+      Response<dynamic> response = await client.delete(endPoint);
+      return response.data;
+    }
+    catch(exp){
+      if(exp is DioError){
+        print("exp is DioError");
+        print(exp.response);
+      }
+      print(exp);
+      throw ServerException();
+    }
   }
 
   @override
-  Future<Map<String, dynamic>> putRequest({required String url, required Map<String, dynamic> data}) {
+  Future<dynamic> putRequest(
+      {required String url, required int id, required Map<String,
+          dynamic> data, String? bearerToken}) {
     // TODO: implement putRequest
     throw UnimplementedError();
   }
 
 }
-
- */
