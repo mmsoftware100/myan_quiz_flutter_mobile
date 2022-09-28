@@ -9,24 +9,23 @@ import '../../core/usercase/usecase.dart';
 import '../entities/user.dart';
 import '../repositories/user_repository.dart';
 
-class GetRandomCategories implements UseCase<List<Category>,UserLoginParams>{
+class GetRandomCategories implements UseCase<List<Category>,GetRandomCategoriesParams>{
   final QuizRepository quizRepository;
 
   GetRandomCategories({required this.quizRepository});
 
   @override
-  Future<Either<Failure, List<Category>>> call(UserLoginParams params) async{
+  Future<Either<Failure, List<Category>>> call(GetRandomCategoriesParams params) async{
     //throw UnimplementedError();
     return await quizRepository.selectCategories(accessToken: params.accessToken);
   }
 }
 
-class UserLoginParams extends Equatable {
+class GetRandomCategoriesParams extends Equatable {
   final String accessToken;
-  final String fcmToken;
 
-  const UserLoginParams({required this.accessToken,required this.fcmToken});
+  const GetRandomCategoriesParams({required this.accessToken});
 
   @override
-  List<Object> get props => [accessToken, fcmToken];
+  List<Object> get props => [accessToken];
 }

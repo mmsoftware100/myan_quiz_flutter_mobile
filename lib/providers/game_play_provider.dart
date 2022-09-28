@@ -1,13 +1,19 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:myan_quiz/domain/entities/answer.dart';
 import 'package:myan_quiz/domain/entities/category.dart';
 import 'package:myan_quiz/domain/entities/description.dart';
 import 'package:myan_quiz/domain/entities/user.dart';
+import 'package:myan_quiz/domain/usecases/get_random_categories.dart';
 
+import '../core/error/failures.dart';
 import '../domain/entities/game_type.dart';
 import '../domain/entities/question.dart';
 
 class GamePlayProvider extends ChangeNotifier{
+  final GetRandomCategories getRandomCategories;
+
+  GamePlayProvider({required this.getRandomCategories});
   /* list of data */
   /*
       1. list of game type
@@ -53,7 +59,20 @@ class GamePlayProvider extends ChangeNotifier{
   }
 
 
-  Future<bool> selectCategories({required String accessToken}){
+  Future<bool> selectCategories({required String accessToken})async{
+    final Either<Failure, List<Category>> categoriesListEither = await getRandomCategories(GetRandomCategoriesParams(accessToken: accessToken));
+    return categoriesListEither.fold(
+            (failure)  {
+          print("GamePlayProvider->selectCategories failuer");
+          print(failure);
+          return false;
+        },
+            (categoriesListData)  async{
+          categories = categoriesListData;
+          return true;
+        }
+    );
+
     bool status = true;
     return Future.delayed(Duration(seconds: 5),(){
       categories = [
@@ -64,6 +83,7 @@ class GamePlayProvider extends ChangeNotifier{
       return status;
     });
   }
+
   void setCategory(Category categoryUpdate){
     category = categoryUpdate;
     notifyListeners();

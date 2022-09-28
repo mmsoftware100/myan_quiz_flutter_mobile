@@ -1,21 +1,38 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:myan_quiz/data/datasources/network_interface.dart';
+import 'package:myan_quiz/data/models/user_model.dart';
 
 import '../../domain/entities/user.dart';
+import '../const/const.dart';
 
 abstract class UserRemoteDataSource{
   Future<User> login({required String accessToken, required String fcmToken});
 }
 
 class UserRemoteDataSourceImpl implements UserRemoteDataSource{
-  final Dio client;
-  UserRemoteDataSourceImpl({required this.client});
+  final NetworkInterface networkInterface;
+  UserRemoteDataSourceImpl({required this.networkInterface});
 
   @override
-  Future<User> login({required String accessToken, required String fcmToken}) {
-    // TODO: implement login
-    throw UnimplementedError();
+  Future<User> login({required String accessToken, required String fcmToken}) async{
+
+    var data = {
+      "access_token" : accessToken,
+      "fcm_token" : fcmToken
+    };
+    dynamic response = await networkInterface.postRequest(url: loginEndpoint, data: data);
+    try{
+      //bool status = response['status'];
+      //String message = response['msg'];
+      var data = response['data'];
+      UserModel userModel = UserModel.fromJson(data);
+      return userModel.toEntity();
+    }
+    catch(e){
+      rethrow;
+    }
   }
 
 

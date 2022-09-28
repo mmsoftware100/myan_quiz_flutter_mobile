@@ -79,9 +79,14 @@ class _ProfilePageState extends State<ProfilePage> {
                         // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SizedBox(height: 30,),
+<<<<<<< HEAD
                           // Text("Khin Wint Wah",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
                           Text(Provider.of<UserProvider>(context,listen: true).user.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
 
+=======
+                          Text(Provider.of<UserProvider>(context, listen:true).user.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                          //Text("Khin Wint Wah",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+>>>>>>> 22b3620cc21d183e227bc945bc99cbda1073403c
                           SizedBox(height: 10,),
                           Card(
                             elevation: 5,
@@ -110,8 +115,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                       SizedBox(height: 5,),
                                       Text("Rank"),
                                       SizedBox(height: 5,),
+<<<<<<< HEAD
                                       // Text("ပညာသင်",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),)
                                       Text(Provider.of<UserProvider>(context,listen: true).user.rank,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),)
+=======
+                                      Text(Provider.of<UserProvider>(context,listen: true).user.rank,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),)
+                                      // Text("ပညာသင်",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),)
+>>>>>>> 22b3620cc21d183e227bc945bc99cbda1073403c
                                     ],
                                   ),
                                   Container(
@@ -123,8 +133,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                       SizedBox(height: 5,),
                                       Text("Levels"),
                                       SizedBox(height: 5,),
+<<<<<<< HEAD
                                       // Text("360",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
                                       Text(Provider.of<UserProvider>(context,listen: true).user.level,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
+=======
+                                      //Text(Provider.of<UserProvider>(context, listen: true).user.level,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
+                                      Text(Provider.of<UserProvider>(context, listen: true).user.level,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
+>>>>>>> 22b3620cc21d183e227bc945bc99cbda1073403c
                                     ],
                                   ),
                                 ],
