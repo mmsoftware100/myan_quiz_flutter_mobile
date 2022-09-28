@@ -343,7 +343,7 @@ class _MatchPageState extends State<MatchPage> {
                                       // minWidth: MediaQuery.of(context).size.width/1.5,
                                       height:40,
                                       onPressed: (){
-                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Roulette()));
+                                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>Roulette()));
                                       },
                                       // color: Colors.indigoAccent[400],
                                       color: Color(getColorHexFromStr('#FFCE55')),

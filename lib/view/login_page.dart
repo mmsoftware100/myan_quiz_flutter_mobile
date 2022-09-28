@@ -3,6 +3,7 @@ import 'package:myan_quiz/components/custom_widgets.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
 import 'package:myan_quiz/utils/global.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:myan_quiz/utils/loader.dart';
 import 'package:myan_quiz/view/profile_page.dart';
 import 'package:myan_quiz/view/sign_up_page.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  final GlobalKey<State> _keyLoader = new GlobalKey<State>();
 
   bool _agreedToTOS = true;
 
@@ -186,9 +189,13 @@ class _LoginPageState extends State<LoginPage> {
                             String accessToken = "accessToken"; //TODO: firebase auth plugin
                             String fcmToken = "fcmToken";
                             // show loading indicator
+                            Dialogs.showLoadingDialog(context, _keyLoader);
 
                             bool status = await Provider.of<UserProvider>(context, listen:false).login(accessToken: accessToken, fcmToken: fcmToken);
+
                             // hide loading indicator
+                            Navigator.of(context);
+
                             if(status == true){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
                             }
