@@ -197,7 +197,11 @@ class _LoginPageState extends State<LoginPage> {
                             }
                             else{
                               //
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
+
                             }
+
+
                           },
                           // color: Colors.indigoAccent[400],
                           color: Color(getColorHexFromStr('#FFCE55')),
