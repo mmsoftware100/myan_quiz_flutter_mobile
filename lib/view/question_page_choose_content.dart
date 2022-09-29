@@ -47,28 +47,53 @@ class _QuestionPageChooseContentState extends State<QuestionPageChooseContent> {
 
 
 
-                  ...Provider.of<GamePlayProvider>(context , listen: true).categories.map(
-                          (e) => Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              height: 60,
-                              width: MediaQuery.of(context).size.width/1.5,
-                              child: InkWell(
-                                child: Card(
-                                  child: Center(child: Text(e.name)),
-                                  //child: Center(child: Text("ကိုးကွယ်ရာဘာသာ")),
-                                ),
-                                onTap: (){
-                                  String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
-                                  int categoryId= e.id;
-                                  Provider.of<GamePlayProvider>(context, listen: false).selectQuestionByCategoryId(accessToken: accessToken, gameTypeId: 1, categoryId: categoryId);
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>QuestionPageAnswer()));
-                                },
-                              ),
-                            ),
-                          )
-                  ).toList(),
+                  // ...Provider.of<GamePlayProvider>(context , listen: true).categories.map(
+                  //         (e) => Padding(
+                  //           padding: const EdgeInsets.all(8.0),
+                  //           child: Container(
+                  //             height: 60,
+                  //             width: MediaQuery.of(context).size.width/1.5,
+                  //             child: InkWell(
+                  //               child: Card(
+                  //                 child: Center(child: Text(e.name)),
+                  //                 //child: Center(child: Text("ကိုးကွယ်ရာဘာသာ")),
+                  //               ),
+                  //               onTap: (){
+                  //                 String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                  //                 int categoryId= e.id;
+                  //                 Provider.of<GamePlayProvider>(context, listen: false).selectQuestionByCategoryId(accessToken: accessToken, gameTypeId: 1, categoryId: categoryId);
+                  //                 Navigator.push(context, MaterialPageRoute(builder: (context)=>QuestionPageAnswer()));
+                  //               },
+                  //             ),
+                  //           ),
+                  //         )
+                  // ).toList(),
 
+                  ListView(
+                    shrinkWrap: true,
+                    physics: ScrollPhysics(),
+                    children: Provider.of<GamePlayProvider>(context , listen: true).categories.map(
+                            (e) => Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            height: 60,
+                            width: MediaQuery.of(context).size.width/1.5,
+                            child: InkWell(
+                              child: Card(
+                                child: Center(child: Text(e.name)),
+                                //child: Center(child: Text("ကိုးကွယ်ရာဘာသာ")),
+                              ),
+                              onTap: (){
+                                String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                                int categoryId= e.id;
+                                Provider.of<GamePlayProvider>(context, listen: false).selectQuestionByCategoryId(accessToken: accessToken, gameTypeId: 1, categoryId: categoryId);
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>QuestionPageAnswer()));
+                              },
+                            ),
+                          ),
+                        )
+                    ).toList(),
+                  ),
 
 
                   Padding(

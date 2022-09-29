@@ -225,17 +225,71 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                     ),
 
                     ListView(
+                      shrinkWrap: true,
+                      physics: ScrollPhysics(),
                       children: Provider.of<GamePlayProvider>(context, listen: true).question.answers.map(
-                              (e) => ListTile(
-                                onTap: (){
-                                  // submit answer
-                                  String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
-                                  int questionId = Provider.of<GamePlayProvider>(context, listen: false).question.id;
-                                  int answerId = e.id;
-                                  Provider.of<GamePlayProvider>(context, listen: false).answer(accessToken: accessToken, gameTypeId: 1, questionId: questionId, answerId: answerId);
-                                },
-                                title: Text(e.name),
-                              )
+                              (e) {
+                                // get index
+                                var index = amount.indexOf(e);
+                                return selectedIndex == index? Padding(
+                                  padding: const EdgeInsets.only(left: 18.0,right: 18.0),
+                                  child: Card(
+                                      elevation: 10,
+                                      // color: selectedIndex == index? Colors.green : null,
+                                      shape:new RoundedRectangleBorder(
+                                          side: new BorderSide(color: Colors.green, width: 2.0),
+                                          borderRadius: BorderRadius.circular(4.0)),
+                                      child:Center(
+                                        child: ListTile(
+                                          leading: Text(e.name),
+                                          trailing: Icon(Icons.album_outlined,color: selectedIndex == index? Colors.green : null,),
+                                          onTap: () {
+                                            setState(() {
+                                              selectedIndex = index;
+                                            });
+                                            // submit answer
+                                            String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                                            int questionId = Provider.of<GamePlayProvider>(context, listen: false).question.id;
+                                            int answerId = e.id;
+                                            Provider.of<GamePlayProvider>(context, listen: false).answer(accessToken: accessToken, gameTypeId: 1, questionId: questionId, answerId: answerId);
+
+                                          },
+                                        ),
+                                      )
+                                  ),
+                                ):
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 38.0,right: 38.0),
+                                  child: Card(
+                                      elevation: 3,
+                                      child:ListTile(
+                                        leading: Text(e.name),
+                                        trailing: Icon(Icons.album_outlined),
+                                        onTap: () {
+                                          setState(() {
+                                            selectedIndex = index;
+                                          });
+                                          // // submit answer
+                                          // String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                                          // int questionId = Provider.of<GamePlayProvider>(context, listen: false).question.id;
+                                          // int answerId = e.id;
+                                          // Provider.of<GamePlayProvider>(context, listen: false).answer(accessToken: accessToken, gameTypeId: 1, questionId: questionId, answerId: answerId);
+
+                                        },
+                                      )
+                                  ),
+                                );
+                              }
+                              //     ListTile(
+                              //   onTap: (){
+                              //     // submit answer
+                              //     String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                              //     int questionId = Provider.of<GamePlayProvider>(context, listen: false).question.id;
+                              //     int answerId = e.id;
+                              //     Provider.of<GamePlayProvider>(context, listen: false).answer(accessToken: accessToken, gameTypeId: 1, questionId: questionId, answerId: answerId);
+                              //   },
+                              //   title: Text(e.name),
+                              // )
                       ).toList(),
                     ),
                     /*
