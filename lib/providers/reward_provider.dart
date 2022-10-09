@@ -55,6 +55,7 @@ class RewardProvider extends ChangeNotifier{
             (telephoneOperatorListData)  async{
               print("GamePlayProvider->selectTelephoneOperators success");
               telephoneOperators = telephoneOperatorListData;
+              notifyListeners();
           return true;
         }
     );
@@ -79,7 +80,22 @@ class RewardProvider extends ChangeNotifier{
   }
 
 
-  Future<bool> selectBillExchangeRates({required String accessToken}){
+  Future<bool> selectBillExchangeRates({required String accessToken})async{
+    final Either<Failure, List<BillExchangeRate>> billExchangeRatesEither = await getExchangeRates(GetExchangeRatesParams(accessToken: accessToken, page: 1));
+    return billExchangeRatesEither.fold(
+            (failure)  {
+          print("GamePlayProvider->selectBillExchangeRates failure");
+          print(failure);
+          return false;
+        },
+            (billExchangeRatesData)  async{
+          print("GamePlayProvider->selectBillExchangeRates success");
+          billExchangeRates = billExchangeRatesData;
+          notifyListeners();
+          return true;
+        }
+    );
+    /*
     bool status = true;
     return Future.delayed(Duration(seconds: 5),(){
       billExchangeRates = [
@@ -91,6 +107,8 @@ class RewardProvider extends ChangeNotifier{
       notifyListeners();
       return status;
     });
+
+     */
   }
   void setBillExchangeRate(BillExchangeRate billExchangeRateUpdate){
     billExchangeRate = billExchangeRateUpdate;
@@ -98,7 +116,22 @@ class RewardProvider extends ChangeNotifier{
   }
 
 
-  Future<bool> selectBillExchanges({required String accessToken}){
+  Future<bool> selectBillExchanges({required String accessToken})async{
+    final Either<Failure, List<BillExchange>> billExchangesEither = await getExchanges(GetExchangesParams(accessToken: accessToken, page: 1));
+    return billExchangesEither.fold(
+            (failure)  {
+          print("GamePlayProvider->selectBillExchanges failure");
+          print(failure);
+          return false;
+        },
+            (billExchangesData)  async{
+          print("GamePlayProvider->selectBillExchanges success");
+          billExchanges = billExchangesData;
+          notifyListeners();
+          return true;
+        }
+    );
+    /*
     bool status = true;
     return Future.delayed(Duration(seconds: 5),(){
       billExchanges = [
@@ -134,13 +167,30 @@ class RewardProvider extends ChangeNotifier{
       notifyListeners();
       return status;
     });
+
+     */
   }
   void setBillExchange(BillExchange billExchangeUpdate){
     billExchange = billExchangeUpdate;
     notifyListeners();
   }
 
-  Future<bool> exchangeBill({required String accessToken, required int telephoneOperatorId, required int billExchangeRateId, required String phoneNo}){
+  Future<bool> exchangeBill({required String accessToken, required int telephoneOperatorId, required int billExchangeRateId, required String phoneNo})async{
+    final Either<Failure, BillExchange> billExchangeEither = await requestExchange(RequestExchangeParams(accessToken: accessToken, telephoneOperatorId: telephoneOperatorId, billExchangeRateId: billExchangeRateId, phoneNo: phoneNo));
+    return billExchangeEither.fold(
+            (failure)  {
+          print("GamePlayProvider->exchangeBill failure");
+          print(failure);
+          return false;
+        },
+            (billExchangeData)  async{
+          print("GamePlayProvider->exchangeBill success");
+          billExchange = billExchangeData;
+          notifyListeners();
+          return true;
+        }
+    );
+    /*
     bool status = true;
     return Future.delayed(Duration(seconds: 5),(){
       billExchange = BillExchange(
@@ -160,6 +210,8 @@ class RewardProvider extends ChangeNotifier{
       notifyListeners();
       return status;
     });
+
+     */
   }
 
 }
