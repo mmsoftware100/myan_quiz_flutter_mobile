@@ -4,6 +4,7 @@ import 'package:myan_quiz/domain/entities/bill_exchange.dart';
 import 'package:myan_quiz/domain/entities/telephone_operator.dart';
 
 import '../../domain/entities/bill_exchange_rate.dart';
+import '../../domain/entities/bill_exchange_status.dart';
 import '../../domain/entities/category.dart';
 import '../../domain/entities/user.dart';
 import 'bill_exchange_rate_model.dart';
@@ -70,12 +71,23 @@ class BillExchangeModel{
   }
   Map<String, dynamic> toJson() => _$BillExchangeModelToJson(this);
 
-  /*
-  BillExchange toEntity(){
-    return BillExchange(id: id, phoneNo: phoneNo, telephoneOperatorId: telephoneOperatorId, billExchangeRateId: billExchangeRateId, billExchangeStatusId: billExchangeStatusId, telephoneOperator: telephoneOperator, billExchangeRate: billExchangeRate, billExchangeStatus: billExchangeStatus, createdAt: createdAt, modifiedAt: modifiedAt, createdAgo: createdAgo, modifiedAgo: modifiedAgo)
-  }
 
-   */
+  BillExchange toEntity(){
+    return BillExchange(
+        id: id,
+        phoneNo: phoneNo,
+        telephoneOperatorId: telephoneOperatorId,
+        billExchangeRateId: billExchangeRateId,
+        billExchangeStatusId: billExchangeStatusId,
+        telephoneOperator: telephoneOperator?.toEntity() ?? TelephoneOperator.sample,
+        billExchangeRate: billExchangeRate?.toEntity() ?? BillExchangeRate.sample,
+        billExchangeStatus: billExchangeStatus?.toEntity() ?? BillExchangeStatus.sample,
+        createdAt: createdAt ?? DateTime.now(),
+        modifiedAt: modifiedAt ?? DateTime.now(),
+        createdAgo: createdAgo,
+        modifiedAgo: modifiedAgo
+    );
+  }
 }
 
 

@@ -1,4 +1,5 @@
 
+import 'package:myan_quiz/data/models/bill_exchange_model.dart';
 import 'package:myan_quiz/data/models/category_model.dart';
 import 'package:myan_quiz/data/models/question_model.dart';
 import 'package:myan_quiz/data/models/user_model.dart';
@@ -49,18 +50,7 @@ class RewardRemoteDatasourceImpl implements RewardRemoteDataSource{
     try{
       print(response);
       Map<String,dynamic> data = response['data'];
-      throw Exception("exchange bill exception");
-      /*
-      //return BillExchangeModel
-      List<Category> categories = [];
-      for(int i=0; i < data.length; i++){
-        CategoryModel categoryModel = CategoryModel.fromJson(data[i]);
-        categories.add(categoryModel.toEntity());
-      }
-      print("QuizRemoteDatasourceImpl->selectCategories return categories");
-      return categories;
-
-       */
+      return BillExchangeModel.fromJson(data).toEntity();
     }
     catch(e,stackTrace){
       print("QuizRemoteDatasourceImpl->selectCategories exception");
