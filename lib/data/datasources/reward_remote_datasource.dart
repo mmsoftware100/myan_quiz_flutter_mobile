@@ -43,9 +43,31 @@ class RewardRemoteDatasourceImpl implements RewardRemoteDataSource{
 
   RewardRemoteDatasourceImpl({required this.networkInterface});
   @override
-  Future<BillExchange> exchangeBill({required String accessToken, required int telephoneOperatorId, required int billExchangeRateId, required String phoneNo}) {
-    // TODO: implement exchangeBill
-    throw UnimplementedError();
+  Future<BillExchange> exchangeBill({required String accessToken, required int telephoneOperatorId, required int billExchangeRateId, required String phoneNo}) async{
+    print("RewardRemoteDatasourceImpl->exchangeBill");
+    dynamic response = await networkInterface.postRequest(url: randomCategoryEndpoint, data: {}, bearerToken: accessToken);
+    try{
+      print(response);
+      Map<String,dynamic> data = response['data'];
+      throw Exception("exchange bill exception");
+      /*
+      //return BillExchangeModel
+      List<Category> categories = [];
+      for(int i=0; i < data.length; i++){
+        CategoryModel categoryModel = CategoryModel.fromJson(data[i]);
+        categories.add(categoryModel.toEntity());
+      }
+      print("QuizRemoteDatasourceImpl->selectCategories return categories");
+      return categories;
+
+       */
+    }
+    catch(e,stackTrace){
+      print("QuizRemoteDatasourceImpl->selectCategories exception");
+      print(e);
+      print(stackTrace);
+      rethrow;
+    }
   }
 
   @override
