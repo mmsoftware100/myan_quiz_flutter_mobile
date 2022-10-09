@@ -8,8 +8,12 @@ import 'package:myan_quiz/data/repositories/quiz_repository_impl.dart';
 import 'package:myan_quiz/data/repositories/user_repository_impl.dart';
 import 'package:myan_quiz/domain/repositories/quiz_repository.dart';
 import 'package:myan_quiz/domain/repositories/user_repository.dart';
+import 'package:myan_quiz/domain/usecases/get_exchange_rates.dart';
+import 'package:myan_quiz/domain/usecases/get_exchanges.dart';
 import 'package:myan_quiz/domain/usecases/get_question_by_category_id.dart';
 import 'package:myan_quiz/domain/usecases/get_random_categories.dart';
+import 'package:myan_quiz/domain/usecases/get_telephone_operators.dart';
+import 'package:myan_quiz/domain/usecases/request_exchange.dart';
 import 'package:myan_quiz/domain/usecases/submit_answer.dart';
 import 'package:myan_quiz/domain/usecases/user_login.dart';
 import 'package:myan_quiz/providers/game_play_provider.dart';
@@ -47,6 +51,10 @@ Future<void> init() async {
   sl.registerLazySingleton<GetRandomCategories>(() =>  GetRandomCategories(quizRepository: sl()));
   sl.registerLazySingleton<GetQuestionByCategoryId>(() =>  GetQuestionByCategoryId(quizRepository: sl()));
   sl.registerLazySingleton<SubmitAnswer>(() =>  SubmitAnswer(quizRepository: sl()));
+  sl.registerLazySingleton<GetTelephoneOperators>(() =>  GetTelephoneOperators(rewardRepository: sl()));
+  sl.registerLazySingleton<GetExchangeRates>(() =>  GetExchangeRates(rewardRepository: sl()));
+  sl.registerLazySingleton<RequestExchange>(() =>  RequestExchange(rewardRepository: sl()));
+  sl.registerLazySingleton<GetExchanges>(() =>  GetExchanges(rewardRepository: sl()));
 
   /// Repositories
   sl.registerLazySingleton<UserRepository>(() => UserRepositoryImpl(userRemoteDataSource: sl()));
