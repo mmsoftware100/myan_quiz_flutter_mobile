@@ -28,7 +28,12 @@ void main()async{
               getQuestionByCategoryId: di.sl(),
               submitAnswer: di.sl()
             )),
-            ChangeNotifierProvider(create: (_) => RewardProvider()),
+            ChangeNotifierProvider(create: (_) => RewardProvider(
+              getTelephoneOperators: di.sl(),
+              getExchangeRates: di.sl(),
+              requestExchange: di.sl(),
+              getExchanges: di.sl()
+            )),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,

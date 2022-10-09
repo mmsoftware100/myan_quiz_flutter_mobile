@@ -35,7 +35,12 @@ Future<void> init() async {
           )
   );
   sl.registerFactory(
-          () => RewardProvider()
+          () => RewardProvider(
+              getTelephoneOperators: sl(),
+              getExchangeRates: sl(),
+              requestExchange: sl(),
+              getExchanges: sl()
+          )
   );
   /// Use Cases
   sl.registerLazySingleton<UserLogin>(() =>  UserLogin(userRepository: sl()));

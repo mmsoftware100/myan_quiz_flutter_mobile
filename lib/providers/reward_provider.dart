@@ -7,11 +7,27 @@ import 'package:myan_quiz/domain/entities/category.dart';
 import 'package:myan_quiz/domain/entities/description.dart';
 import 'package:myan_quiz/domain/entities/telephone_operator.dart';
 import 'package:myan_quiz/domain/entities/user.dart';
+import 'package:myan_quiz/domain/usecases/get_exchange_rates.dart';
+import 'package:myan_quiz/domain/usecases/get_exchanges.dart';
+import 'package:myan_quiz/domain/usecases/get_telephone_operators.dart';
+import 'package:myan_quiz/domain/usecases/request_exchange.dart';
 
 import '../domain/entities/game_type.dart';
 import '../domain/entities/question.dart';
 
 class RewardProvider extends ChangeNotifier{
+  final GetTelephoneOperators getTelephoneOperators;
+  final GetExchangeRates getExchangeRates;
+  final RequestExchange requestExchange;
+  final GetExchanges getExchanges;
+
+  RewardProvider({
+    required this.getTelephoneOperators,
+    required this.getExchangeRates,
+    required this.requestExchange,
+    required this.getExchanges
+  });
+
   // data repo
   List<TelephoneOperator> telephoneOperators = [];
   TelephoneOperator telephoneOperator = TelephoneOperator.sample;
