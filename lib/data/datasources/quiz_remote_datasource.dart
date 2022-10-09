@@ -31,19 +31,24 @@ class QuizRemoteDatasourceImpl implements QuizRemoteDatasource{
   QuizRemoteDatasourceImpl({required this.networkInterface});
   @override
   Future<List<Category>> selectCategories({required String accessToken}) async{
+    print("QuizRemoteDatasourceImpl->selectCategories");
     dynamic response = await networkInterface.postRequest(url: randomCategoryEndpoint, data: {}, bearerToken: accessToken);
     try{
       //bool status = response['status'];
       //String message = response['msg'];
-      List<Map<String,dynamic>> data = response['data'];
+      print(response);
+      List<dynamic> data = response['data'];
       List<Category> categories = [];
       for(int i=0; i < data.length; i++){
         CategoryModel categoryModel = CategoryModel.fromJson(data[i]);
         categories.add(categoryModel.toEntity());
       }
+      print("QuizRemoteDatasourceImpl->selectCategories return categories");
       return categories;
     }
     catch(e,stackTrace){
+      print("QuizRemoteDatasourceImpl->selectCategories exception");
+      print(e);
       print(stackTrace);
       rethrow;
     }
