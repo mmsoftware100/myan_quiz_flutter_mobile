@@ -11,6 +11,8 @@ import '../../domain/entities/question.dart';
 import '../../domain/entities/telephone_operator.dart';
 import '../../domain/entities/user.dart';
 import '../const/const.dart';
+import '../models/bill_exchange_rate_model.dart';
+import '../models/telephone_operator_model.dart';
 import 'network_interface.dart';
 
 
@@ -46,7 +48,12 @@ class RewardRemoteDatasourceImpl implements RewardRemoteDataSource{
   @override
   Future<BillExchange> exchangeBill({required String accessToken, required int telephoneOperatorId, required int billExchangeRateId, required String phoneNo}) async{
     print("RewardRemoteDatasourceImpl->exchangeBill");
-    dynamic response = await networkInterface.postRequest(url: randomCategoryEndpoint, data: {}, bearerToken: accessToken);
+    var body = {
+      "telephone_operator_id" : telephoneOperatorId,
+      "bill_exchange_rate_id" : billExchangeRateId,
+      "phone_no" : phoneNo
+    };
+    dynamic response = await networkInterface.postRequest(url: exchangeBillEndpoint, data: body, bearerToken: accessToken);
     try{
       print(response);
       Map<String,dynamic> data = response['data'];
@@ -61,21 +68,70 @@ class RewardRemoteDatasourceImpl implements RewardRemoteDataSource{
   }
 
   @override
-  Future<List<BillExchangeRate>> selectBillExchangeRates({required String accessToken, required int page}) {
-    // TODO: implement selectBillExchangeRates
-    throw UnimplementedError();
+  Future<List<BillExchangeRate>> selectBillExchangeRates({required String accessToken, required int page}) async{
+    print("RewardRemoteDatasourceImpl->exchangeBill");
+    dynamic response = await networkInterface.postRequest(url: selectBillExchangeRatesEndpoint+"?page=$page", data: {}, bearerToken: accessToken);
+    try{
+      print(response);
+      List<dynamic> data = response['data'];
+      List<BillExchangeRate> billExchangeRates = [];
+      for (var element in data) {
+        billExchangeRates.add(BillExchangeRateModel.fromJson(element).toEntity());
+      }
+      print("RewardRemoteDatasourceImpl->exchangeBill success");
+      return billExchangeRates;
+    }
+    catch(e,stackTrace){
+      print("RewardRemoteDatasourceImpl->exchangeBill exception");
+      print(e);
+      print(stackTrace);
+      rethrow;
+    }
   }
 
   @override
-  Future<List<BillExchange>> selectBillExchanges({required String accessToken, required int page}) {
-    // TODO: implement selectBillExchanges
-    throw UnimplementedError();
+  Future<List<BillExchange>> selectBillExchanges({required String accessToken, required int page}) async{
+    print("RewardRemoteDatasourceImpl->selectBillExchanges");
+    dynamic response = await networkInterface.postRequest(url: selectBillExchangesEndpoint+"?page=$page", data: {}, bearerToken: accessToken);
+
+    try{
+      print(response);
+      List<dynamic> data = response['data'];
+      List<BillExchange> billExchanges = [];
+      for (var element in data) {
+        billExchanges.add(BillExchangeModel.fromJson(element).toEntity());
+      }
+      print("RewardRemoteDatasourceImpl->selectBillExchanges success");
+      return billExchanges;
+    }
+    catch(e,stackTrace){
+      print("RewardRemoteDatasourceImpl->selectBillExchanges exception");
+      print(e);
+      print(stackTrace);
+      rethrow;
+    }
   }
 
   @override
-  Future<List<TelephoneOperator>> selectTelephoneOperators({required String accessToken, required int page}) {
-    // TODO: implement selectTelephoneOperators
-    throw UnimplementedError();
+  Future<List<TelephoneOperator>> selectTelephoneOperators({required String accessToken, required int page}) async{
+    print("RewardRemoteDatasourceImpl->selectTelephoneOperators");
+    dynamic response = await networkInterface.postRequest(url: selectTelephoneOperatorsEndpoint+"?page=$page", data: {}, bearerToken: accessToken);
+    try{
+      print(response);
+      List<dynamic> data = response['data'];
+      List<TelephoneOperator> telephoneOperators = [];
+      for (var element in data) {
+        telephoneOperators.add(TelephoneOperatorModel.fromJson(element).toEntity());
+      }
+      print("RewardRemoteDatasourceImpl->selectTelephoneOperators success");
+      return telephoneOperators;
+    }
+    catch(e,stackTrace){
+      print("RewardRemoteDatasourceImpl->selectTelephoneOperators exception");
+      print(e);
+      print(stackTrace);
+      rethrow;
+    }
   }
 
 }
