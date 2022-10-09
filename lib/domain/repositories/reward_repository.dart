@@ -8,10 +8,7 @@ import 'package:myan_quiz/domain/entities/user.dart';
 
 import '../entities/category.dart';
 abstract class RewardRepository{
-  Future<Either<Failure,List<Category>>> selectCategories({
-    required String accessToken,
-    required int page
-  });
+
 
   Future<Either<Failure,List<TelephoneOperator>>> selectTelephoneOperators({
     required String accessToken,
