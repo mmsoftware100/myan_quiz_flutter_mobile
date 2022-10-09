@@ -3,6 +3,8 @@ import 'package:myan_quiz/providers/game_play_provider.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 
+import '../domain/entities/user.dart';
+
 class TestPage extends StatefulWidget {
   const TestPage({Key? key}) : super(key: key);
 
@@ -30,6 +32,10 @@ class _TestPageState extends State<TestPage> {
           ListTile(
               title: Text("Get Question by Category Id"),
               onTap: _getQuestionByCategoryId
+          ),
+          ListTile(
+              title: Text("Submit Answer"),
+              onTap: _submitAnswer
           ),
         ],
       ),
@@ -64,6 +70,27 @@ class _TestPageState extends State<TestPage> {
     bool status = await Provider.of<GamePlayProvider>(context,listen:false).selectQuestionByCategoryId(accessToken: accessToken, gameTypeId: gameTypeId, categoryId: categoryId);
     // hide loading dialog
     print("TestPage->_selectRandomCategories status $status");
+  }
+
+
+  void _submitAnswer()async{
+    print("TestPage->_submitAnswer");
+    // show loading dialog
+    String accessToken = "accessToken";
+    int gameTypeId = 1;
+    int questionId = 14;
+    int answerId = 14;
+    try{
+      User user = await Provider.of<GamePlayProvider>(context,listen:false).answer(accessToken: accessToken, gameTypeId: gameTypeId, questionId: questionId, answerId: answerId);
+      // hide loading dialog
+      print("TestPage->_submitAnswer status ${user.name}");
+    }
+    catch(e,stackTrace){
+      print("TestPage->_submitAnswer exceptioin ");
+      print(e);
+      print(stackTrace);
+    }
+
   }
 
 
