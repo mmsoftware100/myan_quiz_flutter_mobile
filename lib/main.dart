@@ -10,6 +10,7 @@ import 'package:myan_quiz/view/question_page_answer.dart';
 import 'package:myan_quiz/view/setting_page.dart';
 import 'package:myan_quiz/view/spin_whell_page.dart';
 import 'package:myan_quiz/view/splash_screen_page.dart';
+import 'package:myan_quiz/view/test_page.dart';
 import 'package:provider/provider.dart';
 
 import 'injection_container.dart' as di;
@@ -29,7 +30,8 @@ void main()async{
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
-            home: SplashScreenPage(),
+            //home: SplashScreenPage(),
+            home: TestPage(),
           )
       )
   );
