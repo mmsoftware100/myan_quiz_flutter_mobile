@@ -4,6 +4,7 @@ import 'package:myan_quiz/domain/entities/answer.dart';
 import 'package:myan_quiz/domain/entities/category.dart';
 import 'package:myan_quiz/domain/entities/description.dart';
 import 'package:myan_quiz/domain/entities/user.dart';
+import 'package:myan_quiz/domain/usecases/get_question_by_category_id.dart';
 import 'package:myan_quiz/domain/usecases/get_random_categories.dart';
 
 import '../core/error/failures.dart';
@@ -12,8 +13,12 @@ import '../domain/entities/question.dart';
 
 class GamePlayProvider extends ChangeNotifier{
   final GetRandomCategories getRandomCategories;
+  final GetQuestionByCategoryId getQuestionByCategoryId;
 
-  GamePlayProvider({required this.getRandomCategories});
+  GamePlayProvider({
+    required this.getRandomCategories,
+    required this.getQuestionByCategoryId
+  });
   /* list of data */
   /*
       1. list of game type
@@ -90,7 +95,23 @@ class GamePlayProvider extends ChangeNotifier{
   }
 
 
-  Future<bool> selectQuestionByCategoryId({required String accessToken, required int gameTypeId, required int categoryId}){
+  Future<bool> selectQuestionByCategoryId({required String accessToken, required int gameTypeId, required int categoryId})async{
+    print("GamePlayProvider->selectQuestionByCategoryId");
+    final Either<Failure, Question> questionEither = await getQuestionByCategoryId(GetQuestionByCategoryIdParams(accessToken: accessToken, categoryId: categoryId, gamePlayTypeId: gameTypeId));
+    return questionEither.fold(
+            (failure)  {
+              print("GamePlayProvider->selectQuestionByCategoryId failuer");
+              print(failure);
+              return false;
+            },
+            (questionData)  async{
+              print("GamePlayProvider->selectQuestionByCategoryId success");
+              question = questionData;
+              notifyListeners();
+              return true;
+           }
+    );
+    /*
     bool status = true;
     return Future.delayed(Duration(seconds: 5),(){
       question = Question(
@@ -112,6 +133,8 @@ class GamePlayProvider extends ChangeNotifier{
       notifyListeners();
       return status;
     });
+
+     */
   }
   Future<User> answer({required String accessToken, required int gameTypeId, required int questionId, required int answerId}){
     return Future.delayed(Duration(seconds: 5),(){

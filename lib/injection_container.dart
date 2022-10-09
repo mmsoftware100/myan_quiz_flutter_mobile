@@ -8,6 +8,7 @@ import 'package:myan_quiz/data/repositories/quiz_repository_impl.dart';
 import 'package:myan_quiz/data/repositories/user_repository_impl.dart';
 import 'package:myan_quiz/domain/repositories/quiz_repository.dart';
 import 'package:myan_quiz/domain/repositories/user_repository.dart';
+import 'package:myan_quiz/domain/usecases/get_question_by_category_id.dart';
 import 'package:myan_quiz/domain/usecases/get_random_categories.dart';
 import 'package:myan_quiz/domain/usecases/user_login.dart';
 import 'package:myan_quiz/providers/game_play_provider.dart';
@@ -26,7 +27,10 @@ Future<void> init() async {
           () => UserProvider(userLogin: sl())
   );
   sl.registerFactory(
-          () => GamePlayProvider(getRandomCategories: sl())
+          () => GamePlayProvider(
+              getRandomCategories: sl(),
+              getQuestionByCategoryId: sl()
+          )
   );
   sl.registerFactory(
           () => RewardProvider()
@@ -34,6 +38,7 @@ Future<void> init() async {
   /// Use Cases
   sl.registerLazySingleton<UserLogin>(() =>  UserLogin(userRepository: sl()));
   sl.registerLazySingleton<GetRandomCategories>(() =>  GetRandomCategories(quizRepository: sl()));
+  sl.registerLazySingleton<GetQuestionByCategoryId>(() =>  GetQuestionByCategoryId(quizRepository: sl()));
 
   /// Repositories
   sl.registerLazySingleton<UserRepository>(() => UserRepositoryImpl(userRemoteDataSource: sl()));

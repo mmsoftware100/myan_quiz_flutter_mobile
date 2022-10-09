@@ -24,7 +24,8 @@ void main()async{
               userLogin: di.sl()
             )),
             ChangeNotifierProvider(create: (_) => GamePlayProvider(
-              getRandomCategories: di.sl()
+              getRandomCategories: di.sl(),
+              getQuestionByCategoryId: di.sl()
             )),
             ChangeNotifierProvider(create: (_) => RewardProvider()),
           ],
