@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:myan_quiz/domain/entities/answer.dart';
 import 'package:myan_quiz/domain/entities/bill_exchange.dart';
@@ -12,6 +13,7 @@ import 'package:myan_quiz/domain/usecases/get_exchanges.dart';
 import 'package:myan_quiz/domain/usecases/get_telephone_operators.dart';
 import 'package:myan_quiz/domain/usecases/request_exchange.dart';
 
+import '../core/error/failures.dart';
 import '../domain/entities/game_type.dart';
 import '../domain/entities/question.dart';
 
@@ -42,7 +44,21 @@ class RewardProvider extends ChangeNotifier{
 
   // methods
 
-  Future<bool> selectTelephoneOperators({required String accessToken}){
+  Future<bool> selectTelephoneOperators({required String accessToken})async{
+    final Either<Failure, List<TelephoneOperator>> telephoneOperatorListEither = await getTelephoneOperators(GetTelephoneOperatorsParams(accessToken: accessToken, page: 1));
+    return telephoneOperatorListEither.fold(
+            (failure)  {
+          print("GamePlayProvider->selectTelephoneOperators failure");
+          print(failure);
+          return false;
+        },
+            (telephoneOperatorListData)  async{
+              print("GamePlayProvider->selectTelephoneOperators success");
+              telephoneOperators = telephoneOperatorListData;
+          return true;
+        }
+    );
+    /*
     bool status = true;
     return Future.delayed(Duration(seconds: 5),(){
       telephoneOperators = [
@@ -54,6 +70,8 @@ class RewardProvider extends ChangeNotifier{
       notifyListeners();
       return status;
     });
+
+     */
   }
   void setTelephoneOperator(TelephoneOperator telephoneOperatorUpdate){
     telephoneOperator = telephoneOperatorUpdate;
