@@ -29,7 +29,8 @@ Future<void> init() async {
   sl.registerFactory(
           () => GamePlayProvider(
               getRandomCategories: sl(),
-              getQuestionByCategoryId: sl()
+              getQuestionByCategoryId: sl(),
+              submitAnswer: sl()
           )
   );
   sl.registerFactory(

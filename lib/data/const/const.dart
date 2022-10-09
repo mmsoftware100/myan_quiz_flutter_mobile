@@ -7,3 +7,4 @@ const String apiVersion = backendApiServer + '/api/v1';
 const String loginEndpoint = apiVersion + '/login';
 const String randomCategoryEndpoint = apiVersion + '/gameplay/categories';
 const String getQuestionByCategoryIdEndpoint = apiVersion + '/gameplay/questions';
+const String submitAnswerEndpoint = apiVersion + '/gameplay/checkanswer';

@@ -6,6 +6,7 @@ import 'package:myan_quiz/domain/entities/description.dart';
 import 'package:myan_quiz/domain/entities/user.dart';
 import 'package:myan_quiz/domain/usecases/get_question_by_category_id.dart';
 import 'package:myan_quiz/domain/usecases/get_random_categories.dart';
+import 'package:myan_quiz/domain/usecases/submit_answer.dart';
 
 import '../core/error/failures.dart';
 import '../domain/entities/game_type.dart';
@@ -14,10 +15,12 @@ import '../domain/entities/question.dart';
 class GamePlayProvider extends ChangeNotifier{
   final GetRandomCategories getRandomCategories;
   final GetQuestionByCategoryId getQuestionByCategoryId;
+  final SubmitAnswer submitAnswer;
 
   GamePlayProvider({
     required this.getRandomCategories,
-    required this.getQuestionByCategoryId
+    required this.getQuestionByCategoryId,
+    required this.submitAnswer
   });
   /* list of data */
   /*
@@ -136,7 +139,21 @@ class GamePlayProvider extends ChangeNotifier{
 
      */
   }
-  Future<User> answer({required String accessToken, required int gameTypeId, required int questionId, required int answerId}){
+  Future<User> answer({required String accessToken, required int gameTypeId, required int questionId, required int answerId})async{
+    print("GamePlayProvider->answer");
+    final Either<Failure, User> userEither = await submitAnswer(SubmitAnswerParams(accessToken: accessToken, answerId: answerId, gameTypeId: gameTypeId, questionId: questionId));
+    return userEither.fold(
+            (failure)  {
+          print("GamePlayProvider->answer failure");
+          print(failure);
+          throw Exception("wrong answer");
+        },
+            (userData)  async{
+          print("GamePlayProvider->answer success");
+          return userData;
+        }
+    );
+    /*
     return Future.delayed(Duration(seconds: 5),(){
       User user = User(
           id: 1,
@@ -159,6 +176,8 @@ class GamePlayProvider extends ChangeNotifier{
       );
       return user;
     });
+
+     */
   }
 
 }

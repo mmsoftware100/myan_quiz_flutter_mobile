@@ -1,6 +1,7 @@
 
 import 'package:myan_quiz/data/models/category_model.dart';
 import 'package:myan_quiz/data/models/question_model.dart';
+import 'package:myan_quiz/data/models/user_model.dart';
 
 import '../../domain/entities/category.dart';
 import '../../domain/entities/question.dart';
@@ -74,9 +75,28 @@ class QuizRemoteDatasourceImpl implements QuizRemoteDatasource{
   }
 
   @override
-  Future<User> submitAnswer({required String accessToken, required int gameTypeId, required int questionId, required int answerId}) {
-    // TODO: implement submitAnswer
-    throw UnimplementedError();
+  Future<User> submitAnswer({required String accessToken, required int gameTypeId, required int questionId, required int answerId}) async{
+    print("QuizRemoteDatasource->submitAnswer");
+    Map<String, dynamic> data = {
+      "game_type_id" : gameTypeId,
+      "question_id" : questionId,
+      "answer_id" : answerId
+    };
+    dynamic response = await networkInterface.postRequest(url: submitAnswerEndpoint, data: data, bearerToken: accessToken);
+    try{
+      //bool status = response['status'];
+      //String message = response['msg'];
+      Map<String,dynamic> data = response['data'];
+      UserModel userModel = UserModel.fromJson(data);
+      print("QuizRemoteDatasource->submitAnswer success");
+      return userModel.toEntity();
+    }
+    catch(e,stackTrace){
+      print("QuizRemoteDatasource->submitAnswer exception");
+      print(e);
+      print(stackTrace);
+      rethrow;
+    }
   }
 
 }
