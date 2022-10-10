@@ -46,8 +46,7 @@ class RewardProvider extends ChangeNotifier{
 
   Future<bool> selectTelephoneOperators({required String accessToken})async{
     print("RewardProvider->selectTelephoneOperators");
-    throw Exception("General");
-    /*
+    //throw Exception("General");
     final Either<Failure, List<TelephoneOperator>> telephoneOperatorListEither = await getTelephoneOperators(GetTelephoneOperatorsParams(accessToken: accessToken, page: 1));
     return telephoneOperatorListEither.fold(
             (failure)  {
@@ -63,7 +62,6 @@ class RewardProvider extends ChangeNotifier{
         }
     );
 
-     */
     /*
     bool status = true;
     return Future.delayed(Duration(seconds: 5),(){
