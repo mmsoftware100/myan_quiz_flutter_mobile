@@ -35,8 +35,12 @@ class _TestPageState extends State<TestPage> {
               onTap: _getQuestionByCategoryId
           ),
           ListTile(
-              title: Text("Submit Answer"),
+              title: Text("Submit Wrong Answer"),
               onTap: _submitAnswer
+          ),
+          ListTile(
+              title: Text("Submit Correct Answer"),
+              onTap: _submitCorrectAnswer
           ),
           ListTile(
               title: Text("Select Telephone Operators"),
@@ -100,6 +104,26 @@ class _TestPageState extends State<TestPage> {
     }
     catch(e,stackTrace){
       print("TestPage->_submitAnswer exceptioin ");
+      print(e);
+      print(stackTrace);
+    }
+
+  }
+
+  void _submitCorrectAnswer()async{
+    print("TestPage->_submitCorrectAnswer");
+    // show loading dialog
+    String accessToken = "accessToken";
+    int gameTypeId = 1;
+    int questionId = 1;
+    int answerId = 1;
+    try{
+      User user = await Provider.of<GamePlayProvider>(context,listen:false).answer(accessToken: accessToken, gameTypeId: gameTypeId, questionId: questionId, answerId: answerId);
+      // hide loading dialog
+      print("TestPage->_submitCorrectAnswer status ${user.name}");
+    }
+    catch(e,stackTrace){
+      print("TestPage->_submitCorrectAnswer exceptioin ");
       print(e);
       print(stackTrace);
     }

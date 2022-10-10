@@ -61,6 +61,8 @@ class QuizRemoteDatasourceImpl implements QuizRemoteDatasource{
         "category_id" : categoryId
     };
     dynamic response = await networkInterface.postRequest(url: getQuestionByCategoryIdEndpoint, data: data, bearerToken: accessToken);
+    print("QuizRemoteDatasouce->selectQuestionByCategoryId  response");
+    print(response);
     try{
       //bool status = response['status'];
       //String message = response['msg'];

@@ -40,7 +40,7 @@ class BillExchange{
         phoneNo: "phoneNo",
         telephoneOperatorId: TelephoneOperator.sample.id,
         billExchangeRateId: BillExchangeRate.sample.id,
-        billExchangeStatusId: BillExchange.sample.id,
+        billExchangeStatusId: BillExchangeStatus.sample.id,
         telephoneOperator: TelephoneOperator.sample,
         billExchangeRate: BillExchangeRate.sample,
         billExchangeStatus: BillExchangeStatus.sample,
