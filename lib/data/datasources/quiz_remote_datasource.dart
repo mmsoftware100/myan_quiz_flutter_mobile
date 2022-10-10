@@ -66,7 +66,8 @@ class QuizRemoteDatasourceImpl implements QuizRemoteDatasource{
     try{
       //bool status = response['status'];
       //String message = response['msg'];
-      Map<String,dynamic> data = response['data'];
+      // TODO: need to get back on data
+      Map<String,dynamic> data = response['data'][0];
       QuestionModel questionModel = QuestionModel.fromJson(data);
       return questionModel.toEntity();
     }
@@ -88,7 +89,7 @@ class QuizRemoteDatasourceImpl implements QuizRemoteDatasource{
     try{
       //bool status = response['status'];
       //String message = response['msg'];
-      Map<String,dynamic> data = response['data'];
+      Map<String,dynamic> data = response['data']['user_data'];
       UserModel userModel = UserModel.fromJson(data);
       print("QuizRemoteDatasource->submitAnswer success");
       return userModel.toEntity();

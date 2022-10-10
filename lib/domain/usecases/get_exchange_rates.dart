@@ -8,24 +8,24 @@ import 'package:myan_quiz/domain/repositories/reward_repository.dart';
 import '../../core/error/failures.dart';
 import '../../core/usercase/usecase.dart';
 
-class GetExchangeRates implements UseCase<List<BillExchangeRate>,GetExchangeRatesParams>{
+class GetBills implements UseCase<List<Bill>,GetBillParams>{
   final RewardRepository rewardRepository;
 
-  GetExchangeRates({required this.rewardRepository});
+  GetBills({required this.rewardRepository});
 
   @override
-  Future<Either<Failure, List<BillExchangeRate>>> call(GetExchangeRatesParams params) async{
+  Future<Either<Failure, List<Bill>>> call(GetBillParams params) async{
     //throw UnimplementedError();
     print("GetExchangeRates->call");
-    return await rewardRepository.selectBillExchangeRates(accessToken: params.accessToken, page: params.page);
+    return await rewardRepository.selectBills(accessToken: params.accessToken, page: params.page);
   }
 }
 
-class GetExchangeRatesParams extends Equatable {
+class GetBillParams extends Equatable {
   final String accessToken;
   final int page;
 
-  const GetExchangeRatesParams({required this.accessToken, required this.page});
+  const GetBillParams({required this.accessToken, required this.page});
 
   @override
   List<Object> get props => [accessToken, page];

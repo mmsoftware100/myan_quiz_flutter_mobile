@@ -15,7 +15,7 @@ abstract class RewardRepository{
     required int page
   });
 
-  Future<Either<Failure,List<BillExchangeRate>>> selectBillExchangeRates({
+  Future<Either<Failure,List<Bill>>> selectBills({
     required String accessToken,
     required int page
   });

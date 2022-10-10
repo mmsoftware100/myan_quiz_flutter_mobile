@@ -55,7 +55,7 @@ Future<void> init() async {
   sl.registerLazySingleton<GetQuestionByCategoryId>(() =>  GetQuestionByCategoryId(quizRepository: sl()));
   sl.registerLazySingleton<SubmitAnswer>(() =>  SubmitAnswer(quizRepository: sl()));
   sl.registerLazySingleton<GetTelephoneOperators>(() =>  GetTelephoneOperators(rewardRepository: sl()));
-  sl.registerLazySingleton<GetExchangeRates>(() =>  GetExchangeRates(rewardRepository: sl()));
+  sl.registerLazySingleton<GetBills>(() =>  GetBills(rewardRepository: sl()));
   sl.registerLazySingleton<RequestExchange>(() =>  RequestExchange(rewardRepository: sl()));
   sl.registerLazySingleton<GetExchanges>(() =>  GetExchanges(rewardRepository: sl()));
 

@@ -1,11 +1,11 @@
-class BillExchangeRate{
+class Bill{
 
   int id;
   String name;
   int coin;
   String image;
 
-  BillExchangeRate({
+  Bill({
     required this.id,
     required this.name,
     required this.coin,
@@ -14,7 +14,7 @@ class BillExchangeRate{
 
 
 
-  static BillExchangeRate get sample {
-    return BillExchangeRate(id: 0, name: "name",coin: 0,  image: "image");
+  static Bill get sample {
+    return Bill(id: 0, name: "name",coin: 0,  image: "image");
   }
 }

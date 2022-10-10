@@ -10,7 +10,7 @@ class BillExchange{
   int billExchangeRateId;
   int billExchangeStatusId;
   TelephoneOperator telephoneOperator;
-  BillExchangeRate billExchangeRate;
+  Bill billExchangeRate;
   BillExchangeStatus billExchangeStatus;
   DateTime createdAt;
   DateTime modifiedAt;
@@ -39,10 +39,10 @@ class BillExchange{
         id: 0,
         phoneNo: "phoneNo",
         telephoneOperatorId: TelephoneOperator.sample.id,
-        billExchangeRateId: BillExchangeRate.sample.id,
+        billExchangeRateId: Bill.sample.id,
         billExchangeStatusId: BillExchangeStatus.sample.id,
         telephoneOperator: TelephoneOperator.sample,
-        billExchangeRate: BillExchangeRate.sample,
+        billExchangeRate: Bill.sample,
         billExchangeStatus: BillExchangeStatus.sample,
         createdAt: DateTime.now(),
         modifiedAt: DateTime.now(),

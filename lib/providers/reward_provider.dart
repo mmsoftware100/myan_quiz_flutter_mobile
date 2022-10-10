@@ -19,7 +19,7 @@ import '../domain/entities/question.dart';
 
 class RewardProvider extends ChangeNotifier{
   final GetTelephoneOperators getTelephoneOperators;
-  final GetExchangeRates getExchangeRates;
+  final GetBills getExchangeRates;
   final RequestExchange requestExchange;
   final GetExchanges getExchanges;
 
@@ -35,8 +35,8 @@ class RewardProvider extends ChangeNotifier{
   TelephoneOperator telephoneOperator = TelephoneOperator.sample;
 
 
-  List<BillExchangeRate> billExchangeRates = [];
-  BillExchangeRate billExchangeRate = BillExchangeRate.sample;
+  List<Bill> billExchangeRates = [];
+  Bill billExchangeRate = Bill.sample;
 
   List<BillExchange> billExchanges = [];
   BillExchange billExchange = BillExchange.sample;
@@ -83,16 +83,16 @@ class RewardProvider extends ChangeNotifier{
   }
 
 
-  Future<bool> selectBillExchangeRates({required String accessToken})async{
-    final Either<Failure, List<BillExchangeRate>> billExchangeRatesEither = await getExchangeRates(GetExchangeRatesParams(accessToken: accessToken, page: 1));
+  Future<bool> selectBills({required String accessToken})async{
+    final Either<Failure, List<Bill>> billExchangeRatesEither = await getExchangeRates(GetBillParams(accessToken: accessToken, page: 1));
     return billExchangeRatesEither.fold(
             (failure)  {
-          print("GamePlayProvider->selectBillExchangeRates failure");
+          print("GamePlayProvider->selectBills failure");
           print(failure);
           return false;
         },
             (billExchangeRatesData)  async{
-          print("GamePlayProvider->selectBillExchangeRates success");
+          print("GamePlayProvider->selectBills success");
           billExchangeRates = billExchangeRatesData;
           notifyListeners();
           return true;
@@ -113,7 +113,7 @@ class RewardProvider extends ChangeNotifier{
 
      */
   }
-  void setBillExchangeRate(BillExchangeRate billExchangeRateUpdate){
+  void setBillExchangeRate(Bill billExchangeRateUpdate){
     billExchangeRate = billExchangeRateUpdate;
     notifyListeners();
   }

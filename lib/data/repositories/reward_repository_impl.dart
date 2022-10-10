@@ -28,9 +28,9 @@ class RewardRepositoryImpl implements RewardRepository{
   }
 
   @override
-  Future<Either<Failure, List<BillExchangeRate>>> selectBillExchangeRates({required String accessToken, required int page}) async{
+  Future<Either<Failure, List<Bill>>> selectBills({required String accessToken, required int page}) async{
     try{
-      List<BillExchangeRate> billExchangeRateList =  await rewardRemoteDataSource.selectBillExchangeRates(accessToken: accessToken, page: page);
+      List<Bill> billExchangeRateList =  await rewardRemoteDataSource.selectBillExchangeRates(accessToken: accessToken, page: page);
       return Right(billExchangeRateList);
     }
     catch(exp){

@@ -34,8 +34,8 @@ class BillExchangeRateModel{
   }
   Map<String, dynamic> toJson() => _$BillExchangeRateModelToJson(this);
 
-  BillExchangeRate toEntity(){
-    return BillExchangeRate(id: id, name: name, coin: coin, image: image);
+  Bill toEntity(){
+    return Bill(id: id, name: name, coin: coin, image: image);
   }
 }
 

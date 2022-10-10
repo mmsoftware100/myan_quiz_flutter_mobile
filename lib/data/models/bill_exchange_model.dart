@@ -80,7 +80,7 @@ class BillExchangeModel{
         billExchangeRateId: billExchangeRateId,
         billExchangeStatusId: billExchangeStatusId,
         telephoneOperator: telephoneOperator?.toEntity() ?? TelephoneOperator.sample,
-        billExchangeRate: billExchangeRate?.toEntity() ?? BillExchangeRate.sample,
+        billExchangeRate: billExchangeRate?.toEntity() ?? Bill.sample,
         billExchangeStatus: billExchangeStatus?.toEntity() ?? BillExchangeStatus.sample,
         createdAt: createdAt ?? DateTime.now(),
         modifiedAt: modifiedAt ?? DateTime.now(),

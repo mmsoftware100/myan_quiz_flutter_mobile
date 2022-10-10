@@ -48,7 +48,7 @@ class _TestPageState extends State<TestPage> {
           ),
           ListTile(
               title: Text("Select Exchange Rates"),
-              onTap: _selectExchangeRates
+              onTap: _selectBills
           ),
           ListTile(
               title: Text("Select Exchanges"),
@@ -85,7 +85,7 @@ class _TestPageState extends State<TestPage> {
     // show loading dialog
     String accessToken = "accessToken";
     int gameTypeId = 1;
-    int categoryId = 14;
+    int categoryId = 1;
     bool status = await Provider.of<GamePlayProvider>(context,listen:false).selectQuestionByCategoryId(accessToken: accessToken, gameTypeId: gameTypeId, categoryId: categoryId);
     // hide loading dialog
     print("TestPage->_selectRandomCategories status $status");
@@ -95,8 +95,8 @@ class _TestPageState extends State<TestPage> {
     // show loading dialog
     String accessToken = "accessToken";
     int gameTypeId = 1;
-    int questionId = 14;
-    int answerId = 14;
+    int questionId = 1;
+    int answerId = 2;
     try{
       User user = await Provider.of<GamePlayProvider>(context,listen:false).answer(accessToken: accessToken, gameTypeId: gameTypeId, questionId: questionId, answerId: answerId);
       // hide loading dialog
@@ -135,11 +135,11 @@ class _TestPageState extends State<TestPage> {
     bool status = await Provider.of<RewardProvider>(context,listen:false).selectTelephoneOperators(accessToken: accessToken);
     print("TestPage->_selectTelephoneOperators status $status");
   }
-  void _selectExchangeRates()async{
-    print("TestPage->_selectExchangeRates");
+  void _selectBills()async{
+    print("TestPage->_selectBills");
     String accessToken = "accessToken";
-    bool status = await Provider.of<RewardProvider>(context,listen:false).selectBillExchangeRates(accessToken: accessToken);
-    print("TestPage->_selectExchangeRates status $status");
+    bool status = await Provider.of<RewardProvider>(context,listen:false).selectBills(accessToken: accessToken);
+    print("TestPage->_selectBills status $status");
   }
   void _selectExchanges()async{
     print("TestPage->_selectExchanges");

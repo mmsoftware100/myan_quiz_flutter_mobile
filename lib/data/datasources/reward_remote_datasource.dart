@@ -23,7 +23,7 @@ abstract class RewardRemoteDataSource{
     required int page
   });
 
-  Future<List<BillExchangeRate>> selectBillExchangeRates({
+  Future<List<Bill>> selectBillExchangeRates({
     required String accessToken,
     required int page
   });
@@ -51,7 +51,7 @@ class RewardRemoteDatasourceImpl implements RewardRemoteDataSource{
     var body = {
       "phone_operator_id" : telephoneOperatorId,
       "bill_id" : billExchangeRateId,
-      "phone_no" : phoneNo
+      "phone" : phoneNo
     };
     dynamic response = await networkInterface.postRequest(url: exchangeBillEndpoint, data: body, bearerToken: accessToken);
     try{
@@ -68,13 +68,13 @@ class RewardRemoteDatasourceImpl implements RewardRemoteDataSource{
   }
 
   @override
-  Future<List<BillExchangeRate>> selectBillExchangeRates({required String accessToken, required int page}) async{
+  Future<List<Bill>> selectBillExchangeRates({required String accessToken, required int page}) async{
     print("RewardRemoteDatasourceImpl->exchangeBill");
     dynamic response = await networkInterface.getRequest(url: selectBillEndpoint+"?page=$page", data: {}, bearerToken: accessToken);
     try{
       print(response);
       List<dynamic> data = response['data'];
-      List<BillExchangeRate> billExchangeRates = [];
+      List<Bill> billExchangeRates = [];
       for (var element in data) {
         billExchangeRates.add(BillExchangeRateModel.fromJson(element).toEntity());
       }
