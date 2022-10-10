@@ -1,5 +1,6 @@
 # Myan Quiz Mobile App
-
+### 2022-10-10 TDL
+- [ ] Exchange Rates အစား Bill ဆိုပြီး တစ်ခု တိုးရန်။
 ### Data Format တစ်ခု အသစ်ထည့်ချင်တဲ့အခါ
 - entity ရေးပါ
 - ဒီ entity ကို CRUD လုပ်ပေးမယ့် Repository ရေးပါ။ ( abstract class အနေနဲ့ပဲ။ )
