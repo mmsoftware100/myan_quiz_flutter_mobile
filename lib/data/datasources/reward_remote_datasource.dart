@@ -115,7 +115,7 @@ class RewardRemoteDatasourceImpl implements RewardRemoteDataSource{
   @override
   Future<List<TelephoneOperator>> selectTelephoneOperators({required String accessToken, required int page}) async{
     print("RewardRemoteDatasourceImpl->selectTelephoneOperators");
-    dynamic response = await networkInterface.postRequest(url: selectTelephoneOperatorsEndpoint+"?page=$page", data: {}, bearerToken: accessToken);
+    dynamic response = await networkInterface.getRequest(url: selectTelephoneOperatorsEndpoint+"?page=$page", data: {}, bearerToken: accessToken);
     try{
       print(response);
       List<dynamic> data = response['data'];
