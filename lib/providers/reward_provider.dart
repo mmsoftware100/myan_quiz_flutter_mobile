@@ -45,6 +45,7 @@ class RewardProvider extends ChangeNotifier{
   // methods
 
   Future<bool> selectTelephoneOperators({required String accessToken})async{
+    print("RewardProvider->selectTelephoneOperators");
     final Either<Failure, List<TelephoneOperator>> telephoneOperatorListEither = await getTelephoneOperators(GetTelephoneOperatorsParams(accessToken: accessToken, page: 1));
     return telephoneOperatorListEither.fold(
             (failure)  {
