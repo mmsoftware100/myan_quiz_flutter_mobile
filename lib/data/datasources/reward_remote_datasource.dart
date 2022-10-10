@@ -49,8 +49,8 @@ class RewardRemoteDatasourceImpl implements RewardRemoteDataSource{
   Future<BillExchange> exchangeBill({required String accessToken, required int telephoneOperatorId, required int billExchangeRateId, required String phoneNo}) async{
     print("RewardRemoteDatasourceImpl->exchangeBill");
     var body = {
-      "telephone_operator_id" : telephoneOperatorId,
-      "bill_exchange_rate_id" : billExchangeRateId,
+      "phone_operator_id" : telephoneOperatorId,
+      "bill_id" : billExchangeRateId,
       "phone_no" : phoneNo
     };
     dynamic response = await networkInterface.postRequest(url: exchangeBillEndpoint, data: body, bearerToken: accessToken);
