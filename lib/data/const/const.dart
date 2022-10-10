@@ -10,6 +10,6 @@ const String getQuestionByCategoryIdEndpoint = apiVersion + '/gameplay/questions
 const String submitAnswerEndpoint = apiVersion + '/gameplay/checkanswer';
 const String exchangeEndpoint = apiVersion + '/gameplay/checkanswer';
 const String exchangeBillEndpoint = apiVersion + '/exchange/bills';
-const String selectBillExchangeRatesEndpoint = apiVersion + '/exchangerates';
+const String selectBillEndpoint = apiVersion + '/bills';
 const String selectBillExchangesEndpoint = apiVersion + '/exchange/histories';
 const String selectTelephoneOperatorsEndpoint = apiVersion + '/phoneoperators';

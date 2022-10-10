@@ -58,7 +58,7 @@ class NetworkInterfaceImpl implements NetworkInterface {
       if(bearerToken != null){
         client.options.headers["Authorization"] = "Bearer $bearerToken";
       }
-      Response<dynamic> response = await client.delete(endPoint);
+      Response<dynamic> response = await client.get(endPoint);
       return response.data;
     }
     catch(exp){
