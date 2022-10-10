@@ -3,10 +3,13 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:myan_quiz/data/datasources/network_interface.dart';
 import 'package:myan_quiz/data/datasources/quiz_remote_datasource.dart';
+import 'package:myan_quiz/data/datasources/reward_remote_datasource.dart';
 import 'package:myan_quiz/data/datasources/user_remote_datasource.dart';
 import 'package:myan_quiz/data/repositories/quiz_repository_impl.dart';
+import 'package:myan_quiz/data/repositories/reward_repository_impl.dart';
 import 'package:myan_quiz/data/repositories/user_repository_impl.dart';
 import 'package:myan_quiz/domain/repositories/quiz_repository.dart';
+import 'package:myan_quiz/domain/repositories/reward_repository.dart';
 import 'package:myan_quiz/domain/repositories/user_repository.dart';
 import 'package:myan_quiz/domain/usecases/get_exchange_rates.dart';
 import 'package:myan_quiz/domain/usecases/get_exchanges.dart';
@@ -59,10 +62,12 @@ Future<void> init() async {
   /// Repositories
   sl.registerLazySingleton<UserRepository>(() => UserRepositoryImpl(userRemoteDataSource: sl()));
   sl.registerLazySingleton<QuizRepository>(() => QuizRepositoryImpl(quizRemoteDatasource: sl()));
+  sl.registerLazySingleton<RewardRepository>(() => RewardRepositoryImpl(rewardRemoteDataSource: sl()));
 
   // Data Sources
   sl.registerLazySingleton<UserRemoteDataSource>(() => UserRemoteDataSourceImpl(networkInterface: sl()));
   sl.registerLazySingleton<QuizRemoteDatasource>(() => QuizRemoteDatasourceImpl(networkInterface: sl()));
+  sl.registerLazySingleton<RewardRemoteDataSource>(() => RewardRemoteDatasourceImpl(networkInterface: sl()));
 
   // Network
   sl.registerLazySingleton<NetworkInterface>(() => NetworkInterfaceImpl(client: sl()));
