@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myan_quiz/providers/game_play_provider.dart';
+import 'package:myan_quiz/providers/reward_provider.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -37,6 +38,22 @@ class _TestPageState extends State<TestPage> {
               title: Text("Submit Answer"),
               onTap: _submitAnswer
           ),
+          ListTile(
+              title: Text("Select Telephone Operators"),
+              onTap: _selectTelephoneOperators
+          ),
+          ListTile(
+              title: Text("Select Exchange Rates"),
+              onTap: _selectExchangeRates
+          ),
+          ListTile(
+              title: Text("Select Exchanges"),
+              onTap: _selectExchanges
+          ),
+          ListTile(
+              title: Text("Exchange"),
+              onTap: _exchange
+          ),
         ],
       ),
     );
@@ -51,8 +68,6 @@ class _TestPageState extends State<TestPage> {
     // hide loading dialog
     print("TestPage->login status $status");
   }
-
-
   void _selectRandomCategories()async{
     print("TestPage->_selectRandomCategories");
     // show loading dialog
@@ -71,8 +86,6 @@ class _TestPageState extends State<TestPage> {
     // hide loading dialog
     print("TestPage->_selectRandomCategories status $status");
   }
-
-
   void _submitAnswer()async{
     print("TestPage->_submitAnswer");
     // show loading dialog
@@ -91,6 +104,33 @@ class _TestPageState extends State<TestPage> {
       print(stackTrace);
     }
 
+  }
+  void _selectTelephoneOperators()async{
+    print("TestPage->_selectTelephoneOperators");
+    String accessToken = "accessToken";
+    bool status = await Provider.of<RewardProvider>(context,listen:false).selectTelephoneOperators(accessToken: accessToken);
+    print("TestPage->_selectTelephoneOperators status $status");
+  }
+  void _selectExchangeRates()async{
+    print("TestPage->_selectExchangeRates");
+    String accessToken = "accessToken";
+    bool status = await Provider.of<RewardProvider>(context,listen:false).selectBillExchangeRates(accessToken: accessToken);
+    print("TestPage->_selectExchangeRates status $status");
+  }
+  void _selectExchanges()async{
+    print("TestPage->_selectExchanges");
+    String accessToken = "accessToken";
+    bool status = await Provider.of<RewardProvider>(context,listen:false).selectBillExchanges(accessToken: accessToken);
+    print("TestPage->_selectExchanges status $status");
+  }
+  void _exchange()async{
+    print("TestPage->_exchange");
+    String accessToken = "accessToken";
+    int telephoneOperatorId = 1;
+    int billExchangeRateId = 1;
+    String phoneNo = "091232121";
+    bool status = await Provider.of<RewardProvider>(context,listen:false).exchangeBill(accessToken: accessToken, telephoneOperatorId: telephoneOperatorId, billExchangeRateId: billExchangeRateId, phoneNo: phoneNo);
+    print("TestPage->_exchange status $status");
   }
 
 
