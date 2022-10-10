@@ -92,7 +92,10 @@ class RewardRemoteDatasourceImpl implements RewardRemoteDataSource{
   @override
   Future<List<BillExchange>> selectBillExchanges({required String accessToken, required int page}) async{
     print("RewardRemoteDatasourceImpl->selectBillExchanges");
-    dynamic response = await networkInterface.postRequest(url: selectBillExchangesEndpoint+"?page=$page", data: {}, bearerToken: accessToken);
+    var body = {
+      "type" : "bill"
+    };
+    dynamic response = await networkInterface.postRequest(url: selectBillExchangesEndpoint+"?page=$page", data: body, bearerToken: accessToken);
 
     try{
       print(response);
