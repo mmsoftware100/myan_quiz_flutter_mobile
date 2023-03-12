@@ -1,4 +1,18 @@
 # Myan Quiz Mobile App
+
+Guys
+I deployed Myan Quiz at https://mmsoftware100.com/mq/public/admin
+and mobile app also up and running with following api's 
+
+- [x] Random Category Select
+- [x] Question select by category id
+- [x] Submit Answer
+- [x] Select Telephone Operator
+- [x] Select Exchange Rates
+- [x] Select Bill
+- [x] Select Exchanges
+- [x] Request Exchange
+
 ### 2022-10-10 TDL
 - [ ] Exchange Rates အစား Bill ဆိုပြီး တစ်ခု တိုးရန်။
 
