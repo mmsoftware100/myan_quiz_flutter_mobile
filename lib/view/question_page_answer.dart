@@ -396,13 +396,13 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
 
   _button({required String title, required VoidCallback onPressed}) {
     return Expanded(
-        child: RaisedButton(
+        child: ElevatedButton(
           child: Text(
             title,
             style: TextStyle(color: Colors.white),
           ),
           onPressed: onPressed,
-          color: Colors.purple,
+          // color: Colors.purple,
         ));}
 }
 

@@ -66,8 +66,8 @@ class _LeaderBoardPageState extends State<LeaderBoardPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          RaisedButton(
-                            color: btnToday == true ? Colors.orangeAccent : null,
+                          ElevatedButton(
+                            // color: btnToday == true ? Colors.orangeAccent : null,
                             child:Text("Today",
                                 style: TextStyle(color: btnToday == true ? Colors.white : Colors.black,)),
                               onPressed: (){
@@ -78,8 +78,8 @@ class _LeaderBoardPageState extends State<LeaderBoardPage> {
                                 allTime = false;
                               });
                           }),
-                          RaisedButton(
-                              color: btnMonth == true ? Colors.orangeAccent : null,
+                          ElevatedButton(
+                              //color: btnMonth == true ? Colors.orangeAccent : null,
                               child:Text("Month",
                                   style: TextStyle(color: btnMonth == true ? Colors.white : Colors.black,)),
                               onPressed: (){
@@ -89,8 +89,8 @@ class _LeaderBoardPageState extends State<LeaderBoardPage> {
                                   allTime = false;
                                 });
                           }),
-                          RaisedButton(
-                              color: allTime == true ? Colors.orangeAccent : null,
+                          ElevatedButton(
+                              //color: allTime == true ? Colors.orangeAccent : null,
                               child:Text("All Time",
                               style: TextStyle(color: allTime == true ? Colors.white : Colors.black,)),
                               onPressed: (){
