@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:myan_quiz/providers/game_play_provider.dart';
 import 'package:myan_quiz/providers/reward_provider.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
+import 'package:myan_quiz/view/pre_login_pag.dart';
+import 'package:myan_quiz/view/splash_screen_page.dart';
 import 'package:provider/provider.dart';
 
 import '../domain/entities/user.dart';
@@ -57,6 +59,10 @@ class _TestPageState extends State<TestPage> {
           ListTile(
               title: Text("Exchange"),
               onTap: _exchange
+          ),
+          ListTile(
+              title: Text("Splash Screen"),
+              onTap: _splash
           ),
         ],
       ),
@@ -155,6 +161,10 @@ class _TestPageState extends State<TestPage> {
     String phoneNo = "091232121";
     bool status = await Provider.of<RewardProvider>(context,listen:false).exchangeBill(accessToken: accessToken, telephoneOperatorId: telephoneOperatorId, billExchangeRateId: billExchangeRateId, phoneNo: phoneNo);
     print("TestPage->_exchange status $status");
+  }
+  void _splash()async{
+    print("TestPage->_splash");
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => PreLoginPage()));
   }
 
 
