@@ -67,11 +67,13 @@ class QuizRemoteDatasourceImpl implements QuizRemoteDatasource{
       //bool status = response['status'];
       //String message = response['msg'];
       // TODO: need to get back on data
-      Map<String,dynamic> data = response['data'][0];
+      Map<String,dynamic> data = response['data']; // [0];
       QuestionModel questionModel = QuestionModel.fromJson(data);
       return questionModel.toEntity();
     }
     catch(e,stackTrace){
+      print("QuizRemoteDatasource->selectQuestionByCategoryId exp");
+      print(e);
       print(stackTrace);
       rethrow;
     }
