@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart' as firebase;
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:myan_quiz/providers/game_play_provider.dart';
 import 'package:myan_quiz/providers/reward_provider.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
@@ -16,6 +19,26 @@ class TestPage extends StatefulWidget {
 }
 
 class _TestPageState extends State<TestPage> {
+
+  firebase.User? firebaseUser;
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    firebase.FirebaseAuth.instance
+        .authStateChanges()
+        .listen((firebase.User? user) {
+      if (user != null) {
+        print(user.uid);
+        setState(() {
+          firebaseUser = user;
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,10 +87,48 @@ class _TestPageState extends State<TestPage> {
               title: Text("Splash Screen"),
               onTap: _splash
           ),
+          ListTile(
+              title: Text("Sign In With Google"),
+              onTap: signInWithGoogle
+          ),
+          ListTile(
+              title: Text("Sign Out"),
+              onTap: signOut
+          ),
         ],
       ),
     );
   }
+
+
+
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+  Future<void> signOut() async {
+    print("signOut");
+    await GoogleSignIn().signOut();
+    // FirebaseAuth.instance.signOut();
+    await FirebaseAuth.instance.signOut();
+
+    setState(() {
+      firebaseUser = null;
+    });
+  }
+
 
   void _login()async{
     print("TestPage->loginUsing");

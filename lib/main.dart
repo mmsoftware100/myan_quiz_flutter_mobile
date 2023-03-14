@@ -1,4 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myan_quiz/providers/game_play_provider.dart';
 import 'package:myan_quiz/providers/reward_provider.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
@@ -15,7 +19,58 @@ import 'package:provider/provider.dart';
 
 import 'injection_container.dart' as di;
 
+
+const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    'high_importance_channel_martin', // id
+    'High Importance Notifications Martin', // title
+    importance: Importance.high,
+    playSound: true);
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print("_firebaseMessagingBackgroundHandler");
+  print(message);
+  print(message.data.toString());
+  print("app_url");
+  print(message.data['app_url']);
+  await Firebase.initializeApp();
+  print('A bg message just showed up :  ${message.messageId}');
+}
+
 void main()async{
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp();
+  try{
+
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+    await flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin>()
+        ?.createNotificationChannel(channel);
+
+    await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
+  }
+  catch(exp){
+    print("firebase init exp");
+    print(exp);
+  }
+
+  try{
+    MobileAds.instance.initialize();
+  }
+  catch(exp){
+    print("MobileAds.instance.initialize init exp");
+    print(exp);
+  }
+
   await di.init();
   runApp(
       MultiProvider(
