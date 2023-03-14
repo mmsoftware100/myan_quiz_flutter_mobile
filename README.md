@@ -1,5 +1,15 @@
 # Myan Quiz Mobile App
 
+## 2023-03-14 TO Do List
+
+အမြဲလိုလို သုံးဖြစ်တဲ့ 
+FCM
+Firebase Auth
+စတာတွေကို 
+Page တစ်ခုစီ သပ်သပ်ခွဲခွဲရေးထားရမယ်။
+နောက်ပိုင်း လိုရင် အဲ့မှာ ကြည့်မယ် ကူးမယ်ပေါ့။
+
+
 Guys
 I deployed Myan Quiz at https://mmsoftware100.com/mq/public/admin
 and mobile app also up and running with following api's 

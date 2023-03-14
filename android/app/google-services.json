@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "92191459821-q9hgjtbd231l7aupb8ce1a38qaqsv31q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mmsoftware100.myanquizv2",
+            "certificate_hash": "0d5bf43e0fda401652abc7e7118a1982729a78af"
+          }
+        },
+        {
           "client_id": "92191459821-irtdhmr3kn3vabou9rpqab9s1uman3re.apps.googleusercontent.com",
           "client_type": 3
         }
