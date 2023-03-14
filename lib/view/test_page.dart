@@ -30,11 +30,15 @@ class _TestPageState extends State<TestPage> {
     firebase.FirebaseAuth.instance
         .authStateChanges()
         .listen((firebase.User? user) {
-      if (user != null) {
-        print(user.uid);
-        setState(() {
-          firebaseUser = user;
-        });
+          if (user != null) {
+            print(user.email);
+            print(user.displayName);
+            print(user.photoURL);
+            print(user.getIdToken());
+            print(user.uid);
+            setState(() {
+              firebaseUser = user;
+            });
       }
     });
   }
@@ -89,7 +93,7 @@ class _TestPageState extends State<TestPage> {
           ),
           ListTile(
               title: Text("Sign In With Google"),
-              onTap: signInWithGoogle
+              onTap: _signInWithGoogle
           ),
           ListTile(
               title: Text("Sign Out"),
@@ -102,7 +106,7 @@ class _TestPageState extends State<TestPage> {
 
 
 
-  Future<UserCredential> signInWithGoogle() async {
+  Future<UserCredential> _signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
