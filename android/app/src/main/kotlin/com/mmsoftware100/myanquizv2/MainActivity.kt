@@ -1,4 +1,4 @@
-package com.software100.myan_quiz
+package com.mmsoftware100.myanquizv2
 
 import io.flutter.embedding.android.FlutterActivity
 

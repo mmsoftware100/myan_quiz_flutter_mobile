@@ -1,4 +1,4 @@
-name: myan_quiz
+name: myanquizv2
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -59,6 +59,7 @@ dependencies:
   # json serialization
   json_annotation: ^4.4.0
 dev_dependencies:
+  change_app_package_name: ^1.1.0
   # serialization
   build_runner:
   json_serializable:
