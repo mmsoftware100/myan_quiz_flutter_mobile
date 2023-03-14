@@ -9,7 +9,7 @@ import 'package:myan_quiz/view/pre_login_pag.dart';
 import 'package:myan_quiz/view/splash_screen_page.dart';
 import 'package:provider/provider.dart';
 
-import '../domain/entities/user.dart';
+import '../domain/entities/user.dart' as our;
 
 class TestPage extends StatefulWidget {
   const TestPage({Key? key}) : super(key: key);
@@ -165,7 +165,7 @@ class _TestPageState extends State<TestPage> {
     int questionId = 1;
     int answerId = 2;
     try{
-      User user = await Provider.of<GamePlayProvider>(context,listen:false).answer(accessToken: accessToken, gameTypeId: gameTypeId, questionId: questionId, answerId: answerId);
+      our.User user = await Provider.of<GamePlayProvider>(context,listen:false).answer(accessToken: accessToken, gameTypeId: gameTypeId, questionId: questionId, answerId: answerId);
       // hide loading dialog
       print("TestPage->_submitAnswer status ${user.name}");
     }
@@ -185,7 +185,7 @@ class _TestPageState extends State<TestPage> {
     int questionId = 1;
     int answerId = 1;
     try{
-      User user = await Provider.of<GamePlayProvider>(context,listen:false).answer(accessToken: accessToken, gameTypeId: gameTypeId, questionId: questionId, answerId: answerId);
+      our.User user = await Provider.of<GamePlayProvider>(context,listen:false).answer(accessToken: accessToken, gameTypeId: gameTypeId, questionId: questionId, answerId: answerId);
       // hide loading dialog
       print("TestPage->_submitCorrectAnswer status ${user.name}");
     }
