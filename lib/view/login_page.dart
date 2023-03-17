@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:myan_quiz/components/custom_widgets.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
 import 'package:myan_quiz/utils/global.dart';
@@ -19,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
 
   final GlobalKey<State> _keyLoader = new GlobalKey<State>();
   bool _agreedToTOS = true;
-
+  User? firebaseUser;
 
   bool _submittable() {
     return _agreedToTOS;
@@ -51,6 +53,43 @@ class _LoginPageState extends State<LoginPage> {
       }
     }
     return val;
+  }
+
+  Future<UserCredential> _signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    FirebaseAuth.instance
+        .authStateChanges()
+        .listen((User? user) {
+      if (user != null) {
+        print(user.email);
+        print(user.displayName);
+        print(user.photoURL);
+        print(user.getIdToken());
+        print(user.uid);
+        setState(() {
+          firebaseUser = user;
+        });
+      }
+    });
   }
 
   @override
@@ -241,10 +280,17 @@ class _LoginPageState extends State<LoginPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
 
+                              //********Sing In with google account******
                               CustomWidgets.socialButtonCircle(
                                   googleColor, FontAwesomeIcons.googlePlusG,
-                                  iconColor: Colors.white, onTap: () {
-                              }),
+                                  iconColor: Colors.white,
+                                  //onTap: _signInWithGoogle
+
+                                  onTap: (){
+                                    print("Hello sign in with google");
+                                    _signInWithGoogle();
+                                  }
+                              ),
                               // CustomWidgets.socialButtonCircle(
                               //     whatsappColor, FontAwesomeIcons.whatsapp,
                               //     iconColor: Colors.white, onTap: () {
