@@ -50,3 +50,8 @@ Stack Overflow Error တဲ့ စပြီ။
 UI <-> Provider <-> Usecase <-> Repository Abstract <-> Repository Implementation <-> Data Source Abstract <-> Data Source Implementation
 
 ဒါမျိုး အဆင့်ဆင့် ချိတ်ထားမယ်။
+
+Server ကို ပို့ပေးရမယ့် id token
+
+https://flutteragency.com/get-id-token-firebaseauth-flutter/
+

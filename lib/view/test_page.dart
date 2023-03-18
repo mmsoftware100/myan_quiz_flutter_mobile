@@ -29,16 +29,24 @@ class _TestPageState extends State<TestPage> {
     super.initState();
     firebase.FirebaseAuth.instance
         .authStateChanges()
-        .listen((firebase.User? user) {
+        .listen((firebase.User? user) async{
           if (user != null) {
             print(user.email);
             print(user.displayName);
             print(user.photoURL);
+            String token2 = await user.getIdToken();
+            print("token2 is ");
+            debugPrint(token2);
             print(user.getIdToken());
             print(user.uid);
             setState(() {
               firebaseUser = user;
             });
+
+            print("getting id token");
+            //IdTokenResult? tokenResult = await firebase.FirebaseAuth.instance.currentUser?.getIdTokenResult();
+            //print(tokenResult?.token);
+
       }
     });
   }
