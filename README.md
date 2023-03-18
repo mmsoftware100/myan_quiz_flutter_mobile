@@ -1,5 +1,20 @@
 # Myan Quiz Mobile App
 
+## 2023-03-18 Sat To Do List
+
+- [ ] Login with email and password
+- [ ] User with static data
+- [ ] Register with email and other basic data
+- [ ] Get random categories
+- [ ] Get question by id
+- [ ] Submit Answer
+
+all api integration need to be perfect.
+no more serialization error 
+no more data
+or we'll add error handling
+status update likes getting, error or data 
+
 ## 2023-03-14 TO Do List
 
 အမြဲလိုလို သုံးဖြစ်တဲ့ 
