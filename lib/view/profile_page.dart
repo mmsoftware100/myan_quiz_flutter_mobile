@@ -99,7 +99,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       Text("Coins"),
                                       SizedBox(height: 5,),
                                       // Text("360",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
-                                      Text(Provider.of<UserProvider>(context,listen: true).user.coinCurrent.toString(),style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
+                                      Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.coinCurrent.toString(),style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
                                     ],
                                   ),
                                   Container(
@@ -113,7 +113,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       SizedBox(height: 5,),
 
                                       // Text("ပညာသင်",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),)
-                                      Text(Provider.of<UserProvider>(context,listen: true).user.rank,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),),
+                                      Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.rank,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),),
 
                                     ],
                                   ),
@@ -128,7 +128,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       SizedBox(height: 5,),
 
                                       // Text("360",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
-                                      Text(Provider.of<UserProvider>(context,listen: true).user.level,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
+                                      Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.level,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
 
                                     ],
                                   ),
@@ -175,7 +175,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     children: [
                                       Text("Level"),
                                       // Text("22"),
-                                      Text(Provider.of<UserProvider>(context,listen: true).user.nextLevel.toString()),
+                                      Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.nextLevel.toString()),
 
                                     ],
                                   ),
@@ -187,7 +187,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       borderRadius: BorderRadius.all(Radius.circular(10)),
                                       child: LinearProgressIndicator(
                                         // value: 0.7,
-                                        value: double.parse(Provider.of<UserProvider>(context,listen: true).user.levelProgress.toString()),
+                                        value: double.parse(Provider.of<UserProvider>(context,listen: true).user.userStatistics.levelProgress.toString()),
                                         valueColor: AlwaysStoppedAnimation<Color>(
                                             // Color(0xff00ff00)
                                             Color(getColorHexFromStr('#FFCE55'))
@@ -224,9 +224,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                               children: [
-                                                Text(Provider.of<UserProvider>(context,listen: true).user.questionTotal.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
-                                                Text(Provider.of<UserProvider>(context,listen: true).user.questionPassed.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
-                                                Text(Provider.of<UserProvider>(context,listen: true).user.questionFailed.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
+                                                Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.questionTotal.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
+                                                Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.questionPassed.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
+                                                Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.questionFailed.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
                                               ],
                                             ),
                                           ),
@@ -265,9 +265,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                               children: [
-                                                Text(Provider.of<UserProvider>(context,listen: true).user.coinTotal.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
-                                                Text(Provider.of<UserProvider>(context,listen: true).user.coinExchanged.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
-                                                Text(Provider.of<UserProvider>(context,listen: true).user.coinCurrent.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
+                                                Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.coinTotal.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
+                                                Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.coinExchanged.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
+                                                Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.coinCurrent.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
                                               ],
                                             ),
                                           ),
