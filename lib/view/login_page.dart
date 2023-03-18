@@ -182,8 +182,10 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 18.0),
-                          child: makeInput(label: "Phone Number"),
+                          child: makeInput(label: "Email"),
                         ),
+                        // TODO: text editing controller ထည့်ရန်
+                        // TODO: Login ခလုပ်ကို နှိပ်တဲ့အခါ user ရိုက်ထည့်တဲ့ email နဲ့ password ကိုယူဖို့အတွက် Text Editing Controller (2) ခု လိုအပ်
                         makeInput(label: "Password"),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 6.0),
@@ -224,11 +226,11 @@ class _LoginPageState extends State<LoginPage> {
                           // minWidth: MediaQuery.of(context).size.width/1.5,
                           height:40,
                           onPressed: ()async{
-                            String accessToken = "accessToken"; //TODO: firebase auth plugin
-                            String fcmToken = "fcmToken";
+                            String email = "admin@email.com"; //TODO: User ရိုက်ထည့်တဲ့ Input မှ ရယူရန်
+                            String password = "password"; //TODO: User ရိုက်ထည့်တဲ့ Input မှ ရယူရန်
                             // show loading indicator
                             Dialogs.showLoadingDialog(context, _keyLoader);
-                            bool status = await Provider.of<UserProvider>(context, listen:false).login(accessToken: accessToken, fcmToken: fcmToken);
+                            bool status = await Provider.of<UserProvider>(context, listen:false).loginWithEmailPlz(email: email, password: password);
                             // hide loading indicator
                             Navigator.pop(context);
                             if(status == true){

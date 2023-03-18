@@ -6,4 +6,17 @@ abstract class UserRepository{
     required String accessToken,
     required String fcmToken,
   });
+
+
+  Future<Either<Failure, User>> loginWithEmail({
+    required String email,
+    required String password,
+  });
+  Future<Either<Failure, User>> loginWithGoogle({
+    required String accessToken
+  });
+  Future<Either<Failure, User>> userRegister({
+    required String accessToken
+  });
+
 }

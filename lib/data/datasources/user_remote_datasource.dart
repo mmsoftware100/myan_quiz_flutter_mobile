@@ -9,6 +9,15 @@ import '../const/const.dart';
 
 abstract class UserRemoteDataSource{
   Future<User> login({required String accessToken, required String fcmToken});
+
+
+  Future<User> loginWithEmail({
+    required String email,
+    required String password,
+  });
+  Future<User> loginWithGoogle({
+    required String accessToken
+  });
 }
 
 class UserRemoteDataSourceImpl implements UserRemoteDataSource{
@@ -26,6 +35,38 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource{
     try{
       //bool status = response['status'];
       //String message = response['msg'];
+      var data = response['data'];
+      UserModel userModel = UserModel.fromJson(data);
+      return userModel.toEntity();
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
+  @override
+  Future<User> loginWithEmail({required String email, required String password}) async{
+    var data = {
+      "email" : email,
+      "password" : password
+    };
+    dynamic response = await networkInterface.postRequest(url: loginEndpoint, data: data);
+    try{
+      //bool status = response['status'];
+      //String message = response['msg'];
+      var data = response['data'];
+      UserModel userModel = UserModel.fromJson(data);
+      return userModel.toEntity();
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
+  @override
+  Future<User> loginWithGoogle({required String accessToken}) async{
+    dynamic response = await networkInterface.postRequest(url: loginEndpoint,data: {}, bearerToken: accessToken);
+    try{
       var data = response['data'];
       UserModel userModel = UserModel.fromJson(data);
       return userModel.toEntity();

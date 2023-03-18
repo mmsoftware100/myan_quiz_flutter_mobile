@@ -5,6 +5,7 @@ const bool devMode  = true;
 const String backendApiServer = devMode ? 'https://mmsoftware100.com/mq/public' : 'https://mmsoftware100.com/mq/public';
 const String apiVersion = backendApiServer + '/api/v1';
 const String loginEndpoint = apiVersion + '/login';
+const String loginWithGoogleEndpoint = apiVersion + '/login/google';
 const String randomCategoryEndpoint = apiVersion + '/gameplay/categories';
 const String getQuestionByCategoryIdEndpoint = apiVersion + '/gameplay/questions';
 const String submitAnswerEndpoint = apiVersion + '/gameplay/checkanswer';
