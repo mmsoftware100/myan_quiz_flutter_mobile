@@ -27,6 +27,7 @@ class UserProvider extends ChangeNotifier{
   User user = User.sample;
 
   // methods
+
   Future<bool> login({required String accessToken, required String fcmToken})async{
     bool status = true;
     final Either<Failure, User> userEither = await userLogin(UserLoginParams(accessToken: accessToken, fcmToken: fcmToken));
@@ -71,6 +72,39 @@ class UserProvider extends ChangeNotifier{
     );
 
      */
+  }
+
+
+  Future<bool> loginWithEmailPlz({required String email, required String password})async{
+    final Either<Failure, User> userEither = await loginWithEmail(LoginWithEmailParams(email: email, password: password));
+    return userEither.fold(
+            (failure)  {
+          print("UserProvider->loginWithEmailPlz failure");
+          print(failure);
+          return false;
+        },
+            (loggedInUser)  async{
+          user = loggedInUser;
+          notifyListeners();
+          return true;
+        }
+    );
+  }
+
+  Future<bool> loginWithGooglePlz({required String accessToken})async{
+    final Either<Failure, User> userEither = await loginWithGoogle(LoginWithGoogleParams(accessToken: accessToken));
+    return userEither.fold(
+            (failure)  {
+          print("UserProvider->loginWithGooglePlz failure");
+          print(failure);
+          return false;
+        },
+            (loggedInUser)  async{
+          user = loggedInUser;
+          notifyListeners();
+          return true;
+        }
+    );
   }
 }
 
