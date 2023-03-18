@@ -15,5 +15,8 @@ abstract class UserRepository{
   Future<Either<Failure, User>> loginWithGoogle({
     required String accessToken
   });
+  Future<Either<Failure, User>> userRegister({
+    required String accessToken
+  });
 
 }

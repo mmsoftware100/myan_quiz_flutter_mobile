@@ -44,4 +44,10 @@ class UserRepositoryImpl implements UserRepository{
     }
   }
 
+  @override
+  Future<Either<Failure, User>> userRegister({required String accessToken}) {
+    // TODO: implement userRegister
+    throw UnimplementedError();
+  }
+
 }
