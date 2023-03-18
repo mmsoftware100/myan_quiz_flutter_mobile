@@ -23,15 +23,25 @@ class UserRepositoryImpl implements UserRepository{
   }
 
   @override
-  Future<Either<Failure, User>> loginWithEmail({required String email, required String password}) {
-    // TODO: implement loginWithEmail
-    throw UnimplementedError();
+  Future<Either<Failure, User>> loginWithEmail({required String email, required String password}) async{
+    try{
+      User user =  await userRemoteDataSource.loginWithEmail(email: email, password: password);
+      return Right(user);
+    }
+    catch(exp){
+      return Left(ServerFailure());
+    }
   }
 
   @override
-  Future<Either<Failure, User>> loginWithGoogle({required String accessToken}) {
-    // TODO: implement loginWithGoogle
-    throw UnimplementedError();
+  Future<Either<Failure, User>> loginWithGoogle({required String accessToken}) async{
+    try{
+      User user =  await userRemoteDataSource.loginWithGoogle(accessToken: accessToken);
+      return Right(user);
+    }
+    catch(exp){
+      return Left(ServerFailure());
+    }
   }
 
 }
