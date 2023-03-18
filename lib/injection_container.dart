@@ -16,6 +16,8 @@ import 'package:myan_quiz/domain/usecases/get_exchanges.dart';
 import 'package:myan_quiz/domain/usecases/get_question_by_category_id.dart';
 import 'package:myan_quiz/domain/usecases/get_random_categories.dart';
 import 'package:myan_quiz/domain/usecases/get_telephone_operators.dart';
+import 'package:myan_quiz/domain/usecases/login_with_email.dart';
+import 'package:myan_quiz/domain/usecases/login_with_google.dart';
 import 'package:myan_quiz/domain/usecases/request_exchange.dart';
 import 'package:myan_quiz/domain/usecases/submit_answer.dart';
 import 'package:myan_quiz/domain/usecases/user_login.dart';
@@ -32,7 +34,11 @@ Future<void> init() async {
   /* Factory ဆိုတာက App တစ်ခုလုံးမှာမှ တစ်ခုပဲ ရှိမယ့် ဟာမျိုးကို ဆိုလိုတာလား မသိ */
   /// Providers
   sl.registerFactory(
-          () => UserProvider(userLogin: sl())
+          () => UserProvider(
+            userLogin: sl(),
+            loginWithEmail: sl(),
+            loginWithGoogle: sl(),
+          )
   );
   sl.registerFactory(
           () => GamePlayProvider(
@@ -50,6 +56,9 @@ Future<void> init() async {
           )
   );
   /// Use Cases
+  sl.registerLazySingleton<UserLogin>(() =>  UserLogin(userRepository: sl()));
+  sl.registerLazySingleton<LoginWithEmail>(() =>  LoginWithEmail(userRepository: sl()));
+  sl.registerLazySingleton<LoginWithGoogle>(() =>  LoginWithGoogle(userRepository: sl()));
   sl.registerLazySingleton<UserLogin>(() =>  UserLogin(userRepository: sl()));
   sl.registerLazySingleton<GetRandomCategories>(() =>  GetRandomCategories(quizRepository: sl()));
   sl.registerLazySingleton<GetQuestionByCategoryId>(() =>  GetQuestionByCategoryId(quizRepository: sl()));

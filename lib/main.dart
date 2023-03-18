@@ -76,7 +76,9 @@ void main()async{
       MultiProvider(
           providers: [
             ChangeNotifierProvider(create: (_) => UserProvider(
-              userLogin: di.sl()
+              userLogin: di.sl(),
+              loginWithEmail: di.sl(),
+              loginWithGoogle: di.sl(),
             )),
             ChangeNotifierProvider(create: (_) => GamePlayProvider(
               getRandomCategories: di.sl(),

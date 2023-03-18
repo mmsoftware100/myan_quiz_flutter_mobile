@@ -4,6 +4,8 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:myan_quiz/domain/entities/user.dart';
 import 'package:myan_quiz/domain/repositories/user_repository.dart';
+import 'package:myan_quiz/domain/usecases/login_with_email.dart';
+import 'package:myan_quiz/domain/usecases/login_with_google.dart';
 
 import '../core/error/failures.dart';
 import '../domain/usecases/user_login.dart';
@@ -11,10 +13,14 @@ import '../domain/usecases/user_login.dart';
 class UserProvider extends ChangeNotifier{
   // use case list
   final UserLogin userLogin;
+  final LoginWithEmail loginWithEmail;
+  final LoginWithGoogle loginWithGoogle;
   // constructor
 
   UserProvider({
-    required this.userLogin
+    required this.userLogin,
+    required this.loginWithEmail,
+    required this.loginWithGoogle
   });
 
   // data repo
