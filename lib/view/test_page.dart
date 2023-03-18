@@ -27,6 +27,8 @@ class _TestPageState extends State<TestPage> {
 
   @override
   void initState() {
+
+    print("test_page->initState");
     // TODO: implement initState
     super.initState();
     firebase.FirebaseAuth.instance

@@ -1,14 +1,14 @@
 class UserStatistics{
 
-  String rank; // rank name
-  String nextRank; // rank name
-  int rankProgress; // rank name
+  String rank; // လက်ရှိရာထူး
+  String nextRank; // နောက်ထပ် တိုးမယ့် ရာထူးနာမည်
+  int rankProgress; // တိုးဖို့အတွက် ဘယ်လောက်ရာခိုင်နှုန်း လိုသေးတယ်ဆိုတာ ပြမယ်
 
-  String level; // level name
-  String nextLevel; // next level name
-  int levelProgress; // current progress for next level
+  String level; // လက်ရှိ အဆင့်
+  String nextLevel; // ောက်ထပ် တိုးမယ့် အဆင့်နာမည်
+  int levelProgress; // တိုးဖို့အတွက် ဘယ်လောက်ရာခိုင်နှုန်း လိုသေးတယ်ဆိုတာ ပြမယ်
 
-  int questionTotal; //
+  int questionTotal; // စုစုပေါင်း ဖြေခဲ့သမျှ မေးခွန်း အၕေအတွက်
   int questionPassed; // number of passed question
   int questionFailed;
 

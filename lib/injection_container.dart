@@ -59,7 +59,7 @@ Future<void> init() async {
   sl.registerLazySingleton<UserLogin>(() =>  UserLogin(userRepository: sl()));
   sl.registerLazySingleton<LoginWithEmail>(() =>  LoginWithEmail(userRepository: sl()));
   sl.registerLazySingleton<LoginWithGoogle>(() =>  LoginWithGoogle(userRepository: sl()));
-  sl.registerLazySingleton<UserLogin>(() =>  UserLogin(userRepository: sl()));
+  //sl.registerLazySingleton<UserLogin>(() =>  UserLogin(userRepository: sl()));
   sl.registerLazySingleton<GetRandomCategories>(() =>  GetRandomCategories(quizRepository: sl()));
   sl.registerLazySingleton<GetQuestionByCategoryId>(() =>  GetQuestionByCategoryId(quizRepository: sl()));
   sl.registerLazySingleton<SubmitAnswer>(() =>  SubmitAnswer(quizRepository: sl()));

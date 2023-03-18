@@ -40,9 +40,12 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 void main()async{
 
+  print("main");
   WidgetsFlutterBinding.ensureInitialized();
 
+  print("WidgetsFlutterBinding.ensureInitialized");
   await Firebase.initializeApp();
+  print("Firebase.initializeApp");
   try{
 
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
@@ -65,6 +68,8 @@ void main()async{
 
   try{
     MobileAds.instance.initialize();
+
+    print("MobileAds.instance.initialize");
   }
   catch(exp){
     print("MobileAds.instance.initialize init exp");
