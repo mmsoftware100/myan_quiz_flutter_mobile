@@ -45,15 +45,35 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource{
   }
 
   @override
-  Future<User> loginWithEmail({required String email, required String password}) {
-    // TODO: implement loginWithEmail
-    throw UnimplementedError();
+  Future<User> loginWithEmail({required String email, required String password}) async{
+    var data = {
+      "email" : email,
+      "password" : password
+    };
+    dynamic response = await networkInterface.postRequest(url: loginEndpoint, data: data);
+    try{
+      //bool status = response['status'];
+      //String message = response['msg'];
+      var data = response['data'];
+      UserModel userModel = UserModel.fromJson(data);
+      return userModel.toEntity();
+    }
+    catch(e){
+      rethrow;
+    }
   }
 
   @override
-  Future<User> loginWithGoogle({required String accessToken}) {
-    // TODO: implement loginWithGoogle
-    throw UnimplementedError();
+  Future<User> loginWithGoogle({required String accessToken}) async{
+    dynamic response = await networkInterface.postRequest(url: loginEndpoint,data: {}, bearerToken: accessToken);
+    try{
+      var data = response['data'];
+      UserModel userModel = UserModel.fromJson(data);
+      return userModel.toEntity();
+    }
+    catch(e){
+      rethrow;
+    }
   }
 
 
