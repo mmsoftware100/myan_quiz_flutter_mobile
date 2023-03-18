@@ -1,6 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:myan_quiz/data/models/user_statistics_model.dart';
 
 import '../../domain/entities/user.dart';
+import '../../domain/entities/user_statistics.dart';
 
 
 part 'user_model.g.dart';
@@ -10,72 +12,58 @@ class UserModel{
   @JsonKey(defaultValue: 0)
   int id;
 
+  @JsonKey(name: 'uid' ,defaultValue: "uid")
+  String uid;
+
   @JsonKey(name: 'name' ,defaultValue: "name")
   String name;
 
-  @JsonKey(name: 'rank' ,defaultValue: "rank")
-  String rank;
+  @JsonKey(name: 'email' ,defaultValue: "email")
+  String email;
 
-  @JsonKey(name: 'level' ,defaultValue: "level")
-  String level;
+  @JsonKey(name: 'password' ,defaultValue: "password")
+  String password;
 
-  @JsonKey(name: 'next_level' ,defaultValue: "nextLevel")
-  String nextLevel;
-
-  @JsonKey(name: 'level_progress' ,defaultValue: 0)
-  int levelProgress;
-
-  @JsonKey(name: 'question_total' ,defaultValue: 0)
-  int questionTotal;
-
-  @JsonKey(name: 'question_passed' ,defaultValue: 0)
-  int questionPassed;
-
-  @JsonKey(name: 'question_failed' ,defaultValue: 0)
-  int questionFailed;
-
-  @JsonKey(name: 'coin_total' ,defaultValue: 0)
-  int coinTotal;
-
-  @JsonKey(name: 'coin_exchanged' ,defaultValue: 0)
-  int coinExchanged;
-
-  @JsonKey(name: 'coin_current' ,defaultValue: 0)
-  int coinCurrent;
-
-  @JsonKey(name: 'created_at' ,defaultValue: "createdAt")
-  String createdAt;
-
-  @JsonKey(name: 'modified_at' ,defaultValue: "modifiedAt")
-  String modifiedAt;
-
-  @JsonKey(name: 'created_ago' ,defaultValue: "modifiedAt")
-  String createdAgo;
-
-  @JsonKey(name: 'modified_ago' ,defaultValue: "modifiedAgo")
-  String modifiedAgo;
-
-  @JsonKey(name: 'access_token' ,defaultValue: "accessToken")
+  @JsonKey(name: 'access_token' ,defaultValue: "access_token")
   String accessToken;
+
+
+  @JsonKey(name: 'phone' ,defaultValue: "phone")
+  String phone;
+  @JsonKey(name: 'city' ,defaultValue: "city")
+  String city;
+  @JsonKey(name: 'age' ,defaultValue: "age")
+  String age;
+  @JsonKey(name: 'gender' ,defaultValue: "gender")
+  String gender;
+  @JsonKey(name: 'photo_url' ,defaultValue: "photo_url")
+  String photoUrl;
+  @JsonKey(name: 'role_id' ,defaultValue: 0)
+  int roleId;
+  @JsonKey(name: 'created_at' ,defaultValue: "created_at")
+  String createdAt;
+  @JsonKey(name: 'updated_at' ,defaultValue: "updated_at")
+  String updatedAt;
+
+  @JsonKey(name: 'user_statistics' ,defaultValue: null)
+  UserStatisticsModel? userStatistics;
 
   UserModel({
     required this.id,
+    required this.uid,
     required this.name,
-    required this.rank,
-    required this.level,
-    required this.nextLevel,
-    required this.levelProgress,
-    required this.questionTotal,
-    required this.questionPassed,
-    required this.questionFailed,
-    required this.coinTotal,
-    required this.coinExchanged,
-    required this.coinCurrent,
+    required this.email,
+    required this.password,
+    required this.accessToken,
+    required this.phone,
+    required this.city,
+    required this.age,
+    required this.gender,
+    required this.photoUrl,
+    required this.roleId,
     required this.createdAt,
-    required this.modifiedAt,
-    required this.createdAgo,
-    required this.modifiedAgo,
-    required this.accessToken
+    required this.updatedAt,
+    required this.userStatistics,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -84,29 +72,23 @@ class UserModel{
   Map<String, dynamic> toJson() => _$UserModelToJson(this);
 
   User toEntity(){
-    return User.sample;
-    /*
     return User(
         id: id,
+        uid: uid,
         name: name,
-        rank: rank,
-        level: level,
-        nextLevel: nextLevel,
-        levelProgress: levelProgress,
-        questionTotal: questionTotal,
-        questionPassed: questionPassed,
-        questionFailed: questionFailed,
-        coinTotal: coinTotal,
-        coinExchanged: coinExchanged,
-        coinCurrent: coinCurrent,
-        createdAt: DateTime.tryParse(createdAt) ?? DateTime.now() ,
-        modifiedAt: DateTime.tryParse(modifiedAt) ?? DateTime.now() ,
-        createdAgo: createdAgo,
-        modifiedAgo: modifiedAgo,
-        accessToken: accessToken
+        email: email,
+        password: password,
+        accessToken: accessToken,
+        phone: phone,
+        city: city,
+        age: age,
+        gender: gender,
+        photoUrl: photoUrl,
+        roleId: roleId,
+        createdAt: createdAt,
+        updatedAt: updatedAt,
+        userStatistics: userStatistics?.toEntity() ?? UserStatistics.sample
     );
-
-     */
   }
 }
 
