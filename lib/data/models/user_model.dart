@@ -84,6 +84,8 @@ class UserModel{
   Map<String, dynamic> toJson() => _$UserModelToJson(this);
 
   User toEntity(){
+    return User.sample;
+    /*
     return User(
         id: id,
         name: name,
@@ -103,6 +105,8 @@ class UserModel{
         modifiedAgo: modifiedAgo,
         accessToken: accessToken
     );
+    
+     */
   }
 }
 
