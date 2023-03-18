@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart' as firebase;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -51,6 +53,20 @@ class _TestPageState extends State<TestPage> {
     });
   }
 
+
+  void printWrapped(String text) {
+    final pattern = RegExp('.{1,800}'); // 800 is the size of each chunk
+    pattern.allMatches(text).forEach((match) => print(match.group(0)));
+  }
+
+  void getIdToken()async{
+    print("getIdToken");
+    IdTokenResult? tokenResult = await firebase.FirebaseAuth.instance.currentUser?.getIdTokenResult();
+    print(tokenResult?.token);
+    print("log");
+    //log(tokenResult?.token ?? "token");
+    printWrapped(tokenResult?.token ?? "token");
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,6 +122,10 @@ class _TestPageState extends State<TestPage> {
           ListTile(
               title: Text("Sign Out"),
               onTap: signOut
+          ),
+          ListTile(
+              title: Text("Get Token"),
+              onTap: getIdToken
           ),
         ],
       ),
