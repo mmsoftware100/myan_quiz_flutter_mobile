@@ -105,7 +105,7 @@ class UserModel{
         modifiedAgo: modifiedAgo,
         accessToken: accessToken
     );
-    
+
      */
   }
 }
