@@ -22,4 +22,16 @@ class UserRepositoryImpl implements UserRepository{
     }
   }
 
+  @override
+  Future<Either<Failure, User>> loginWithEmail({required String email, required String password}) {
+    // TODO: implement loginWithEmail
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, User>> loginWithGoogle({required String accessToken}) {
+    // TODO: implement loginWithGoogle
+    throw UnimplementedError();
+  }
+
 }

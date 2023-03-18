@@ -15,6 +15,10 @@ no more data
 or we'll add error handling
 status update likes getting, error or data 
 
+
+ဒါပြီးရင် Chat up and running စမ်းကြည့်မယ်။
+ပြီးရင် Admin Panel မှာ user - reward ထုတ်ပေးတဲ့ စနစ်ကို ပြင်မယ်။
+
 ## 2023-03-14 TO Do List
 
 အမြဲလိုလို သုံးဖြစ်တဲ့ 
