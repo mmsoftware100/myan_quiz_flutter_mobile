@@ -288,9 +288,11 @@ class _LoginPageState extends State<LoginPage> {
                                   iconColor: Colors.white,
                                   //onTap: _signInWithGoogle
 
-                                  onTap: (){
+                                  onTap: ()async{
                                     print("Hello sign in with google");
-                                    _signInWithGoogle();
+                                    await _signInWithGoogle();
+                                    print(firebaseUser);
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
                                   }
                               ),
                               // CustomWidgets.socialButtonCircle(

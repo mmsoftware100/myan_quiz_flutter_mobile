@@ -96,39 +96,39 @@ class _QuestionPageChooseContentState extends State<QuestionPageChooseContent> {
                   ),
 
 
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 60,
-                      width: MediaQuery.of(context).size.width/1.5,
-                      child: InkWell(
-                        child: Card(
-                          child: Center(child: Text("အထွေထွေဗဟုသုတ")),
-                        ),
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>QuestionPageAnswer()));
-
-                        },
-                      ),
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 60,
-                      width: MediaQuery.of(context).size.width/1.5,
-                      child: InkWell(
-                        child: Card(
-                          child: Center(child: Text("အနုပညာရှင်များ")),
-                        ),
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>QuestionPageAnswer()));
-
-                        },
-                      ),
-                    ),
-                  )
+                  // Padding(
+                  //   padding: const EdgeInsets.all(8.0),
+                  //   child: Container(
+                  //     height: 60,
+                  //     width: MediaQuery.of(context).size.width/1.5,
+                  //     child: InkWell(
+                  //       child: Card(
+                  //         child: Center(child: Text("အထွေထွေဗဟုသုတ")),
+                  //       ),
+                  //       onTap: (){
+                  //         Navigator.push(context, MaterialPageRoute(builder: (context)=>QuestionPageAnswer()));
+                  //
+                  //       },
+                  //     ),
+                  //   ),
+                  // ),
+                  //
+                  // Padding(
+                  //   padding: const EdgeInsets.all(8.0),
+                  //   child: Container(
+                  //     height: 60,
+                  //     width: MediaQuery.of(context).size.width/1.5,
+                  //     child: InkWell(
+                  //       child: Card(
+                  //         child: Center(child: Text("အနုပညာရှင်များ")),
+                  //       ),
+                  //       onTap: (){
+                  //         Navigator.push(context, MaterialPageRoute(builder: (context)=>QuestionPageAnswer()));
+                  //
+                  //       },
+                  //     ),
+                  //   ),
+                  // )
 
                 ],
               ),
