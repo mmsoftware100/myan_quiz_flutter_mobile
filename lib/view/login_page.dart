@@ -241,6 +241,8 @@ class _LoginPageState extends State<LoginPage> {
                             bool status = await Provider.of<UserProvider>(context, listen:false).loginWithEmailPlz(email: _emailTextETextEditingController.text, password: _passwordTextETextEditingController.text);
                             // hide loading indicator
                             Navigator.pop(context);
+
+                            print("My status is "+status.toString());
                             if(status == true){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
                             }

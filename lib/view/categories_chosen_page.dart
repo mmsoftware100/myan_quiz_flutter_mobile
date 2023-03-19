@@ -5,14 +5,19 @@ import 'package:myan_quiz/utils/global.dart';
 import 'package:myan_quiz/view/question_page_answer.dart';
 import 'package:provider/provider.dart';
 
-class QuestionPageChooseContent extends StatefulWidget {
-  const QuestionPageChooseContent({Key? key}) : super(key: key);
+import '../utils/loader.dart';
+
+class CategoriesChosenPage extends StatefulWidget {
+  const CategoriesChosenPage({Key? key}) : super(key: key);
 
   @override
-  _QuestionPageChooseContentState createState() => _QuestionPageChooseContentState();
+  _CategoriesChosenPageState createState() => _CategoriesChosenPageState();
 }
 
-class _QuestionPageChooseContentState extends State<QuestionPageChooseContent> {
+class _CategoriesChosenPageState extends State<CategoriesChosenPage> {
+
+  final GlobalKey<State> _keyLoader = new GlobalKey<State>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +47,7 @@ class _QuestionPageChooseContentState extends State<QuestionPageChooseContent> {
 
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text("မေးခွန်းခေါင်းစဉ်တစ်ခုကိုရွေးချယ်ပါ",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
+                    child: Text("မေးခွန်းအမျိုးအစားတစ်ခုကိုရွေးချယ်ပါ",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
                   ),
 
 
@@ -83,11 +88,24 @@ class _QuestionPageChooseContentState extends State<QuestionPageChooseContent> {
                                 child: Center(child: Text(e.name)),
                                 //child: Center(child: Text("ကိုးကွယ်ရာဘာသာ")),
                               ),
-                              onTap: (){
+                              onTap: ()async{
+
+                                // show loading indicator
+                                Dialogs.showLoadingDialog(context, _keyLoader);
+
                                 String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
                                 int categoryId= e.id;
-                                Provider.of<GamePlayProvider>(context, listen: false).selectQuestionByCategoryId(accessToken: accessToken, gameTypeId: 1, categoryId: categoryId);
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>QuestionPageAnswer()));
+                                print("categoryId is "+categoryId.toString());
+
+                                bool status = await Provider.of<GamePlayProvider>(context, listen: false).selectQuestionByCategoryId(accessToken: accessToken, gameTypeId: 1, categoryId: categoryId);
+                                print("selectQuestionByCategoryId status is "+status.toString());
+
+                                // hide loading indicator
+                                Navigator.pop(context);
+
+                                if(status == true){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>QuestionPageAnswer()));
+                                }
                               },
                             ),
                           ),

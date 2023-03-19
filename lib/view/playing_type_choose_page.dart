@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:myan_quiz/providers/game_play_provider.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
 import 'package:myan_quiz/utils/global.dart';
-import 'package:myan_quiz/view/question_page_choose_content.dart';
+import 'package:myan_quiz/view/categories_chosen_page.dart';
 import 'package:provider/provider.dart';
 
-class QuestionChoosePage extends StatefulWidget {
-  const QuestionChoosePage({Key? key}) : super(key: key);
+import '../utils/loader.dart';
+
+class PlayingTypeChoosePage extends StatefulWidget {
+  const PlayingTypeChoosePage({Key? key}) : super(key: key);
 
   @override
-  _QuestionChoosePageState createState() => _QuestionChoosePageState();
+  _PlayingTypeChoosePageState createState() => _PlayingTypeChoosePageState();
 }
 
-class _QuestionChoosePageState extends State<QuestionChoosePage> {
+class _PlayingTypeChoosePageState extends State<PlayingTypeChoosePage> {
 
+  final GlobalKey<State> _keyLoader = new GlobalKey<State>();
 
   @override
   Widget build(BuildContext context) {
@@ -56,10 +59,20 @@ class _QuestionChoosePageState extends State<QuestionChoosePage> {
                       child: Card(
                         child: Center(child: Text("အလွတ်တမ်းကစားမည်")),
                       ),
-                      onTap: (){
+                      onTap: ()async{
+
+                        // show loading indicator
+                        Dialogs.showLoadingDialog(context, _keyLoader);
+
                         String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
-                        Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>QuestionPageChooseContent()));
+                        bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
+
+                        // hide loading indicator
+                        Navigator.pop(context);
+
+                        if(status == true){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
+                        }
                       },
                     ),
                   ),
@@ -74,8 +87,20 @@ class _QuestionChoosePageState extends State<QuestionChoosePage> {
                       child: Card(
                         child: Center(child: Text("မစ်ရှင်ဖြင့်ကစားမည်")),
                       ),
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>QuestionPageChooseContent()));
+                      onTap: ()async{
+
+                        // show loading indicator
+                        Dialogs.showLoadingDialog(context, _keyLoader);
+
+                        String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                        bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
+
+                        // hide loading indicator
+                        Navigator.pop(context);
+
+                        if(status == true){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
+                        }
 
                       },
                     ),
@@ -91,8 +116,20 @@ class _QuestionChoosePageState extends State<QuestionChoosePage> {
                       child: Card(
                         child: Center(child: Text("စိန်ခေါ်ကစားမည်")),
                       ),
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>QuestionPageChooseContent()));
+                      onTap: ()async{
+
+                        // show loading indicator
+                        Dialogs.showLoadingDialog(context, _keyLoader);
+
+                        String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                        bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
+
+                        // hide loading indicator
+                        Navigator.pop(context);
+
+                        if(status == true){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
+                        }
 
                       },
                     ),

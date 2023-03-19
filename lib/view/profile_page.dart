@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
 import 'package:myan_quiz/view/exchange/bills/choose_operator_for_bill_page.dart';
 import 'package:myan_quiz/view/match_page.dart';
-import 'package:myan_quiz/view/question_choose_page.dart';
+import 'package:myan_quiz/view/playing_type_choose_page.dart';
 import 'package:myan_quiz/view/status_page.dart';
 import 'package:provider/provider.dart';
 
@@ -63,7 +63,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding: const EdgeInsets.only(top:90),
                   child: Container(
                     // height: 300,
-                    height: MediaQuery.of(context).size.height / 1.2,
+                    height: MediaQuery.of(context).size.height / 1.05,
                     width: double.infinity,
                     decoration: const BoxDecoration(
                         color: Colors.white,
@@ -285,7 +285,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     // minWidth: MediaQuery.of(context).size.width/1.5,
                                     height:40,
                                     onPressed: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>QuestionChoosePage()));
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>PlayingTypeChoosePage()));
                                     },
                                     // color: Colors.indigoAccent[400],
                                     color: Color(getColorHexFromStr('#FFCE55')),
