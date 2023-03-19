@@ -45,9 +45,15 @@ class UserRepositoryImpl implements UserRepository{
   }
 
   @override
-  Future<Either<Failure, User>> userRegister({required String accessToken}) {
-    // TODO: implement userRegister
-    throw UnimplementedError();
+  Future<Either<Failure, User>> userRegister({required String name, required String email, required String password, required String phone, required String city, required String age, required String gender}) async{
+    try{
+      User user =  await userRemoteDataSource.userRegister(name: name, email: email, password: password, phone: phone, city: city, age: age, gender: gender);
+      return Right(user);
+    }
+    catch(exp){
+      return Left(ServerFailure());
+    }
   }
+
 
 }

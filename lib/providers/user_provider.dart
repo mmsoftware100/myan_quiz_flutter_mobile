@@ -9,18 +9,21 @@ import 'package:myan_quiz/domain/usecases/login_with_google.dart';
 
 import '../core/error/failures.dart';
 import '../domain/usecases/user_login.dart';
+import '../domain/usecases/user_register.dart';
 
 class UserProvider extends ChangeNotifier{
   // use case list
   final UserLogin userLogin;
   final LoginWithEmail loginWithEmail;
   final LoginWithGoogle loginWithGoogle;
+  final UserRegister userRegister;
   // constructor
 
   UserProvider({
     required this.userLogin,
     required this.loginWithEmail,
-    required this.loginWithGoogle
+    required this.loginWithGoogle,
+    required this.userRegister
   });
 
   // data repo
@@ -106,5 +109,30 @@ class UserProvider extends ChangeNotifier{
         }
     );
   }
+
+  Future<bool> userRegisterPlz({
+    required String name,
+    required String email,
+    required String password,
+    required String phone,
+    required String city,
+    required String age,
+    required String gender
+  })async{
+    final Either<Failure, User> userEither = await userRegister(UserRegisterParams(name: name, email: email, password: password, phone: phone, city: city, age: age, gender: gender));
+    return userEither.fold(
+            (failure)  {
+          print("UserProvider->userRegisterPlz failure");
+          print(failure);
+          return false;
+        },
+            (loggedInUser)  async{
+          user = loggedInUser;
+          notifyListeners();
+          return true;
+        }
+    );
+  }
+
 }
 
