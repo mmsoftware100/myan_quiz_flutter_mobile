@@ -18,6 +18,15 @@ abstract class UserRemoteDataSource{
   Future<User> loginWithGoogle({
     required String accessToken
   });
+  Future<User> userRegister({
+    required String name,
+    required String email,
+    required String password,
+    required String phone,
+    required String city,
+    required String age,
+    required String gender
+  });
 }
 
 class UserRemoteDataSourceImpl implements UserRemoteDataSource{
@@ -69,6 +78,30 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource{
   @override
   Future<User> loginWithGoogle({required String accessToken}) async{
     dynamic response = await networkInterface.postRequest(url: loginEndpoint,data: {}, bearerToken: accessToken);
+    try{
+      var data = response['data'];
+      UserModel userModel = UserModel.fromJson(data);
+      return userModel.toEntity();
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
+  @override
+  Future<User> userRegister({required String name, required String email, required String password, required String phone, required String city, required String age, required String gender})  async{
+    var data = {
+      "name" : name,
+      "email" : email,
+      "password" : password,
+      "phone" : phone,
+      "city" : city,
+      "age" : age,
+      "gender" : gender
+    };
+    print("UserRemoteDatasource->userRegister");
+    print(data);
+    dynamic response = await networkInterface.postRequest(url: userRegisterEndpoint, data: data);
     try{
       var data = response['data'];
       UserModel userModel = UserModel.fromJson(data);

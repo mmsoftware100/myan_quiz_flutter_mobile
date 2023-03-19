@@ -14,11 +14,12 @@ class UserRegister implements UseCase<User,UserRegisterParams>{
 
   @override
   Future<Either<Failure, User>> call(UserRegisterParams params) async{
-    return await userRepository.login(accessToken: params.email, fcmToken: params.password);
+    return await userRepository.userRegister(name: params.name, email: params.email, password: params.password, phone: params.phone, city: params.city, age: params.age, gender: params.gender);
   }
 }
 
 class UserRegisterParams extends Equatable {
+  final String name;
   final String email;
   final String password;
   final String phone;
@@ -27,6 +28,7 @@ class UserRegisterParams extends Equatable {
   final String gender;
 
   const UserRegisterParams({
+    required this.name,
     required this.email,
     required this.password,
     required this.phone,
@@ -36,5 +38,5 @@ class UserRegisterParams extends Equatable {
   });
 
   @override
-  List<Object> get props => [email, password, phone, city, age, gender];
+  List<Object> get props => [name, email, password, phone, city, age, gender];
 }

@@ -109,5 +109,30 @@ class UserProvider extends ChangeNotifier{
         }
     );
   }
+
+  Future<bool> userRegisterPlz({
+    required String name,
+    required String email,
+    required String password,
+    required String phone,
+    required String city,
+    required String age,
+    required String gender
+  })async{
+    final Either<Failure, User> userEither = await userRegister(UserRegisterParams(name: name, email: email, password: password, phone: phone, city: city, age: age, gender: gender));
+    return userEither.fold(
+            (failure)  {
+          print("UserProvider->userRegisterPlz failure");
+          print(failure);
+          return false;
+        },
+            (loggedInUser)  async{
+          user = loggedInUser;
+          notifyListeners();
+          return true;
+        }
+    );
+  }
+
 }
 
