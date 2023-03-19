@@ -12,6 +12,7 @@ import 'package:myan_quiz/view/splash_screen_page.dart';
 import 'package:provider/provider.dart';
 
 import '../domain/entities/user.dart' as our;
+import '../utils/loader.dart';
 
 class TestPage extends StatefulWidget {
   const TestPage({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class TestPage extends StatefulWidget {
 
 class _TestPageState extends State<TestPage> {
 
+  final GlobalKey<State> _keyLoader = new GlobalKey<State>();
   firebase.User? firebaseUser;
 
 
@@ -78,8 +80,12 @@ class _TestPageState extends State<TestPage> {
       body: ListView(
         children: [
           ListTile(
-            title: Text("Login Using access token"),
-            onTap: _login
+              title: Text("Login Using email and password"),
+              onTap: _loginWithEmail
+          ),
+          ListTile(
+              title: Text("Login Using access token"),
+              onTap: _login
           ),
           ListTile(
               title: Text("Get Random Categories"),
@@ -164,6 +170,19 @@ class _TestPageState extends State<TestPage> {
   }
 
 
+  void _loginWithEmail()async{
+    print("TestPage->_loginWithEmail");
+    // show loading dialog
+    String email = "admin@email.com";
+    String password = "12345678";
+
+    Dialogs.showLoadingDialog(context, _keyLoader);
+    bool status = await Provider.of<UserProvider>(context,listen:false).loginWithEmailPlz(email: email, password: password);
+    // hide loading dialog
+    print("TestPage->login status $status");
+
+    Navigator.pop(context);
+  }
   void _login()async{
     print("TestPage->loginUsing");
     // show loading dialog

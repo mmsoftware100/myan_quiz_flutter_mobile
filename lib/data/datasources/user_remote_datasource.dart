@@ -50,6 +50,9 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource{
       "email" : email,
       "password" : password
     };
+    print("UserRemoteDatasource->loginWithEmail");
+    print(data);
+
     dynamic response = await networkInterface.postRequest(url: loginEndpoint, data: data);
     try{
       //bool status = response['status'];
