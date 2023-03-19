@@ -12,7 +12,7 @@ class AnswerModel{
   @JsonKey(defaultValue: 0)
   int id;
 
-  @JsonKey(name: 'name' ,defaultValue: "name")
+  @JsonKey(name: 'description' ,defaultValue: "description")
   String name;
 
   AnswerModel({
