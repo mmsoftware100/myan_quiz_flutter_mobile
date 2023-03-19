@@ -16,7 +16,12 @@ abstract class UserRepository{
     required String accessToken
   });
   Future<Either<Failure, User>> userRegister({
-    required String accessToken
+    required String email,
+    required String password,
+    required String phone,
+    required String city,
+    required String age,
+    required String gender
   });
 
 }
