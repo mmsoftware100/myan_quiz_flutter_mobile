@@ -21,6 +21,7 @@ import 'package:myan_quiz/domain/usecases/login_with_google.dart';
 import 'package:myan_quiz/domain/usecases/request_exchange.dart';
 import 'package:myan_quiz/domain/usecases/submit_answer.dart';
 import 'package:myan_quiz/domain/usecases/user_login.dart';
+import 'package:myan_quiz/domain/usecases/user_register.dart';
 import 'package:myan_quiz/providers/game_play_provider.dart';
 import 'package:myan_quiz/providers/reward_provider.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
@@ -38,6 +39,7 @@ Future<void> init() async {
             userLogin: sl(),
             loginWithEmail: sl(),
             loginWithGoogle: sl(),
+            userRegister: sl(),
           )
   );
   sl.registerFactory(
@@ -59,6 +61,7 @@ Future<void> init() async {
   sl.registerLazySingleton<UserLogin>(() =>  UserLogin(userRepository: sl()));
   sl.registerLazySingleton<LoginWithEmail>(() =>  LoginWithEmail(userRepository: sl()));
   sl.registerLazySingleton<LoginWithGoogle>(() =>  LoginWithGoogle(userRepository: sl()));
+  sl.registerLazySingleton<UserRegister>(() =>  UserRegister(userRepository: sl()));
   //sl.registerLazySingleton<UserLogin>(() =>  UserLogin(userRepository: sl()));
   sl.registerLazySingleton<GetRandomCategories>(() =>  GetRandomCategories(quizRepository: sl()));
   sl.registerLazySingleton<GetQuestionByCategoryId>(() =>  GetQuestionByCategoryId(quizRepository: sl()));

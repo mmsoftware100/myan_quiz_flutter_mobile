@@ -84,6 +84,7 @@ void main()async{
               userLogin: di.sl(),
               loginWithEmail: di.sl(),
               loginWithGoogle: di.sl(),
+              userRegister: di.sl(),
             )),
             ChangeNotifierProvider(create: (_) => GamePlayProvider(
               getRandomCategories: di.sl(),

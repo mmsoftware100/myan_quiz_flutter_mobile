@@ -9,18 +9,21 @@ import 'package:myan_quiz/domain/usecases/login_with_google.dart';
 
 import '../core/error/failures.dart';
 import '../domain/usecases/user_login.dart';
+import '../domain/usecases/user_register.dart';
 
 class UserProvider extends ChangeNotifier{
   // use case list
   final UserLogin userLogin;
   final LoginWithEmail loginWithEmail;
   final LoginWithGoogle loginWithGoogle;
+  final UserRegister userRegister;
   // constructor
 
   UserProvider({
     required this.userLogin,
     required this.loginWithEmail,
-    required this.loginWithGoogle
+    required this.loginWithGoogle,
+    required this.userRegister
   });
 
   // data repo
