@@ -5,16 +5,16 @@ class UserStatistics{
   int rankProgress; // တိုးဖို့အတွက် ဘယ်လောက်ရာခိုင်နှုန်း လိုသေးတယ်ဆိုတာ ပြမယ်
 
   String level; // လက်ရှိ အဆင့်
-  String nextLevel; // ောက်ထပ် တိုးမယ့် အဆင့်နာမည်
+  String nextLevel; // နောက်ထပ် တိုးမယ့် အဆင့်နာမည်
   int levelProgress; // တိုးဖို့အတွက် ဘယ်လောက်ရာခိုင်နှုန်း လိုသေးတယ်ဆိုတာ ပြမယ်
 
-  int questionTotal; // စုစုပေါင်း ဖြေခဲ့သမျှ မေးခွန်း အၕေအတွက်
-  int questionPassed; // number of passed question
-  int questionFailed;
+  int questionTotal; // စုစုပေါင်း ဖြေခဲ့သမျှ မေးခွန်း အရေအတွက်
+  int questionPassed; // အဖြေမှန် အရေအတွက်
+  int questionFailed; // အဖြေမှား အရေအတွက်
 
-  int coinTotal;
-  int coinExchanged;
-  int coinCurrent;
+  int coinTotal; // စုစုပေါင်း ပွိုင့်
+  int coinExchanged; // လဲလှယ်ထားခဲ့သမျှ ပွိုင့်
+  int coinCurrent; // လက်ကျန် ပွိုင့်
 
   String createdAt;
   String updatedAt;
