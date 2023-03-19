@@ -84,9 +84,20 @@ class _TestPageState extends State<TestPage> {
               onTap: _loginWithEmail
           ),
           ListTile(
+              title: Text("User Register"),
+              onTap: _userRegister
+          ),
+          ListTile(
+              title: Text("Login with Google"),
+              onTap: _signInWithGoogle
+          ),
+          /*
+          ListTile(
               title: Text("Login Using access token"),
               onTap: _login
           ),
+
+           */
           ListTile(
               title: Text("Get Random Categories"),
               onTap: _selectRandomCategories
@@ -142,7 +153,7 @@ class _TestPageState extends State<TestPage> {
 
 
 
-  Future<UserCredential> _signInWithGoogle() async {
+  Future<bool> _signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
@@ -156,7 +167,20 @@ class _TestPageState extends State<TestPage> {
     );
 
     // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+    firebase.UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+
+    IdTokenResult? tokenResult = await firebase.FirebaseAuth.instance.currentUser?.getIdTokenResult();
+    print(tokenResult?.token);
+    String accessToken = tokenResult?.token ?? "accessToken";
+
+    // now we have idToken
+    // we can login with this idToken to our backend api
+
+    Dialogs.showLoadingDialog(context, _keyLoader);
+    bool status = await Provider.of<UserProvider>(context,listen:false).loginWithGooglePlz(accessToken: accessToken);
+    print("TestPage->login status $status");
+    Navigator.pop(context);
+    return status;
   }
   Future<void> signOut() async {
     print("signOut");
@@ -183,15 +207,26 @@ class _TestPageState extends State<TestPage> {
 
     Navigator.pop(context);
   }
-  void _login()async{
-    print("TestPage->loginUsing");
+
+  void _userRegister()async{
+    print("TestPage->_userRegister");
     // show loading dialog
-    String accessToken = "accessToken";
-    String fcmToken = "fcmToken";
-    bool status = await Provider.of<UserProvider>(context,listen:false).login(accessToken: accessToken, fcmToken: fcmToken);
+    String name = "Admin 2";
+    String email = "admin2@email.com";
+    String password = "12345678";
+    String phone = "091234523";
+    String city = "Yangon";
+    String age = "23";
+    String gender = "Male";
+
+    Dialogs.showLoadingDialog(context, _keyLoader);
+    bool status = await Provider.of<UserProvider>(context,listen:false).userRegisterPlz(name: name, email: email, password: password, phone: phone, city: city, age: age, gender: gender);
     // hide loading dialog
-    print("TestPage->login status $status");
+    print("TestPage->_userRegister status $status");
+
+    Navigator.pop(context);
   }
+
   void _selectRandomCategories()async{
     print("TestPage->_selectRandomCategories");
     // show loading dialog
