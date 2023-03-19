@@ -23,6 +23,8 @@ class _LoginPageState extends State<LoginPage> {
   final GlobalKey<State> _keyLoader = new GlobalKey<State>();
   bool _agreedToTOS = true;
   User? firebaseUser;
+  TextEditingController _emailTextETextEditingController = TextEditingController();
+  TextEditingController _passwordTextETextEditingController = TextEditingController();
 
   bool _submittable() {
     return _agreedToTOS;
@@ -183,11 +185,16 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 18.0),
-                          child: makeInput(label: "Email"),
+                          child: makeInput(
+                            txtEditiongContorller: _emailTextETextEditingController,
+                              label: "Email"
+                          ),
                         ),
                         // TODO: text editing controller ထည့်ရန်
                         // TODO: Login ခလုပ်ကို နှိပ်တဲ့အခါ user ရိုက်ထည့်တဲ့ email နဲ့ password ကိုယူဖို့အတွက် Text Editing Controller (2) ခု လိုအပ်
-                        makeInput(label: "Password"),
+                        makeInput(
+                            txtEditiongContorller: _passwordTextETextEditingController,
+                            label: "Password"),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 6.0),
                           child: Row(
@@ -231,7 +238,7 @@ class _LoginPageState extends State<LoginPage> {
                             String password = "password"; //TODO: User ရိုက်ထည့်တဲ့ Input မှ ရယူရန်
                             // show loading indicator
                             Dialogs.showLoadingDialog(context, _keyLoader);
-                            bool status = await Provider.of<UserProvider>(context, listen:false).loginWithEmailPlz(email: email, password: password);
+                            bool status = await Provider.of<UserProvider>(context, listen:false).loginWithEmailPlz(email: _emailTextETextEditingController.text, password: _passwordTextETextEditingController.text);
                             // hide loading indicator
                             Navigator.pop(context);
                             if(status == true){
@@ -394,7 +401,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget makeInput({label, obsureText = false}) {
+  Widget makeInput({txtEditiongContorller,label, obsureText = false}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -405,6 +412,7 @@ class _LoginPageState extends State<LoginPage> {
         ),),
         SizedBox(height: 5,),
         TextField(
+          controller: txtEditiongContorller,
           obscureText: obsureText,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
