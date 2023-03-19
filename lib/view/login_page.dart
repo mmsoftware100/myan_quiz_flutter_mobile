@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -237,8 +238,34 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
                             }
                             else{
-                              //
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
+                              AwesomeDialog(
+                                context: context,
+                                dialogType: DialogType.warning,
+                                borderSide: const BorderSide(
+                                  color: Colors.green,
+                                  width: 2,
+                                ),
+                                width: 280,
+                                buttonsBorderRadius: const BorderRadius.all(
+                                  Radius.circular(2),
+                                ),
+                                dismissOnTouchOutside: true,
+                                dismissOnBackKeyPress: false,
+                                onDismissCallback: (type) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Dismissed by $type'),
+                                    ),
+                                  );
+                                },
+                                headerAnimationLoop: false,
+                                animType: AnimType.bottomSlide,
+                                title: 'SORRY',
+                                desc: 'Can not allow to sign in',
+                                showCloseIcon: true,
+                                // btnCancelOnPress: () {},
+                                btnOkOnPress: () {},
+                              ).show();
 
                             }
 
