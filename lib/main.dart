@@ -100,8 +100,8 @@ void main()async{
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
-            //home: SplashScreenPage(),
-            home: TestPage(),
+            home: SplashScreenPage(),
+            // home: TestPage(),
           )
       )
   );

@@ -110,6 +110,7 @@ class GamePlayProvider extends ChangeNotifier{
             (questionData)  async{
               print("GamePlayProvider->selectQuestionByCategoryId success");
               question = questionData;
+              question.answers.shuffle();
               notifyListeners();
               return true;
            }

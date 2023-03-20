@@ -15,9 +15,14 @@ class AnswerModel{
   @JsonKey(name: 'description' ,defaultValue: "description")
   String name;
 
+
+  @JsonKey(name: 'answer_id' ,defaultValue: 0)
+  int answerId;
+
   AnswerModel({
     required this.id,
-    required this.name
+    required this.name,
+    required this.answerId
   });
 
   factory AnswerModel.fromJson(Map<String, dynamic> json) {
@@ -26,7 +31,7 @@ class AnswerModel{
   Map<String, dynamic> toJson() => _$AnswerModelToJson(this);
 
   Answer toEntity(){
-    return Answer(id: id, name: name);
+    return Answer(id: id, name: name, answerId: answerId);
   }
 }
 
