@@ -91,8 +91,10 @@ class QuizRemoteDatasourceImpl implements QuizRemoteDatasource{
     try{
       //bool status = response['status'];
       //String message = response['msg'];
-      Map<String,dynamic> data = response['data']['user_data'];
-      UserModel userModel = UserModel.fromJson(data);
+      Map<String,dynamic> userData = response['data']['user_data'];
+      print("userData is");
+      print(userData);
+      UserModel userModel = UserModel.fromJson(userData);
       print("QuizRemoteDatasource->submitAnswer success");
       return userModel.toEntity();
     }

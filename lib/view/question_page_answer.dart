@@ -9,6 +9,7 @@ import 'package:myan_quiz/view/setting_page.dart';
 import 'package:provider/provider.dart';
 
 import '../domain/entities/answer.dart';
+import '../domain/entities/user.dart';
 
 class QuestionPageAnswer extends StatefulWidget {
   const QuestionPageAnswer({Key? key}) : super(key: key);
@@ -322,7 +323,7 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                                         child:ListTile(
                                           leading: Text(e.name,style: TextStyle(color: hasBeenSelected == true && e.id == Provider.of<GamePlayProvider>(context, listen: false).question.correctAnswer.answerId? Colors.green  : Colors.grey,),),
                                           trailing: Icon(Icons.album_outlined,color: hasBeenSelected == true && e.id == Provider.of<GamePlayProvider>(context, listen: false).question.correctAnswer.answerId? Colors.green  : Colors.grey,),
-                                          onTap: () {
+                                          onTap: () async{
 
                                             if(hasBeenSelected == false){
                                               int currentChoose = e.id;
@@ -347,11 +348,20 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                                               });
 
 
-                                              // // submit answer
-                                              // String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
-                                              // int questionId = Provider.of<GamePlayProvider>(context, listen: false).question.id;
-                                              // int answerId = e.id;
-                                              // Provider.of<GamePlayProvider>(context, listen: false).answer(accessToken: accessToken, gameTypeId: 1, questionId: questionId, answerId: answerId);
+                                              // submit answer
+                                              String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                                              int questionId = Provider.of<GamePlayProvider>(context, listen: false).question.id;
+                                              int answerId = e.id;
+                                              try{
+                                                User user = await Provider.of<GamePlayProvider>(context, listen: false).answer(accessToken: accessToken, gameTypeId: 1, questionId: questionId, answerId: answerId);
+                                                Provider.of<UserProvider>(context, listen: false).setUser(user);
+                                              }
+                                              catch(exp){
+                                                print("submit answer exp");
+                                                print(exp);
+                                              }
+
+                                              // show Button to go next
                                             }
 
 

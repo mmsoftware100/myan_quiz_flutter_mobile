@@ -31,6 +31,10 @@ class UserProvider extends ChangeNotifier{
 
   // methods
 
+  void setUser(User userUpdated){
+    user = userUpdated;
+    notifyListeners();
+  }
   Future<bool> login({required String accessToken, required String fcmToken})async{
     bool status = true;
     final Either<Failure, User> userEither = await userLogin(UserLoginParams(accessToken: accessToken, fcmToken: fcmToken));
