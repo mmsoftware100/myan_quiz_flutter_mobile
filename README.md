@@ -1,13 +1,31 @@
 # Myan Quiz Mobile App
 
+## 2023-03-20 Mon To Do List
+
+- [ ] Check up and running in Mobile
+- [ ] UI Improvement List
+
+### Test Case
+
+- [ ] Register using email and password
+- [ ] Login with email and password
+- [ ] Login with Google
+- [ ] Account Info Screen should show update info
+- [ ] Random Category
+- [ ] Question and answer
+- [ ] Answer feedback with green and red
+- [ ] Submit data and update user statistics
+
+
+ 
 ## 2023-03-18 Sat To Do List
 
-- [ ] Login with email and password
-- [ ] User with static data
-- [ ] Register with email and other basic data
-- [ ] Get random categories
-- [ ] Get question by id
-- [ ] Submit Answer
+- [x] Login with email and password
+- [x] User with static data
+- [x] Register with email and other basic data
+- [x] Get random categories
+- [x] Get question by id
+- [x] Submit Answer
 
 all api integration need to be perfect.
 no more serialization error 
