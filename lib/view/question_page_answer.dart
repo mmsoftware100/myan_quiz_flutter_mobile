@@ -6,6 +6,8 @@ import 'package:myan_quiz/providers/user_provider.dart';
 import 'package:myan_quiz/view/setting_page.dart';
 import 'package:provider/provider.dart';
 
+import '../domain/entities/answer.dart';
+
 class QuestionPageAnswer extends StatefulWidget {
   const QuestionPageAnswer({Key? key}) : super(key: key);
 
@@ -49,6 +51,10 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
     super.initState();
   }
 
+
+  Widget _answerCard({required Answer answer, required bool correct}){
+    return Card();
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -229,9 +235,12 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                       physics: ScrollPhysics(),
                       children: Provider.of<GamePlayProvider>(context, listen: true).question.answers.map(
                               (e) {
-                                // get index
-                                var index = amount.indexOf(e);
-                                return selectedIndex == index? Padding(
+                                // // get index
+                                // var index = amount.indexOf(e);
+                                //
+                                // print("Hello "+amount.indexOf(e).toString());
+                                print(e.id);
+                                return selectedIndex == e.id && selectedIndex == Provider.of<GamePlayProvider>(context, listen: true).question ? Padding(
                                   padding: const EdgeInsets.only(left: 18.0,right: 18.0),
                                   child: Card(
                                       elevation: 10,
@@ -242,10 +251,10 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                                       child:Center(
                                         child: ListTile(
                                           leading: Text(e.name),
-                                          trailing: Icon(Icons.album_outlined,color: selectedIndex == index? Colors.green : null,),
+                                          trailing: Icon(Icons.album_outlined,color: selectedIndex == e.id? Colors.green : null,),
                                           onTap: () {
                                             setState(() {
-                                              selectedIndex = index;
+                                              // selectedIndex = index;
                                             });
                                             // submit answer
                                             String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
@@ -267,7 +276,8 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                                         trailing: Icon(Icons.album_outlined),
                                         onTap: () {
                                           setState(() {
-                                            selectedIndex = index;
+                                            selectedIndex = e.id;
+                                            print("selectedIndex is "+selectedIndex.toString());
                                           });
                                           // // submit answer
                                           // String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;

@@ -14,5 +14,5 @@ AnswerModel _$AnswerModelFromJson(Map<String, dynamic> json) => AnswerModel(
 Map<String, dynamic> _$AnswerModelToJson(AnswerModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'name': instance.name,
+      'description': instance.name,
     };

@@ -15,10 +15,12 @@ QuestionModel _$QuestionModelFromJson(Map<String, dynamic> json) =>
               ?.map((e) => AnswerModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
-      description: json['correct_answer'] == null
+      description: json['description'] == null
           ? null
           : DescriptionModel.fromJson(
-              json['correct_answer'] as Map<String, dynamic>),
+              json['description'] as Map<String, dynamic>),
+      correctAnswer:
+          AnswerModel.fromJson(json['correct_answer'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$QuestionModelToJson(QuestionModel instance) =>
@@ -27,5 +29,6 @@ Map<String, dynamic> _$QuestionModelToJson(QuestionModel instance) =>
       'name': instance.name,
       'img_url': instance.image,
       'answers': instance.answers.map((e) => e.toJson()).toList(),
-      'correct_answer': instance.description?.toJson(),
+      'description': instance.description?.toJson(),
+      'correct_answer': instance.correctAnswer.toJson(),
     };
