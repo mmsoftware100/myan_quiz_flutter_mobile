@@ -1,10 +1,16 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:myan_quiz/components/custom_widgets.dart';
 import 'package:myan_quiz/components/toggle_button.dart';
 import 'package:myan_quiz/utils/global.dart';
 import 'package:myan_quiz/view/login_page.dart';
+import 'package:myan_quiz/view/profile_page.dart';
 import 'package:myan_quiz/view/setting_page.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/user_provider.dart';
+import '../utils/loader.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -14,6 +20,16 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+
+  final GlobalKey<State> _keyLoader = new GlobalKey<State>();
+
+  TextEditingController _txtNameController = TextEditingController();
+  TextEditingController _txtEmailController = TextEditingController();
+  TextEditingController _txtPhoneNumberController = TextEditingController();
+  TextEditingController _txtCityController = TextEditingController();
+  TextEditingController _txtAgeController = TextEditingController();
+  TextEditingController _txtPasswordController = TextEditingController();
+  String userGander = "Male";
 
   int getColorHexFromStr(String colorStr) {
     colorStr = "FF" + colorStr;
@@ -37,6 +53,37 @@ class _SignUpPageState extends State<SignUpPage> {
     return val;
   }
 
+  showSignUpStatusDialog({required dialogType,required title,required description}){
+    AwesomeDialog(
+      context: context,
+      // dialogType: DialogType.warning,
+      dialogType:  dialogType,
+      borderSide: const BorderSide(
+        color: Colors.green,
+        width: 2,
+      ),
+      width: 280,
+      buttonsBorderRadius: const BorderRadius.all(
+        Radius.circular(2),
+      ),
+      dismissOnTouchOutside: true,
+      dismissOnBackKeyPress: false,
+      onDismissCallback: (type) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Try Again'),
+          ),
+        );
+      },
+      headerAnimationLoop: false,
+      animType: AnimType.bottomSlide,
+      title: '$title',
+      desc: '$description',
+      showCloseIcon: true,
+      // btnCancelOnPress: () {},
+      btnOkOnPress: () {},
+    ).show();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +127,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 Container(
                   // height: 300,
-                  height: MediaQuery.of(context).size.height / 1.2,
+                  height: MediaQuery.of(context).size.height / 1.12,
                   width: double.infinity,
                   decoration: const BoxDecoration(
                       color: Colors.white,
@@ -95,10 +142,11 @@ class _SignUpPageState extends State<SignUpPage> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 18.0),
-                          child: makeInput(label: "Name"),
+                          child: makeInput(txtController: _txtNameController,myKeyBoardType: TextInputType.text,label: "Name"),
                         ),
-                        makeInput(label: "Phone Number"),
-                        makeInput(label: "City"),
+                        makeInput(txtController: _txtEmailController,myKeyBoardType: TextInputType.emailAddress,label: "Email"),
+                        makeInput(txtController: _txtPhoneNumberController,myKeyBoardType: TextInputType.phone,label: "Phone Number"),
+                        makeInput(txtController: _txtCityController,myKeyBoardType: TextInputType.text,label: "City"),
                         Flexible(
                           // height: 75,
                           child: Row(
@@ -118,7 +166,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                     width: MediaQuery.of(context).size.width/3,
                                     height: 35,
                                     child: TextField(
-                                      obscureText: true,
+                                      controller: _txtAgeController,
+                                      keyboardType: TextInputType.number,
+                                      obscureText: false,
                                       decoration: InputDecoration(
                                         contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                                         enabledBorder: OutlineInputBorder(
@@ -160,9 +210,15 @@ class _SignUpPageState extends State<SignUpPage> {
                                       leftDescription: 'ကျား',
                                       rightDescription: 'မ',
                                       onLeftToggleActive: () {
+                                        setState(() {
+                                          userGander == "Male";
+                                        });
                                         print('left toggle activated');
                                       },
                                       onRightToggleActive: () {
+                                        setState(() {
+                                          userGander == "Female";
+                                        });
                                         print('right toggle activated');
                                       },
                                     ),
@@ -172,13 +228,55 @@ class _SignUpPageState extends State<SignUpPage> {
                             ],
                           ),
                         ),
-                        makeInput(label: "Password"),
+                        makeInput(txtController: _txtPasswordController,myKeyBoardType: TextInputType.text,label: "Password"),
                         MaterialButton(
                           minWidth: double.infinity,
                           // minWidth: MediaQuery.of(context).size.width/1.5,
                           height:40,
-                          onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>SettingPage()));
+                          onPressed: ()async{
+                            if(_txtNameController.text != ""
+                            && _txtEmailController.text != ""
+                            && _txtPhoneNumberController.text != ""
+                            && _txtCityController.text != ""
+                            && _txtAgeController.text != ""
+                            && _txtPasswordController.text != ""
+                            ){
+
+                              // show loading indicator
+                              Dialogs.showLoadingDialog(context, _keyLoader);
+
+                              bool status = await Provider.of<UserProvider>(context, listen:false).userRegisterPlz(
+                                  name: _txtNameController.text,
+                                  email:_txtEmailController.text,
+                                  password:_txtPasswordController.text,
+                                  phone:_txtPhoneNumberController.text,
+                                  city:_txtCityController.text,
+                                  age:_txtAgeController.text,
+                                  gender:userGander
+                              );
+
+                              // hide loading indicator
+                              Navigator.pop(context);
+
+                              if(status == true){
+                                bool loginStatus = await Provider.of<UserProvider>(context, listen:false).loginWithEmailPlz(email: _txtEmailController.text, password: _txtPasswordController.text);
+                                print("My Login status is "+status.toString());
+                                if(loginStatus == true){
+                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
+                                }
+                                else{
+                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+                                }
+                              }
+                              else{
+                                showSignUpStatusDialog(dialogType: DialogType.info,title: "Sorry",description: "Something wrong");
+                              }
+                            }
+                            else{
+                              showSignUpStatusDialog(dialogType: DialogType.info,title: "Sorry",description: "You need to fill all data");
+                            }
+
+
                           },
                           // color: Colors.indigoAccent[400],
                           color: Color(getColorHexFromStr('#FFCE55')),
@@ -265,7 +363,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  Widget makeInput({label, obsureText = false}) {
+  Widget makeInput({required txtController,required myKeyBoardType,label, obsureText = false}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -278,6 +376,8 @@ class _SignUpPageState extends State<SignUpPage> {
         Container(
           height: 35,
           child: TextField(
+            controller: txtController,
+            keyboardType: myKeyBoardType,
             obscureText: obsureText,
             decoration: InputDecoration(
               contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
