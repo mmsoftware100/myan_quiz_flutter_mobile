@@ -58,7 +58,9 @@ class _LoginPageState extends State<LoginPage> {
     return val;
   }
 
-  Future<UserCredential> _signInWithGoogle() async {
+
+
+  Future<bool> _signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
@@ -72,8 +74,23 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+    UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+
+    IdTokenResult? tokenResult = await FirebaseAuth.instance.currentUser?.getIdTokenResult();
+    print(tokenResult?.token);
+    String accessToken = tokenResult?.token ?? "accessToken";
+
+    // now we have idToken
+    // we can login with this idToken to our backend api
+
+    Dialogs.showLoadingDialog(context, _keyLoader);
+    bool status = await Provider.of<UserProvider>(context,listen:false).loginWithGooglePlz(accessToken: accessToken);
+    print("TestPage->login status $status");
+    Navigator.pop(context);
+    return status;
   }
+
+
 
   @override
   void initState() {
@@ -326,9 +343,41 @@ class _LoginPageState extends State<LoginPage> {
 
                                   onTap: ()async{
                                     print("Hello sign in with google");
-                                    await _signInWithGoogle();
-                                    print(firebaseUser);
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
+                                    bool status = await _signInWithGoogle();
+                                    if(status){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
+                                    }
+                                    else{
+                                      // alert to notify user for google account login failure
+                                      AwesomeDialog(
+                                        context: context,
+                                        dialogType: DialogType.warning,
+                                        borderSide: const BorderSide(
+                                          color: Colors.green,
+                                          width: 2,
+                                        ),
+                                        width: 280,
+                                        buttonsBorderRadius: const BorderRadius.all(
+                                          Radius.circular(2),
+                                        ),
+                                        dismissOnTouchOutside: true,
+                                        dismissOnBackKeyPress: false,
+                                        onDismissCallback: (type) {
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                            SnackBar(
+                                              content: Text('Try Again'),
+                                            ),
+                                          );
+                                        },
+                                        headerAnimationLoop: false,
+                                        animType: AnimType.bottomSlide,
+                                        title: 'SORRY',
+                                        desc: 'Something wrong with Google Login',
+                                        showCloseIcon: true,
+                                        // btnCancelOnPress: () {},
+                                        btnOkOnPress: () {},
+                                      ).show();
+                                    }
                                   }
                               ),
                               // CustomWidgets.socialButtonCircle(
