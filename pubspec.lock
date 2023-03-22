@@ -162,6 +162,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.3"
+  cli_util:
+    dependency: transitive
+    description:
+      name: cli_util
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.5"
   clock:
     dependency: transitive
     description:
@@ -370,13 +377,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.18.6"
-  flutter_lints:
+  flutter_launcher_icons:
     dependency: "direct dev"
     description:
-      name: flutter_lints
+      name: flutter_launcher_icons
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.4"
+    version: "0.11.0"
   flutter_local_notifications:
     dependency: "direct main"
     description:
@@ -404,7 +411,7 @@ packages:
       name: flutter_native_splash
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.18"
+    version: "2.2.16"
   flutter_neumorphic:
     dependency: "direct main"
     description:
@@ -540,7 +547,7 @@ packages:
       name: image
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.15"
+    version: "3.3.0"
   intl:
     dependency: transitive
     description:
@@ -576,13 +583,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.6.1"
-  lints:
-    dependency: transitive
-    description:
-      name: lints
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.1"
   logging:
     dependency: transitive
     description:
