@@ -1,5 +1,7 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:myan_quiz/view/leader_board_page.dart';
+import 'package:myan_quiz/view/splash_screen_page.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
@@ -117,6 +119,42 @@ class _SettingPageState extends State<SettingPage> {
                             title: Text("Logout",
                               // style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
                             ),
+                            onTap: (){
+                              AwesomeDialog(
+                                context: context,
+                                dialogType: DialogType.warning,
+                                borderSide: const BorderSide(
+                                  color: Colors.green,
+                                  width: 2,
+                                ),
+                                width: 280,
+                                buttonsBorderRadius: const BorderRadius.all(
+                                  Radius.circular(2),
+                                ),
+                                dismissOnTouchOutside: true,
+                                dismissOnBackKeyPress: false,
+                                onDismissCallback: (type) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Log out $type'),
+                                    ),
+                                  );
+                                },
+                                headerAnimationLoop: false,
+                                animType: AnimType.bottomSlide,
+                                title: 'Attention',
+                                desc: 'Are you sure to log out ?',
+                                showCloseIcon: true,
+                                btnCancelOnPress: () {},
+                                btnOkOnPress: () {
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(builder: (BuildContext context) => SplashScreenPage()),
+                                      ModalRoute.withName('/')
+                                  );
+                                },
+                              ).show();
+                            },
                           ),
 
                         ],
