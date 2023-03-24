@@ -344,7 +344,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
         ),
-      ) :  myCurrentBottomNavigationBarItemIndex == 3 ? SettingPage(): BillsPage(),
+      ) :  myCurrentBottomNavigationBarItemIndex == 2 ? SettingPage(): BillsPage(),
       bottomNavigationBar: new Container(
         height: 80.0,
         color: Colors.white,
@@ -364,14 +364,15 @@ class _ProfilePageState extends State<ProfilePage> {
           child:
           new BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
+              selectedItemColor: Color(getColorHexFromStr('#48CEAD')),
               currentIndex:myCurrentBottomNavigationBarItemIndex ,
               onTap: (v){
                 setState(() {
                   myCurrentBottomNavigationBarItemIndex = v;
                 });
-                if(myCurrentBottomNavigationBarItemIndex == 3){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SettingPage()));
-                }
+                // if(myCurrentBottomNavigationBarItemIndex == 2){
+                //   Navigator.push(context, MaterialPageRoute(builder: (context)=>SettingPage()));
+                // }
               },
               items: [
                 BottomNavigationBarItem(
@@ -379,19 +380,19 @@ class _ProfilePageState extends State<ProfilePage> {
                     label: 'Home',
                     backgroundColor: Colors.black,
                 ),
+                // BottomNavigationBarItem(
+                //   icon: new Icon(Icons.search),
+                //   label: 'Search',
+                // ),
                 BottomNavigationBarItem(
-                  icon: new Icon(Icons.search),
-                  label: 'Search',
-                ),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.bookmark_border,color: Colors.transparent,),
+                    icon: Icon(Icons.bookmark_border),
                     label: 'Center'
                 ),
 
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.settings),
-                    label: 'Setting'
-                ),
+                // BottomNavigationBarItem(
+                //     icon: Icon(Icons.settings),
+                //     label: 'Setting'
+                // ),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.more_horiz),
                     label: 'More'
