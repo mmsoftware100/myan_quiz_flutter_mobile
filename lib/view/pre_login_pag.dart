@@ -52,7 +52,7 @@ class _PreLoginPageState extends State<PreLoginPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "Let's get statred!",
+                      "Let's get started!",
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30,color: Colors.white),
                     ),
                     // SizedBox(height: 20,),
@@ -65,7 +65,7 @@ class _PreLoginPageState extends State<PreLoginPage> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        "သင့်တစ်နေတာအတွက် ပညာ နဲ့ ဥစ္စာ ကို Myan Quiz မှာရှာပါ။",
+                        "သင့်တစ်နေ့တာအတွက် ပညာ နဲ့ ဥစ္စာ ကို Myan Quiz မှာရှာပါ။",
                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14,color: Colors.white,),
                         textAlign: TextAlign.center,
                       ),
