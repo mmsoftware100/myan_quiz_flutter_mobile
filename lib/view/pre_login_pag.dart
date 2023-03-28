@@ -77,7 +77,7 @@ class _PreLoginPageState extends State<PreLoginPage> {
                         minWidth: MediaQuery.of(context).size.width/1.5,
                         height:40,
                         onPressed: (){
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SignUpPage()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpPage()));
                         },
                         // color: Colors.indigoAccent[400],
                         color: Color(getColorHexFromStr('#FFCE55')),

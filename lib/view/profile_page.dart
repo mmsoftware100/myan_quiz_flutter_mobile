@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
+import 'package:myan_quiz/view/exchange/bills/bills_page.dart';
 import 'package:myan_quiz/view/exchange/bills/choose_operator_for_bill_page.dart';
 import 'package:myan_quiz/view/match_page.dart';
 import 'package:myan_quiz/view/playing_type_choose_page.dart';
+import 'package:myan_quiz/view/setting_page.dart';
 import 'package:myan_quiz/view/status_page.dart';
+import 'package:myan_quiz/view/test_page.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -16,6 +19,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
 
+  int myCurrentBottomNavigationBarItemIndex = 0;
   int getColorHexFromStr(String colorStr) {
     colorStr = "FF" + colorStr;
     colorStr = colorStr.replaceAll("#", "");
@@ -50,7 +54,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       // backgroundColor: Colors.transparent,
       backgroundColor: Color(getColorHexFromStr('#48CEAD')),
-      body: SafeArea(
+      body: myCurrentBottomNavigationBarItemIndex == 0 ? SafeArea(
         child: // try align widget
         SingleChildScrollView(
           child: Container(
@@ -339,6 +343,62 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
           ),
+        ),
+      ) :  myCurrentBottomNavigationBarItemIndex == 2 ? SettingPage(): BillsPage(),
+      bottomNavigationBar: new Container(
+        height: 80.0,
+        color: Colors.white,
+        padding: new EdgeInsets.only(top: 20.0),
+        child: new Theme(
+
+          data: Theme.of(context).copyWith(
+            // sets the background color of the `BottomNavigationBar`
+              canvasColor: Colors.white,
+              // sets the active color of the `BottomNavigationBar` if `Brightness` is light
+              primaryColor: Colors.red,
+              bottomAppBarColor: Colors.green,
+              textTheme: Theme
+                  .of(context)
+                  .textTheme
+                  .copyWith(caption: new TextStyle(color: Colors.grey))), // sets the inactive color of the `BottomNavigationBar`
+          child:
+          new BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              selectedItemColor: Color(getColorHexFromStr('#48CEAD')),
+              currentIndex:myCurrentBottomNavigationBarItemIndex ,
+              onTap: (v){
+                setState(() {
+                  myCurrentBottomNavigationBarItemIndex = v;
+                });
+                // if(myCurrentBottomNavigationBarItemIndex == 2){
+                //   Navigator.push(context, MaterialPageRoute(builder: (context)=>SettingPage()));
+                // }
+              },
+              items: [
+                BottomNavigationBarItem(
+                    icon: new Icon(Icons.home),
+                    label: 'Home',
+                    backgroundColor: Colors.black,
+                ),
+                // BottomNavigationBarItem(
+                //   icon: new Icon(Icons.search),
+                //   label: 'Search',
+                // ),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.bookmark_border),
+                    label: 'Center'
+                ),
+
+                // BottomNavigationBarItem(
+                //     icon: Icon(Icons.settings),
+                //     label: 'Setting'
+                // ),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.more_horiz),
+                    label: 'More'
+                ),
+
+              ]),
         ),
       ),
     );
