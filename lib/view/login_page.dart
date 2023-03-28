@@ -1,7 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+
 import 'package:myan_quiz/components/custom_widgets.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
 import 'package:myan_quiz/utils/global.dart';
@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
 
   final GlobalKey<State> _keyLoader = new GlobalKey<State>();
   bool _agreedToTOS = true;
-  User? firebaseUser;
+
   TextEditingController _emailTextETextEditingController = TextEditingController();
   TextEditingController _passwordTextETextEditingController = TextEditingController();
 
@@ -60,35 +60,7 @@ class _LoginPageState extends State<LoginPage> {
 
 
 
-  Future<bool> _signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
-
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
-
-    // Once signed in, return the UserCredential
-    UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
-
-    IdTokenResult? tokenResult = await FirebaseAuth.instance.currentUser?.getIdTokenResult();
-    print(tokenResult?.token);
-    String accessToken = tokenResult?.token ?? "accessToken";
-
-    // now we have idToken
-    // we can login with this idToken to our backend api
-
-    Dialogs.showLoadingDialog(context, _keyLoader);
-    bool status = await Provider.of<UserProvider>(context,listen:false).loginWithGooglePlz(accessToken: accessToken);
-    print("TestPage->login status $status");
-    Navigator.pop(context);
-    return status;
-  }
 
 
 
@@ -96,20 +68,6 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    FirebaseAuth.instance
-        .authStateChanges()
-        .listen((User? user) {
-      if (user != null) {
-        print(user.email);
-        print(user.displayName);
-        print(user.photoURL);
-        print(user.getIdToken());
-        print(user.uid);
-        setState(() {
-          firebaseUser = user;
-        });
-      }
-    });
   }
 
   @override
@@ -329,72 +287,6 @@ class _LoginPageState extends State<LoginPage> {
                                 )),
                           ),
                         ]),
-                        Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-
-                              //********Sing In with google account******
-                              CustomWidgets.socialButtonCircle(
-                                  googleColor, FontAwesomeIcons.googlePlusG,
-                                  iconColor: Colors.white,
-                                  //onTap: _signInWithGoogle
-
-                                  onTap: ()async{
-                                    print("Hello sign in with google");
-                                    bool status = await _signInWithGoogle();
-                                    if(status){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
-                                    }
-                                    else{
-                                      // alert to notify user for google account login failure
-                                      AwesomeDialog(
-                                        context: context,
-                                        dialogType: DialogType.warning,
-                                        borderSide: const BorderSide(
-                                          color: Colors.green,
-                                          width: 2,
-                                        ),
-                                        width: 280,
-                                        buttonsBorderRadius: const BorderRadius.all(
-                                          Radius.circular(2),
-                                        ),
-                                        dismissOnTouchOutside: true,
-                                        dismissOnBackKeyPress: false,
-                                        onDismissCallback: (type) {
-                                          ScaffoldMessenger.of(context).showSnackBar(
-                                            SnackBar(
-                                              content: Text('Try Again'),
-                                            ),
-                                          );
-                                        },
-                                        headerAnimationLoop: false,
-                                        animType: AnimType.bottomSlide,
-                                        title: 'SORRY',
-                                        desc: 'Something wrong with Google Login',
-                                        showCloseIcon: true,
-                                        // btnCancelOnPress: () {},
-                                        btnOkOnPress: () {},
-                                      ).show();
-                                    }
-                                  }
-                              ),
-                              // CustomWidgets.socialButtonCircle(
-                              //     whatsappColor, FontAwesomeIcons.whatsapp,
-                              //     iconColor: Colors.white, onTap: () {
-                              // }),
-                              CustomWidgets.socialButtonCircle(
-                                  appleColor,FontAwesomeIcons.apple,
-                                  iconColor: Colors.grey, onTap: () {
-                              }),
-                              CustomWidgets.socialButtonCircle(
-                                  facebookColor, FontAwesomeIcons.facebookF,
-                                  iconColor: Colors.white, onTap: () {
-                              }),
-                            ],
-                          ),
-                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

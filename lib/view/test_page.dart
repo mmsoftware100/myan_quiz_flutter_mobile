@@ -1,9 +1,5 @@
-import 'dart:developer';
 
-import 'package:firebase_auth/firebase_auth.dart' as firebase;
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:myan_quiz/providers/game_play_provider.dart';
 import 'package:myan_quiz/providers/reward_provider.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
@@ -24,7 +20,6 @@ class TestPage extends StatefulWidget {
 class _TestPageState extends State<TestPage> {
 
   final GlobalKey<State> _keyLoader = new GlobalKey<State>();
-  firebase.User? firebaseUser;
 
 
   @override
@@ -33,28 +28,6 @@ class _TestPageState extends State<TestPage> {
     print("test_page->initState");
     // TODO: implement initState
     super.initState();
-    firebase.FirebaseAuth.instance
-        .authStateChanges()
-        .listen((firebase.User? user) async{
-          if (user != null) {
-            print(user.email);
-            print(user.displayName);
-            print(user.photoURL);
-            String token2 = await user.getIdToken();
-            print("token2 is ");
-            debugPrint(token2);
-            print(user.getIdToken());
-            print(user.uid);
-            setState(() {
-              firebaseUser = user;
-            });
-
-            print("getting id token");
-            //IdTokenResult? tokenResult = await firebase.FirebaseAuth.instance.currentUser?.getIdTokenResult();
-            //print(tokenResult?.token);
-
-      }
-    });
   }
 
 
@@ -63,14 +36,6 @@ class _TestPageState extends State<TestPage> {
     pattern.allMatches(text).forEach((match) => print(match.group(0)));
   }
 
-  void getIdToken()async{
-    print("getIdToken");
-    IdTokenResult? tokenResult = await firebase.FirebaseAuth.instance.currentUser?.getIdTokenResult();
-    print(tokenResult?.token);
-    print("log");
-    //log(tokenResult?.token ?? "token");
-    printWrapped(tokenResult?.token ?? "token");
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,10 +51,6 @@ class _TestPageState extends State<TestPage> {
           ListTile(
               title: Text("User Register"),
               onTap: _userRegister
-          ),
-          ListTile(
-              title: Text("Login with Google"),
-              onTap: _signInWithGoogle
           ),
           /*
           ListTile(
@@ -134,18 +95,6 @@ class _TestPageState extends State<TestPage> {
               title: Text("Splash Screen"),
               onTap: _splash
           ),
-          ListTile(
-              title: Text("Sign In With Google"),
-              onTap: _signInWithGoogle
-          ),
-          ListTile(
-              title: Text("Sign Out"),
-              onTap: signOut
-          ),
-          ListTile(
-              title: Text("Get Token"),
-              onTap: getIdToken
-          ),
         ],
       ),
     );
@@ -153,45 +102,6 @@ class _TestPageState extends State<TestPage> {
 
 
 
-  Future<bool> _signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
-
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
-
-    // Once signed in, return the UserCredential
-    firebase.UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
-
-    IdTokenResult? tokenResult = await firebase.FirebaseAuth.instance.currentUser?.getIdTokenResult();
-    print(tokenResult?.token);
-    String accessToken = tokenResult?.token ?? "accessToken";
-
-    // now we have idToken
-    // we can login with this idToken to our backend api
-
-    Dialogs.showLoadingDialog(context, _keyLoader);
-    bool status = await Provider.of<UserProvider>(context,listen:false).loginWithGooglePlz(accessToken: accessToken);
-    print("TestPage->login status $status");
-    Navigator.pop(context);
-    return status;
-  }
-  Future<void> signOut() async {
-    print("signOut");
-    await GoogleSignIn().signOut();
-    // FirebaseAuth.instance.signOut();
-    await FirebaseAuth.instance.signOut();
-
-    setState(() {
-      firebaseUser = null;
-    });
-  }
 
 
   void _loginWithEmail()async{
