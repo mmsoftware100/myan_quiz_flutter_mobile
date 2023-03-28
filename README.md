@@ -1,5 +1,10 @@
 # Myan Quiz Mobile App
 
+
+## 2023-03-21 Tue Bug List
+
+- [ ] Audio Message send api 
+- 
 ## 2023-03-20 Mon To Do List
 
 - [ ] Check up and running in Mobile
