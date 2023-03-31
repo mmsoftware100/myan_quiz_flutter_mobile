@@ -7,6 +7,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:92191459821:android:2243c8824a662e7e57ffe4",
+        "android_client_info": {
+          "package_name": "com.mmsoftware100.makingmoney"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "92191459821-irirj4cmbj9nl0hnqruk8t3b1348avuj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdmPyhrQMdZIEZyGsGv_9Q5NuGx_thPg8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "92191459821-irirj4cmbj9nl0hnqruk8t3b1348avuj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:92191459821:android:a07ac7568c5de4e557ffe4",
         "android_client_info": {
           "package_name": "com.mmsoftware100.myanquizv2"
@@ -22,7 +51,7 @@
           }
         },
         {
-          "client_id": "92191459821-irtdhmr3kn3vabou9rpqab9s1uman3re.apps.googleusercontent.com",
+          "client_id": "92191459821-irirj4cmbj9nl0hnqruk8t3b1348avuj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -35,7 +64,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "92191459821-irtdhmr3kn3vabou9rpqab9s1uman3re.apps.googleusercontent.com",
+              "client_id": "92191459821-irirj4cmbj9nl0hnqruk8t3b1348avuj.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

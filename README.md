@@ -1,5 +1,11 @@
 # Myan Quiz Mobile App
 
+##  Migration to original version
+
+- [ ] update package name
+- [ ] google signin auth integration with keystore
+- [ ] playstore keystore
+
 
 ## 2023-03-21 Tue Bug List
 
