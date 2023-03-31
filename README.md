@@ -7,6 +7,16 @@
 - [ ] playstore keystore
 
 
+
+Unhandled Exception: PlatformException(sign_in_failed, com.google.android.gms.common.api.ApiException: 10:
+
+Gradle Report မှာ Keystore 
+
+gradlew signingReport
+or
+./gradlew signingReport
+
+
 ## 2023-03-21 Tue Bug List
 
 - [ ] Audio Message send api 

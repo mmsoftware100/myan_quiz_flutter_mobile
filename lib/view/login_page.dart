@@ -329,72 +329,7 @@ class _LoginPageState extends State<LoginPage> {
                                 )),
                           ),
                         ]),
-                        Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
 
-                              //********Sing In with google account******
-                              CustomWidgets.socialButtonCircle(
-                                  googleColor, FontAwesomeIcons.googlePlusG,
-                                  iconColor: Colors.white,
-                                  //onTap: _signInWithGoogle
-
-                                  onTap: ()async{
-                                    print("Hello sign in with google");
-                                    bool status = await _signInWithGoogle();
-                                    if(status){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
-                                    }
-                                    else{
-                                      // alert to notify user for google account login failure
-                                      AwesomeDialog(
-                                        context: context,
-                                        dialogType: DialogType.warning,
-                                        borderSide: const BorderSide(
-                                          color: Colors.green,
-                                          width: 2,
-                                        ),
-                                        width: 280,
-                                        buttonsBorderRadius: const BorderRadius.all(
-                                          Radius.circular(2),
-                                        ),
-                                        dismissOnTouchOutside: true,
-                                        dismissOnBackKeyPress: false,
-                                        onDismissCallback: (type) {
-                                          ScaffoldMessenger.of(context).showSnackBar(
-                                            SnackBar(
-                                              content: Text('Try Again'),
-                                            ),
-                                          );
-                                        },
-                                        headerAnimationLoop: false,
-                                        animType: AnimType.bottomSlide,
-                                        title: 'SORRY',
-                                        desc: 'Something wrong with Google Login',
-                                        showCloseIcon: true,
-                                        // btnCancelOnPress: () {},
-                                        btnOkOnPress: () {},
-                                      ).show();
-                                    }
-                                  }
-                              ),
-                              // CustomWidgets.socialButtonCircle(
-                              //     whatsappColor, FontAwesomeIcons.whatsapp,
-                              //     iconColor: Colors.white, onTap: () {
-                              // }),
-                              CustomWidgets.socialButtonCircle(
-                                  appleColor,FontAwesomeIcons.apple,
-                                  iconColor: Colors.grey, onTap: () {
-                              }),
-                              CustomWidgets.socialButtonCircle(
-                                  facebookColor, FontAwesomeIcons.facebookF,
-                                  iconColor: Colors.white, onTap: () {
-                              }),
-                            ],
-                          ),
-                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -488,4 +423,74 @@ class _LoginPageState extends State<LoginPage> {
 
 
 
+/*
 
+Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+
+                              //********Sing In with google account******
+                              CustomWidgets.socialButtonCircle(
+                                  googleColor, FontAwesomeIcons.googlePlusG,
+                                  iconColor: Colors.white,
+                                  //onTap: _signInWithGoogle
+
+                                  onTap: ()async{
+                                    print("Hello sign in with google");
+                                    bool status = await _signInWithGoogle();
+                                    if(status){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
+                                    }
+                                    else{
+                                      // alert to notify user for google account login failure
+                                      AwesomeDialog(
+                                        context: context,
+                                        dialogType: DialogType.warning,
+                                        borderSide: const BorderSide(
+                                          color: Colors.green,
+                                          width: 2,
+                                        ),
+                                        width: 280,
+                                        buttonsBorderRadius: const BorderRadius.all(
+                                          Radius.circular(2),
+                                        ),
+                                        dismissOnTouchOutside: true,
+                                        dismissOnBackKeyPress: false,
+                                        onDismissCallback: (type) {
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                            SnackBar(
+                                              content: Text('Try Again'),
+                                            ),
+                                          );
+                                        },
+                                        headerAnimationLoop: false,
+                                        animType: AnimType.bottomSlide,
+                                        title: 'SORRY',
+                                        desc: 'Something wrong with Google Login',
+                                        showCloseIcon: true,
+                                        // btnCancelOnPress: () {},
+                                        btnOkOnPress: () {},
+                                      ).show();
+                                    }
+                                  }
+                              ),
+                              // CustomWidgets.socialButtonCircle(
+                              //     whatsappColor, FontAwesomeIcons.whatsapp,
+                              //     iconColor: Colors.white, onTap: () {
+                              // }),
+                              CustomWidgets.socialButtonCircle(
+                                  appleColor,FontAwesomeIcons.apple,
+                                  iconColor: Colors.grey, onTap: () {
+                              }),
+                              CustomWidgets.socialButtonCircle(
+                                  facebookColor, FontAwesomeIcons.facebookF,
+                                  iconColor: Colors.white, onTap: () {
+                              }),
+                            ],
+                          ),
+                        ),
+
+ */
+ */

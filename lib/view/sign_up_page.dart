@@ -310,31 +310,6 @@ class _SignUpPageState extends State<SignUpPage> {
                                 )),
                           ),
                         ]),
-                        Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-
-                              CustomWidgets.socialButtonCircle(
-                                  googleColor, FontAwesomeIcons.googlePlusG,
-                                  iconColor: Colors.white, onTap: () {
-                              }),
-                              // CustomWidgets.socialButtonCircle(
-                              //     whatsappColor, FontAwesomeIcons.whatsapp,
-                              //     iconColor: Colors.white, onTap: () {
-                              // }),
-                              CustomWidgets.socialButtonCircle(
-                                  appleColor,FontAwesomeIcons.apple,
-                                  iconColor: Colors.grey, onTap: () {
-                              }),
-                              CustomWidgets.socialButtonCircle(
-                                  facebookColor, FontAwesomeIcons.facebookF,
-                                  iconColor: Colors.white, onTap: () {
-                              }),
-                            ],
-                          ),
-                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -400,3 +375,33 @@ class _SignUpPageState extends State<SignUpPage> {
 
 
 }
+
+
+/*
+
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+
+                              CustomWidgets.socialButtonCircle(
+                                  googleColor, FontAwesomeIcons.googlePlusG,
+                                  iconColor: Colors.white, onTap: () {
+                              }),
+                              // CustomWidgets.socialButtonCircle(
+                              //     whatsappColor, FontAwesomeIcons.whatsapp,
+                              //     iconColor: Colors.white, onTap: () {
+                              // }),
+                              CustomWidgets.socialButtonCircle(
+                                  appleColor,FontAwesomeIcons.apple,
+                                  iconColor: Colors.grey, onTap: () {
+                              }),
+                              CustomWidgets.socialButtonCircle(
+                                  facebookColor, FontAwesomeIcons.facebookF,
+                                  iconColor: Colors.white, onTap: () {
+                              }),
+                            ],
+                          ),
+                        ),
+ */
