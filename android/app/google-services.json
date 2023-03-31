@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "92191459821",
-    "project_id": "myan-quiz",
-    "storage_bucket": "myan-quiz.appspot.com"
+    "project_number": "784560111392",
+    "project_id": "myan-quiz-175c4",
+    "storage_bucket": "myan-quiz-175c4.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:92191459821:android:a07ac7568c5de4e557ffe4",
+        "mobilesdk_app_id": "1:784560111392:android:046340f58a2ab372d6e145",
         "android_client_info": {
-          "package_name": "com.mmsoftware100.myanquizv2"
+          "package_name": "com.mmsoftware100.myanquizv3"
         }
       },
       "oauth_client": [
         {
-          "client_id": "92191459821-q9hgjtbd231l7aupb8ce1a38qaqsv31q.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.mmsoftware100.myanquizv2",
-            "certificate_hash": "0d5bf43e0fda401652abc7e7118a1982729a78af"
-          }
-        },
-        {
-          "client_id": "92191459821-irtdhmr3kn3vabou9rpqab9s1uman3re.apps.googleusercontent.com",
+          "client_id": "784560111392-5pc4uhf0klt5633ff60166j1893kgdkl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBdmPyhrQMdZIEZyGsGv_9Q5NuGx_thPg8"
+          "current_key": "AIzaSyDYSyn2qH-snx7E821UFA1re7WiAbG1FFI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "92191459821-irtdhmr3kn3vabou9rpqab9s1uman3re.apps.googleusercontent.com",
+              "client_id": "784560111392-5pc4uhf0klt5633ff60166j1893kgdkl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
