@@ -103,7 +103,6 @@ class _PreLoginPageState extends State<PreLoginPage> {
                           InkWell(
                             child: Text("Login", style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 18,
                               color: Colors.red
                             ),),
                             onTap: (){
