@@ -5,15 +5,15 @@
 Myan QUIZ PLAYSTORE မှာ ဘာအဆင်မေပြတာ ရှိလဲ?
 
 
-- [ ] Sign Up Form မှာ Name, Email နဲ့ Password ပဲ Required လုပ်ရန်။
-- [ ] Password Field က ေအာက်ို ကျ နေတယ်။
-- [ ] Password Field ကို နှစ်ခု ထားပြီး Text ကို hide ထားရန်။
-- [ ] Register Page မှာ Login စာေကြာင်းက ေအာက်ကို ကပ်ေနတယ်>  padding ထည့်ရန်။
+- [x] Sign Up Form မှာ Name, Email နဲ့ Password ပဲ Required လုပ်ရန်။
+- [x] Password Field က ေအာက်ို ကျ နေတယ်။
+- [x] Password Field ကို နှစ်ခု ထားပြီး Text ကို hide ထားရန်။
+- [x] Register Page မှာ Login စာေကြာင်းက ေအာက်ကို ကပ်ေနတယ်>  padding ထည့်ရန်။
 - [ ] Avatar Photo က ဘဲဉ ပုံဖြစ်ေနတယ်
 - [ ] More Page မှာ User Data အမှန် ပြရန်။
 - [ ] Auto Login ရရန်။
-- [ ] Forget Password နှိပ်လျှင် Dialog Box တက်လာပြီး Facebook Page ကတဆင့် ဆက်သွယ်ဖို့ ေပြာရန်။
-- [ ] Login ခလုပ်ကို နှိပ်လျှင် Form validation လုပ်ရန်။ (blank input, email input)
+- [x] Forget Password နှိပ်လျှင် Dialog Box တက်လာပြီး Facebook Page ကတဆင့် ဆက်သွယ်ဖို့ ေပြာရန်။
+- [x] Login ခလုပ်ကို နှိပ်လျှင် Form validation လုပ်ရန်။ (blank input, email input)
 
 ### Backend API
 

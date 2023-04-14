@@ -147,6 +147,86 @@ class _SignUpPageState extends State<SignUpPage> {
                         makeInput(txtController: _txtEmailController,myKeyBoardType: TextInputType.emailAddress,label: "Email"),
                         makeInput(txtController: _txtPhoneNumberController,myKeyBoardType: TextInputType.phone,label: "Phone Number"),
                         makeInput(txtController: _txtCityController,myKeyBoardType: TextInputType.text,label: "City"),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Age", style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black87
+                                ),),
+                                SizedBox(height: 5,),
+                                Container(
+                                  width: MediaQuery.of(context).size.width/3,
+                                  height: 35,
+                                  child: TextField(
+                                    controller: _txtAgeController,
+                                    keyboardType: TextInputType.number,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.grey)
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                //SizedBox(height: 16,)
+
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Text("Gender", style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black87
+                                ),),
+                                SizedBox(height: 5,),
+                                Container(
+                                  height: 35,
+                                  child: ToggleButton(
+                                    // width: 300.0,
+                                    // height: 60.0,
+                                    width: MediaQuery.of(context).size.width/3,
+                                    height: 50.0,
+                                    toggleBackgroundColor: Colors.white,
+                                    toggleBorderColor: (Colors.grey[350])!,
+                                    // toggleColor: (Colors.indigo[900])!,
+                                    toggleColor: Color(getColorHexFromStr('#9CCB5B')),
+                                    activeTextColor: Colors.white,
+                                    inactiveTextColor: Colors.grey,
+                                    leftDescription: 'ကျား',
+                                    rightDescription: 'မ',
+                                    onLeftToggleActive: () {
+                                      setState(() {
+                                        userGander == "Male";
+                                      });
+                                      print('left toggle activated');
+                                    },
+                                    onRightToggleActive: () {
+                                      setState(() {
+                                        userGander == "Female";
+                                      });
+                                      print('right toggle activated');
+                                    },
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                        SizedBox(height: 8.0,),
+                        /*
                         Flexible(
                           // height: 75,
                           child: Row(
@@ -228,6 +308,8 @@ class _SignUpPageState extends State<SignUpPage> {
                             ],
                           ),
                         ),
+
+                         */
                         makeInput(txtController: _txtPasswordController,myKeyBoardType: TextInputType.text,label: "Password"),
                         MaterialButton(
                           minWidth: double.infinity,
@@ -314,18 +396,20 @@ class _SignUpPageState extends State<SignUpPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("Already have an account?"),
+                            SizedBox(width: 8.0,),
                             InkWell(
                               child: Text("Log in",style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 18,
-                                  color: Colors.red
+                                  color: Colors.blue
                               ),),
                               onTap: (){
                                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginPage()));
                               },
                             ),
                           ],
-                        )
+                        ),
+                        SizedBox(height: 8.0,)
                       ],
                     ),
                   ),

@@ -235,11 +235,17 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               GestureDetector(
                                 onTap: () {
-
+                                  print("Forgot Password onTap");
+                                  // open dialog box
+                                  showSignUpStatusDialog(dialogType: DialogType.info,title: "Contact Us",description: "To reset your password, please contact via our official facebook page.");
                                 },
-                                child: const Text(
-                                  'Forgot password ?',
-                                  textAlign: TextAlign.center,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: const Text(
+                                    'Forgot password ?',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(color: Colors.blue),
+                                  ),
                                 ),
                               ),
 
@@ -251,11 +257,16 @@ class _LoginPageState extends State<LoginPage> {
                           // minWidth: MediaQuery.of(context).size.width/1.5,
                           height:40,
                           onPressed: ()async{
-                            String email = "admin@email.com"; //TODO: User ရိုက်ထည့်တဲ့ Input မှ ရယူရန်
-                            String password = "password"; //TODO: User ရိုက်ထည့်တဲ့ Input မှ ရယူရန်
+                            String email = _emailTextETextEditingController.text; // "admin@email.com"; //TODO: User ရိုက်ထည့်တဲ့ Input မှ ရယူရန်
+                            String password = _passwordTextETextEditingController.text; //"password"; //TODO: User ရိုက်ထည့်တဲ့ Input မှ ရယူရန်
+
+                            if(email.isEmpty || password.isEmpty){
+                              showSignUpStatusDialog(dialogType: DialogType.warning,title: "Data Required",description: "Enter email and password");
+                              return;
+                            }
                             // show loading indicator
                             Dialogs.showLoadingDialog(context, _keyLoader);
-                            bool status = await Provider.of<UserProvider>(context, listen:false).loginWithEmailPlz(email: _emailTextETextEditingController.text, password: _passwordTextETextEditingController.text);
+                            bool status = await Provider.of<UserProvider>(context, listen:false).loginWithEmailPlz(email: email, password: password);
                             // hide loading indicator
                             Navigator.pop(context);
 
@@ -334,11 +345,12 @@ class _LoginPageState extends State<LoginPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("Dont have an account?"),
+                            SizedBox(width: 8.0,),
                             InkWell(
                               child: Text("Sign Up",style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 18,
-                                  color: Colors.red
+                                  color: Colors.blue
                               ),),
                               onTap: (){
                                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SignUpPage()));
@@ -356,6 +368,40 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+
+
+  showSignUpStatusDialog({required dialogType,required title,required description}){
+    AwesomeDialog(
+      context: context,
+      // dialogType: DialogType.warning,
+      dialogType:  dialogType,
+      borderSide: const BorderSide(
+        color: Colors.green,
+        width: 2,
+      ),
+      width: 280,
+      buttonsBorderRadius: const BorderRadius.all(
+        Radius.circular(2),
+      ),
+      dismissOnTouchOutside: true,
+      dismissOnBackKeyPress: false,
+      onDismissCallback: (type) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Try Again'),
+          ),
+        );
+      },
+      headerAnimationLoop: false,
+      animType: AnimType.bottomSlide,
+      title: '$title',
+      desc: '$description',
+      showCloseIcon: true,
+      // btnCancelOnPress: () {},
+      btnOkOnPress: () {},
+    ).show();
   }
 
   Widget backgroudImage() {
