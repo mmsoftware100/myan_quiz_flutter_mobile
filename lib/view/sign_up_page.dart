@@ -236,9 +236,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           onPressed: ()async{
                             if(_txtNameController.text != ""
                             && _txtEmailController.text != ""
-                            && _txtPhoneNumberController.text != ""
-                            && _txtCityController.text != ""
-                            && _txtAgeController.text != ""
+                            //&& _txtPhoneNumberController.text != ""
+                            //&& _txtCityController.text != ""
+                            //&& _txtAgeController.text != ""
                             && _txtPasswordController.text != ""
                             ){
 
@@ -273,7 +273,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               }
                             }
                             else{
-                              showSignUpStatusDialog(dialogType: DialogType.info,title: "Sorry",description: "You need to fill all data");
+                              showSignUpStatusDialog(dialogType: DialogType.info,title: "Sorry",description: "You need to fill name, email and password");
                             }
 
 

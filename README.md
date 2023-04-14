@@ -11,6 +11,9 @@ Myan QUIZ PLAYSTORE မှာ ဘာအဆင်မေပြတာ ရှိလ�
 - [ ] Register Page မှာ Login စာေကြာင်းက ေအာက်ကို ကပ်ေနတယ်>  padding ထည့်ရန်။
 - [ ] Avatar Photo က ဘဲဉ ပုံဖြစ်ေနတယ်
 - [ ] More Page မှာ User Data အမှန် ပြရန်။
+- [ ] Auto Login ရရန်။
+- [ ] Forget Password နှိပ်လျှင် Dialog Box တက်လာပြီး Facebook Page ကတဆင့် ဆက်သွယ်ဖို့ ေပြာရန်။
+- [ ] Login ခလုပ်ကို နှိပ်လျှင် Form validation လုပ်ရန်။ (blank input, email input)
 
 ### Backend API
 
