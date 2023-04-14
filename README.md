@@ -1,5 +1,23 @@
 # Myan Quiz Mobile App
 
+## 2023-04-14
+
+Myan QUIZ PLAYSTORE မှာ ဘာအဆင်မေပြတာ ရှိလဲ?
+
+
+- [ ] Sign Up Form မှာ Name, Email နဲ့ Password ပဲ Required လုပ်ရန်။
+- [ ] Password Field က ေအာက်ို ကျ နေတယ်။
+- [ ] Password Field ကို နှစ်ခု ထားပြီး Text ကို hide ထားရန်။
+- [ ] Register Page မှာ Login စာေကြာင်းက ေအာက်ကို ကပ်ေနတယ်>  padding ထည့်ရန်။
+- [ ] Avatar Photo က ဘဲဉ ပုံဖြစ်ေနတယ်
+- [ ] More Page မှာ User Data အမှန် ပြရန်။
+
+### Backend API
+
+- [ ] User Statistics ေတွက အေသဖြစ်ေနတယ်။
+- [ ] Check Answer API ရဲ့ Response မှာ User Data က အ သေဖြစ်ေနတယ်။
+- [ ] Register API ဘက်က ထည့်ေပးလိုက်တဲ့ Gender , Age, City စတာေတွ insert မဖြစ်။
+
 ##  Migration to original version
 
 - [ ] update package name
