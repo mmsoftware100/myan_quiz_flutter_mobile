@@ -85,6 +85,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           SizedBox(height: 30,),
 
                           // Text("Khin Wint Wah",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                          // account display name
                           Text(Provider.of<UserProvider>(context,listen: true).user.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
 
                           SizedBox(height: 10,),
@@ -314,6 +315,19 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                 ),
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                      margin: EdgeInsets.fromLTRB(0, 16.0, 0, 0),
+                      padding: EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        shape: BoxShape.circle
+                      ),
+                      child: Icon(Icons.person, size: 80,)
+                  ),
+                )
+                /*
                 Container(
                   height: MediaQuery.of(context).size.height / 5.5,
                   width: double.infinity,
@@ -339,6 +353,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                 ),
+
+                 */
 
               ],
             ),
