@@ -172,13 +172,9 @@ class _LoginPageState extends State<LoginPage> {
                           const SizedBox(),
                           Align(
                             alignment: Alignment.bottomCenter,
-                            child: CircleAvatar(
-                              backgroundColor: Color(getColorHexFromStr('#9CCB5B')),
-                              radius: 80.0,
-                              child: ClipRRect(
-                                child: Image.asset('assets/images/myan_quiz_logo.png'),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
+                            child: ClipRRect(
+                              child: Image.asset('assets/images/myan_quiz_logo.png'),
+                              borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
                         ],
@@ -212,39 +208,36 @@ class _LoginPageState extends State<LoginPage> {
                         makeInput(
                             txtEditiongContorller: _passwordTextETextEditingController,
                             label: "Password"),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 6.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Checkbox(
-                                    value: _agreedToTOS,
-                                    onChanged: _setAgreedToTOS,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () => _setAgreedToTOS(!_agreedToTOS),
-                                    child: const Text(
-                                      'Remember me',
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              GestureDetector(
-                                onTap: () {
-
-                                },
-                                child: const Text(
-                                  'Forgot password ?',
-                                  textAlign: TextAlign.center,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Checkbox(
+                                  value: _agreedToTOS,
+                                  onChanged: _setAgreedToTOS,
                                 ),
-                              ),
+                                GestureDetector(
+                                  onTap: () => _setAgreedToTOS(!_agreedToTOS),
+                                  child: const Text(
+                                    'Remember me',
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            GestureDetector(
+                              onTap: () {
 
-                            ],
-                          ),
+                              },
+                              child: const Text(
+                                'Forgot password ?',
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+
+                          ],
                         ),
                         MaterialButton(
                           minWidth: double.infinity,
@@ -310,106 +303,111 @@ class _LoginPageState extends State<LoginPage> {
                             // color: Colors.white70
 
                           ),),),
-                        Row(children: <Widget>[
-                          Expanded(
-                            child: new Container(
-                                margin: const EdgeInsets.only(left: 10.0, right: 20.0),
-                                child: Divider(
-                                  color: Colors.black,
-                                  height: 36,
-                                )),
-                          ),
-                          Text("OR"),
-                          Expanded(
-                            child: new Container(
-                                margin: const EdgeInsets.only(left: 20.0, right: 10.0),
-                                child: Divider(
-                                  color: Colors.black,
-                                  height: 36,
-                                )),
-                          ),
-                        ]),
+                        // Row(children: <Widget>[
+                        //   Expanded(
+                        //     child: new Container(
+                        //         margin: const EdgeInsets.only(left: 10.0, right: 20.0),
+                        //         child: Divider(
+                        //           color: Colors.black,
+                        //           height: 36,
+                        //         )),
+                        //   ),
+                        //   Text("OR"),
+                        //   Expanded(
+                        //     child: new Container(
+                        //         margin: const EdgeInsets.only(left: 20.0, right: 10.0),
+                        //         child: Divider(
+                        //           color: Colors.black,
+                        //           height: 36,
+                        //         )),
+                        //   ),
+                        // ]),
+                        // Padding(
+                        //   padding: const EdgeInsets.all(20.0),
+                        //   child: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.center,
+                        //     children: [
+                        //
+                        //       //********Sing In with google account******
+                        //       CustomWidgets.socialButtonCircle(
+                        //           googleColor, FontAwesomeIcons.googlePlusG,
+                        //           iconColor: Colors.white,
+                        //           //onTap: _signInWithGoogle
+                        //
+                        //           onTap: ()async{
+                        //             print("Hello sign in with google");
+                        //             bool status = await _signInWithGoogle();
+                        //             if(status){
+                        //               Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
+                        //             }
+                        //             else{
+                        //               // alert to notify user for google account login failure
+                        //               AwesomeDialog(
+                        //                 context: context,
+                        //                 dialogType: DialogType.warning,
+                        //                 borderSide: const BorderSide(
+                        //                   color: Colors.green,
+                        //                   width: 2,
+                        //                 ),
+                        //                 width: 280,
+                        //                 buttonsBorderRadius: const BorderRadius.all(
+                        //                   Radius.circular(2),
+                        //                 ),
+                        //                 dismissOnTouchOutside: true,
+                        //                 dismissOnBackKeyPress: false,
+                        //                 onDismissCallback: (type) {
+                        //                   ScaffoldMessenger.of(context).showSnackBar(
+                        //                     SnackBar(
+                        //                       content: Text('Try Again'),
+                        //                     ),
+                        //                   );
+                        //                 },
+                        //                 headerAnimationLoop: false,
+                        //                 animType: AnimType.bottomSlide,
+                        //                 title: 'SORRY',
+                        //                 desc: 'Something wrong with Google Login',
+                        //                 showCloseIcon: true,
+                        //                 // btnCancelOnPress: () {},
+                        //                 btnOkOnPress: () {},
+                        //               ).show();
+                        //             }
+                        //           }
+                        //       ),
+                        //       // CustomWidgets.socialButtonCircle(
+                        //       //     whatsappColor, FontAwesomeIcons.whatsapp,
+                        //       //     iconColor: Colors.white, onTap: () {
+                        //       // }),
+                        //       CustomWidgets.socialButtonCircle(
+                        //           appleColor,FontAwesomeIcons.apple,
+                        //           iconColor: Colors.grey, onTap: () {
+                        //       }),
+                        //       CustomWidgets.socialButtonCircle(
+                        //           facebookColor, FontAwesomeIcons.facebookF,
+                        //           iconColor: Colors.white, onTap: () {
+                        //       }),
+                        //     ],
+                        //   ),
+                        // ),
                         Padding(
-                          padding: const EdgeInsets.all(20.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-
-                              //********Sing In with google account******
-                              CustomWidgets.socialButtonCircle(
-                                  googleColor, FontAwesomeIcons.googlePlusG,
-                                  iconColor: Colors.white,
-                                  //onTap: _signInWithGoogle
-
-                                  onTap: ()async{
-                                    print("Hello sign in with google");
-                                    bool status = await _signInWithGoogle();
-                                    if(status){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
-                                    }
-                                    else{
-                                      // alert to notify user for google account login failure
-                                      AwesomeDialog(
-                                        context: context,
-                                        dialogType: DialogType.warning,
-                                        borderSide: const BorderSide(
-                                          color: Colors.green,
-                                          width: 2,
-                                        ),
-                                        width: 280,
-                                        buttonsBorderRadius: const BorderRadius.all(
-                                          Radius.circular(2),
-                                        ),
-                                        dismissOnTouchOutside: true,
-                                        dismissOnBackKeyPress: false,
-                                        onDismissCallback: (type) {
-                                          ScaffoldMessenger.of(context).showSnackBar(
-                                            SnackBar(
-                                              content: Text('Try Again'),
-                                            ),
-                                          );
-                                        },
-                                        headerAnimationLoop: false,
-                                        animType: AnimType.bottomSlide,
-                                        title: 'SORRY',
-                                        desc: 'Something wrong with Google Login',
-                                        showCloseIcon: true,
-                                        // btnCancelOnPress: () {},
-                                        btnOkOnPress: () {},
-                                      ).show();
-                                    }
-                                  }
+                              Text("Dont have an account?"),
+                              InkWell(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left:8.0),
+                                  child: Text("Sign Up",style: TextStyle(
+                                      // fontWeight: FontWeight.w600,
+                                      color: Colors.red
+                                  ),),
+                                ),
+                                onTap: (){
+                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SignUpPage()));
+                                },
                               ),
-                              // CustomWidgets.socialButtonCircle(
-                              //     whatsappColor, FontAwesomeIcons.whatsapp,
-                              //     iconColor: Colors.white, onTap: () {
-                              // }),
-                              CustomWidgets.socialButtonCircle(
-                                  appleColor,FontAwesomeIcons.apple,
-                                  iconColor: Colors.grey, onTap: () {
-                              }),
-                              CustomWidgets.socialButtonCircle(
-                                  facebookColor, FontAwesomeIcons.facebookF,
-                                  iconColor: Colors.white, onTap: () {
-                              }),
                             ],
                           ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Dont have an account?"),
-                            InkWell(
-                              child: Text("Sign Up",style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 18,
-                                  color: Colors.red
-                              ),),
-                              onTap: (){
-                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SignUpPage()));
-                              },
-                            ),
-                          ],
                         )
                       ],
                     ),

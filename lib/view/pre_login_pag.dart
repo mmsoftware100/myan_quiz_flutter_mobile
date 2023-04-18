@@ -131,7 +131,7 @@ class _PreLoginPageState extends State<PreLoginPage> {
                           padding: const EdgeInsets.only(left:8.0),
                           child: InkWell(
                             child: Text("Login", style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                // fontWeight: FontWeight.w600,
                               color: Colors.red
                             ),),
                             onTap: (){
