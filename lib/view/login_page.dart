@@ -389,11 +389,11 @@ class _LoginPageState extends State<LoginPage> {
                         //   ),
                         // ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.only(top:18.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Dont have an account?"),
+                              Text("Don't have an account?"),
                               InkWell(
                                 child: Padding(
                                   padding: const EdgeInsets.only(left:8.0),
