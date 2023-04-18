@@ -128,7 +128,7 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                   ListView(
                     children: [
                       SizedBox(
-                        height: MediaQuery.of(context).size.height/7,
+                        height: MediaQuery.of(context).size.height/25,
                       ),
                       Stack(
                         children: [
@@ -139,7 +139,8 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                               child: Column(
                                 children: [
                                   SizedBox(
-                                    height: 50,
+                                    // height: 50,
+                                    height: MediaQuery.of(context).size.height/8.5,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
@@ -171,7 +172,7 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                                     ),
                                   ),
                                   SizedBox(
-                                    height: 50,
+                                    height: 20,
                                   ),
                                   Text("Question: 11/20",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
                                   SizedBox(
@@ -230,7 +231,7 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                                 backgroundGradient: null,
 
                                 // Border Thickness of the Countdown Ring.
-                                strokeWidth: 20.0,
+                                strokeWidth: 15.0,
 
                                 // Begin and end contours with a flat edge and no extension.
                                 strokeCap: StrokeCap.round,
