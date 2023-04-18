@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
@@ -94,7 +95,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Column(
                                     children: [
@@ -117,7 +118,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       SizedBox(height: 5,),
 
                                       // Text("ပညာသင်",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),)
-                                      Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.rank,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),),
+                                      Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.rank,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
 
                                     ],
                                   ),
@@ -174,14 +175,17 @@ class _ProfilePageState extends State<ProfilePage> {
                               padding: const EdgeInsets.all(8.0),
                               child: Column(
                                 children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text("Level"),
-                                      // Text("22"),
-                                      Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.nextLevel.toString()),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top:8.0),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Text("Level"),
+                                        // Text("22"),
+                                        Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.nextLevel.toString()),
 
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                   Container(
                                     margin: EdgeInsets.symmetric(vertical: 20),
@@ -211,7 +215,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
                                                 Text("Total"),
                                                 Text("Passed"),
@@ -226,7 +230,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
                                                 Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.questionTotal.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
                                                 Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.questionPassed.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
@@ -252,7 +256,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
                                                 Text("Earned"),
                                                 Text("Changed"),
@@ -267,7 +271,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
                                                 Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.coinTotal.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
                                                 Text(Provider.of<UserProvider>(context,listen: true).user.userStatistics.coinExchanged.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
@@ -315,7 +319,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 Container(
-                  height: MediaQuery.of(context).size.height / 5.5,
+                  height: MediaQuery.of(context).size.height / 6.5,
                   width: double.infinity,
                   color: Colors.transparent,
                   child: Padding(
@@ -324,9 +328,23 @@ class _ProfilePageState extends State<ProfilePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const SizedBox(),
-                        Align(
-                          alignment: Alignment.bottomCenter,
+                        Provider.of<UserProvider>(context,listen: true).user.photoUrl != "photoUrl"?
+                        Align(alignment: Alignment.bottomCenter,
                           child: CircleAvatar(
+                            backgroundColor: Color(getColorHexFromStr('#9CCB5B')),
+                            radius: 60.0,
+                            child: AspectRatio(
+                              aspectRatio: 1,
+                              child: ClipOval(
+                                child: CachedNetworkImage(
+                                  imageUrl: Provider.of<UserProvider>(context,listen: true).user.photoUrl,
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                            :Align(alignment: Alignment.bottomCenter, child: CircleAvatar(
                             backgroundColor: Color(getColorHexFromStr('#9CCB5B')),
                             radius: 60.0,
                             child: ClipRRect(
