@@ -39,85 +39,113 @@ class _PreLoginPageState extends State<PreLoginPage> {
     return Scaffold(
       backgroundColor: Color(getColorHexFromStr('#48CEAD')),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height,
-            //padding: EdgeInsets.symmetric(horizontal: 30,vertical: 30),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Let's get started!",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30,color: Colors.white),
+        child: Container(
+          width: double.infinity,
+          height: MediaQuery.of(context).size.height,
+          //padding: EdgeInsets.symmetric(horizontal: 30,vertical: 30),
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 5,
+                  ),
+                  Text(
+                    "Let's get started!",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30,color: Colors.white),
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height / 10,),
+                  Container(
+                    height: MediaQuery.of(context).size.height/2.5,
+                    decoration: BoxDecoration(
+                        image:DecorationImage(image: AssetImage('assets/images/myan_quiz_logo.png'))
                     ),
-                    // SizedBox(height: 20,),
-                    Container(
-                      height: MediaQuery.of(context).size.height/2.5,
-                      decoration: BoxDecoration(
-                          image:DecorationImage(image: AssetImage('assets/images/myan_quiz_logo.png'))
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "သင့်တစ်နေ့တာအတွက် ပညာ နဲ့ ဥစ္စာ ကို Myan Quiz မှာရှာပါ။",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14,color: Colors.white,),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: MaterialButton(
-                        // minWidth: double.infinity,
-                        minWidth: MediaQuery.of(context).size.width/1.5,
-                        height:40,
-                        onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpPage()));
-                        },
-                        // color: Colors.indigoAccent[400],
-                        color: Color(getColorHexFromStr('#FFCE55')),
-                        shape: RoundedRectangleBorder(
-                            // side: BorderSide(
-                            //   color: Colors.black,
-                            // ),
-                            borderRadius: BorderRadius.circular(10)
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children:[
+                        Text(
+                          "သင့်တစ်နေ့တာအတွက် ",
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14,color: Colors.white,),
+                          textAlign: TextAlign.center,
                         ),
-                        child: Text("Sign up",style: TextStyle(
-                            fontWeight: FontWeight.w600,fontSize: 16,
-                            // color: Colors.white70
+                        Text(
+                          "ပညာ ",
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14,color: Colors.yellow,),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          "နဲ့ ",
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14,color: Colors.white,),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          "ဥစ္စာ ",
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14,color: Colors.yellow,),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          "ကို Myan Quiz မှာရှာပါ။",
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14,color: Colors.white,),
+                          textAlign: TextAlign.center,
+                        ),
+                      ]
+                    )
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: MaterialButton(
+                      // minWidth: double.infinity,
+                      minWidth: MediaQuery.of(context).size.width/1.5,
+                      height:40,
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpPage()));
+                      },
+                      // color: Colors.indigoAccent[400],
+                      color: Color(getColorHexFromStr('#FFCE55')),
+                      shape: RoundedRectangleBorder(
+                          // side: BorderSide(
+                          //   color: Colors.black,
+                          // ),
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      child: Text("Sign up",style: TextStyle(
+                          fontWeight: FontWeight.w600,fontSize: 16,
+                          // color: Colors.white70
 
-                        ),),),
-                    ),
-                    // SizedBox(height: 20,),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Already have an account? "),
-                          InkWell(
+                      ),),),
+                  ),
+                  // SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Already have an account? "),
+                        Padding(
+                          padding: const EdgeInsets.only(left:8.0),
+                          child: InkWell(
                             child: Text("Login", style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 18,
                               color: Colors.red
                             ),),
                             onTap: (){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
                             },
                           ),
-                        ],
-                      ),
-                    )
+                        ),
+                      ],
+                    ),
+                  )
 
-                  ],
-                ),
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
