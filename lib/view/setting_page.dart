@@ -2,6 +2,9 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:myan_quiz/view/leader_board_page.dart';
 import 'package:myan_quiz/view/splash_screen_page.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/user_provider.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
@@ -71,8 +74,7 @@ class _SettingPageState extends State<SettingPage> {
                           SizedBox(height: 10,),
                           ListTile(
                             leading: Icon(Icons.account_circle,color: Color(getColorHexFromStr('#48CEAD')),),
-                            title: Text("Khin Wint Wah",
-                              // style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
+                            title: Text(Provider.of<UserProvider>(context,listen: false).user.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
                             ),
                           ),
                           ListTile(

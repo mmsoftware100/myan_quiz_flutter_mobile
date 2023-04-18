@@ -86,7 +86,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           SizedBox(height: 30,),
 
                           // Text("Khin Wint Wah",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
-                          Text(Provider.of<UserProvider>(context,listen: true).user.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                          Text(Provider.of<UserProvider>(context,listen: false).user.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
 
                           SizedBox(height: 10,),
                           Card(
@@ -328,7 +328,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const SizedBox(),
-                        Provider.of<UserProvider>(context,listen: true).user.photoUrl != "photoUrl"?
+                        Provider.of<UserProvider>(context,listen: false).user.photoUrl != "photoUrl"?
                         Align(alignment: Alignment.bottomCenter,
                           child: CircleAvatar(
                             backgroundColor: Color(getColorHexFromStr('#9CCB5B')),
