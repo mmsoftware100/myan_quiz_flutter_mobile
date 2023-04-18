@@ -174,7 +174,7 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                                   SizedBox(
                                     height: 20,
                                   ),
-                                  Text("Question: 11/20",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+                                  Text("Question: NA/NA",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
                                   SizedBox(
                                     height: 50,
                                   ),
