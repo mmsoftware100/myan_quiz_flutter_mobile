@@ -2,7 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:myan_quiz/view/login_page.dart';
+import 'package:myan_quiz/view/playing_type_choose_page.dart';
 import 'package:myan_quiz/view/pre_login_pag.dart';
+
+import 'categories_chosen_page.dart';
 
 class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({Key? key}) : super(key: key);
@@ -20,7 +23,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     Timer(
         Duration(seconds: 3),
             () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => PreLoginPage()))
+            builder: (BuildContext context) => PlayingTypeChoosePage()))
     );
   }
 
