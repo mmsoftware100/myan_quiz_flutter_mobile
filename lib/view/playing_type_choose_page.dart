@@ -51,9 +51,9 @@ class _PlayingTypeChoosePageState extends State<PlayingTypeChoosePage> {
                       color: Colors.white,
                       borderRadius:
                       BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30))
-                      // BorderRadius.all(Radius.circular(30))
+                    // BorderRadius.all(Radius.circular(30))
                   ),
-                 child: Image.asset("assets/images/question_choose.jpg"),
+                  child: Image.asset("assets/images/question_choose.jpg"),
                 ),
 
                 Padding(
