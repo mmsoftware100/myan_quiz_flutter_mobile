@@ -17,6 +17,17 @@ class PlayingTypeChoosePage extends StatefulWidget {
 class _PlayingTypeChoosePageState extends State<PlayingTypeChoosePage> {
 
   final GlobalKey<State> _keyLoader = new GlobalKey<State>();
+  bool defaultAccessTokenAtatus = false;
+  Future<bool> requestAccessToken()async{
+     return await Provider.of<UserProvider>(context, listen:false).loginWithEmailPlz(email: "aung@gmail.com", password: "12345678");
+
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -63,16 +74,18 @@ class _PlayingTypeChoosePageState extends State<PlayingTypeChoosePage> {
 
                         // show loading indicator
                         Dialogs.showLoadingDialog(context, _keyLoader);
-
-                        String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
-                        bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
-
-                        // hide loading indicator
-                        Navigator.pop(context);
-
-                        if(status == true){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
+                        defaultAccessTokenAtatus = await requestAccessToken();
+                        if(defaultAccessTokenAtatus == true){
+                          String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                          bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
+                          // hide loading indicator
+                          Navigator.pop(context);
+                          if(status == true){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
+                          }
                         }
+
+
                       },
                     ),
                   ),
@@ -92,15 +105,18 @@ class _PlayingTypeChoosePageState extends State<PlayingTypeChoosePage> {
                         // show loading indicator
                         Dialogs.showLoadingDialog(context, _keyLoader);
 
-                        String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
-                        bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
-
-                        // hide loading indicator
-                        Navigator.pop(context);
-
-                        if(status == true){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
+                        defaultAccessTokenAtatus = await requestAccessToken();
+                        if(defaultAccessTokenAtatus == true){
+                          String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                          bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
+                          // hide loading indicator
+                          Navigator.pop(context);
+                          if(status == true){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
+                          }
                         }
+
+
 
                       },
                     ),
@@ -121,15 +137,17 @@ class _PlayingTypeChoosePageState extends State<PlayingTypeChoosePage> {
                         // show loading indicator
                         Dialogs.showLoadingDialog(context, _keyLoader);
 
-                        String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
-                        bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
-
-                        // hide loading indicator
-                        Navigator.pop(context);
-
-                        if(status == true){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
+                        defaultAccessTokenAtatus = await requestAccessToken();
+                        if(defaultAccessTokenAtatus == true){
+                          String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                          bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
+                          // hide loading indicator
+                          Navigator.pop(context);
+                          if(status == true){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
+                          }
                         }
+
 
                       },
                     ),

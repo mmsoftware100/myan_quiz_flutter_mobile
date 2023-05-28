@@ -7,9 +7,11 @@ import 'package:myan_quiz/providers/user_provider.dart';
 import 'package:myan_quiz/view/profile_page.dart';
 import 'package:myan_quiz/view/setting_page.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../domain/entities/answer.dart';
 import '../domain/entities/user.dart';
+import 'login_page.dart';
 
 class QuestionPageAnswer extends StatefulWidget {
   const QuestionPageAnswer({Key? key}) : super(key: key);
@@ -51,6 +53,7 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
 
   bool shouldShowResult = false;
   bool resultIsTrue = false;
+
 
   @override
   void initState() {
@@ -97,6 +100,7 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
   Widget _answerCard({required Answer answer, required bool correct}){
     return Card();
   }
+
   @override
   Widget build(BuildContext context) {
 
@@ -440,9 +444,48 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                             padding: const EdgeInsets.only(bottom: 28.0,right: 45),
                             child: InkWell(
                                 child: Text("Next",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
-                              onTap: (){
+                              onTap: ()async{
                                   // _controller.start();
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
+
+                                String? userNameFromSF = await Provider.of<UserProvider>(context, listen: false).getUserNameFromSF();
+                                print("Hey .."+userNameFromSF!);
+                                AwesomeDialog(
+                                  context: context,
+                                  dialogType: DialogType.warning,
+                                  borderSide: const BorderSide(
+                                    color: Colors.green,
+                                    width: 2,
+                                  ),
+                                  width: 280,
+                                  buttonsBorderRadius: const BorderRadius.all(
+                                    Radius.circular(2),
+                                  ),
+                                  dismissOnTouchOutside: true,
+                                  dismissOnBackKeyPress: false,
+                                  onDismissCallback: (type) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text('Dismissed by $type'),
+                                      ),
+                                    );
+                                  },
+                                  headerAnimationLoop: false,
+                                  animType: AnimType.bottomSlide,
+                                  title: 'Alert',
+                                  desc: 'Do you want to collect point',
+                                  showCloseIcon: true,
+                                  btnCancelOnPress: () {},
+                                  btnOkOnPress: () {
+                                    if(userNameFromSF == ""){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+                                    }
+                                    else{
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
+                                    }
+                                  },
+                                ).show();
+
+
                               },
                             ),
                           )

@@ -6,6 +6,7 @@ import 'package:myan_quiz/domain/entities/user.dart';
 import 'package:myan_quiz/domain/repositories/user_repository.dart';
 import 'package:myan_quiz/domain/usecases/login_with_email.dart';
 import 'package:myan_quiz/domain/usecases/login_with_google.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/error/failures.dart';
 import '../domain/usecases/user_login.dart';
@@ -138,5 +139,12 @@ class UserProvider extends ChangeNotifier{
     );
   }
 
+
+  Future<String?> getUserNameFromSF()async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    //Return String
+    String stringValue = prefs.getString('UserName')??"";
+    return stringValue;
+  }
 }
 
