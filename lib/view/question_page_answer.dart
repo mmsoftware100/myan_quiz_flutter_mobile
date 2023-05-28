@@ -476,15 +476,17 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                                   desc: 'Do you want to collect point',
                                   showCloseIcon: true,
                                   btnCancelOnPress: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>PlayingTypeChoosePage()));
-
+                                    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                                        PlayingTypeChoosePage()), (Route<dynamic> route) => false);
                                   },
                                   btnOkOnPress: () {
                                     if(userNameFromSF == ""){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+                                      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                                          LoginPage()), (Route<dynamic> route) => false);
                                     }
                                     else{
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
+                                      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                                          ProfilePage()), (Route<dynamic> route) => false);
                                     }
                                   },
                                 ).show();
