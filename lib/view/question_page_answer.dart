@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myan_quiz/providers/game_play_provider.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
+import 'package:myan_quiz/view/playing_type_choose_page.dart';
 import 'package:myan_quiz/view/profile_page.dart';
 import 'package:myan_quiz/view/setting_page.dart';
 import 'package:provider/provider.dart';
@@ -474,7 +475,10 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                                   title: 'Alert',
                                   desc: 'Do you want to collect point',
                                   showCloseIcon: true,
-                                  btnCancelOnPress: () {},
+                                  btnCancelOnPress: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>PlayingTypeChoosePage()));
+
+                                  },
                                   btnOkOnPress: () {
                                     if(userNameFromSF == ""){
                                       Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
@@ -484,7 +488,6 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                                     }
                                   },
                                 ).show();
-
 
                               },
                             ),
