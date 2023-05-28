@@ -146,5 +146,10 @@ class UserProvider extends ChangeNotifier{
     String stringValue = prefs.getString('UserName')??"";
     return stringValue;
   }
+
+  createUserNameToSF(String userName)async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('UserName', userName);
+  }
 }
 

@@ -450,46 +450,47 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
 
                                 String? userNameFromSF = await Provider.of<UserProvider>(context, listen: false).getUserNameFromSF();
                                 print("Hey .."+userNameFromSF!);
-                                AwesomeDialog(
-                                  context: context,
-                                  dialogType: DialogType.warning,
-                                  borderSide: const BorderSide(
-                                    color: Colors.green,
-                                    width: 2,
-                                  ),
-                                  width: 280,
-                                  buttonsBorderRadius: const BorderRadius.all(
-                                    Radius.circular(2),
-                                  ),
-                                  dismissOnTouchOutside: true,
-                                  dismissOnBackKeyPress: false,
-                                  onDismissCallback: (type) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text('Dismissed by $type'),
-                                      ),
-                                    );
-                                  },
-                                  headerAnimationLoop: false,
-                                  animType: AnimType.bottomSlide,
-                                  title: 'Alert',
-                                  desc: 'Do you want to collect point',
-                                  showCloseIcon: true,
-                                  btnCancelOnPress: () {
-                                    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                                        PlayingTypeChoosePage()), (Route<dynamic> route) => false);
-                                  },
-                                  btnOkOnPress: () {
-                                    if(userNameFromSF == ""){
+                                if(userNameFromSF == ""){
+                                  AwesomeDialog(
+                                    context: context,
+                                    dialogType: DialogType.warning,
+                                    borderSide: const BorderSide(
+                                      color: Colors.green,
+                                      width: 2,
+                                    ),
+                                    width: 280,
+                                    buttonsBorderRadius: const BorderRadius.all(
+                                      Radius.circular(2),
+                                    ),
+                                    dismissOnTouchOutside: true,
+                                    dismissOnBackKeyPress: false,
+                                    onDismissCallback: (type) {
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                          content: Text('Dismissed by $type'),
+                                        ),
+                                      );
+                                    },
+                                    headerAnimationLoop: false,
+                                    animType: AnimType.bottomSlide,
+                                    title: 'Alert',
+                                    desc: 'Do you want to collect points',
+                                    showCloseIcon: true,
+                                    btnCancelOnPress: () {
+                                      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                                          PlayingTypeChoosePage(userNameFromSF)), (Route<dynamic> route) => false);
+                                    },
+                                    btnOkOnPress: () {
                                       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
                                           LoginPage()), (Route<dynamic> route) => false);
-                                    }
-                                    else{
-                                      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                                          ProfilePage()), (Route<dynamic> route) => false);
-                                    }
-                                  },
-                                ).show();
+                                    },
+                                  ).show();
+                                }
+                                else{
+                                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                                      ProfilePage()), (Route<dynamic> route) => false);
+                                }
+
 
                               },
                             ),

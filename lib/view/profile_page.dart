@@ -20,6 +20,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
 
+  String? userNameFromSF = "";
   int myCurrentBottomNavigationBarItemIndex = 0;
   int getColorHexFromStr(String colorStr) {
     colorStr = "FF" + colorStr;
@@ -292,8 +293,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                     minWidth: double.infinity,
                                     // minWidth: MediaQuery.of(context).size.width/1.5,
                                     height:40,
-                                    onPressed: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>PlayingTypeChoosePage()));
+                                    onPressed: ()async{
+                                      userNameFromSF = await Provider.of<UserProvider>(context, listen: false).getUserNameFromSF();
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>PlayingTypeChoosePage(userNameFromSF)));
                                     },
                                     // color: Colors.indigoAccent[400],
                                     color: Color(getColorHexFromStr('#FFCE55')),
@@ -404,7 +406,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 // ),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.bookmark_border),
-                    label: 'Center'
+                    label: 'Bill'
                 ),
 
                 // BottomNavigationBarItem(

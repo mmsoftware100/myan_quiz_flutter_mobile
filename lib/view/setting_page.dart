@@ -68,27 +68,13 @@ class _SettingPageState extends State<SettingPage> {
                           horizontal: 40
                       ),
                       child: Column(
-                        // mainAxisAlignment: MainAxisAlignment.center,
+                        // mainAxisAlignment: MainAxisAlignment.center,center
                         children: [
                           SizedBox(height: 30,),
-                          SizedBox(height: 10,),
-                          ListTile(
-                            leading: Icon(Icons.account_circle,color: Color(getColorHexFromStr('#48CEAD')),),
-                            title: Text(Provider.of<UserProvider>(context,listen: false).user.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
-                            ),
+                          SizedBox(height: 30,),
+                          Text(Provider.of<UserProvider>(context,listen: false).user.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
                           ),
-                          ListTile(
-                            leading: Icon(Icons.monetization_on,color: Color(getColorHexFromStr('#48CEAD')),),
-                            title: Text("10.5 K",
-                              // style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
-                            ),
-                          ),
-                          ListTile(
-                            leading: Icon(Icons.local_post_office,color: Color(getColorHexFromStr('#48CEAD')),),
-                            title: Text("MQ_007",
-                              // style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
-                            ),
-                          ),
+
                           ListTile(
                             leading: Icon(Icons.assessment,color: Color(getColorHexFromStr('#48CEAD')),),
                             title: Text("Level",
@@ -97,24 +83,6 @@ class _SettingPageState extends State<SettingPage> {
                             onTap: (){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>LeaderBoardPage()));
                             },
-                          ),
-                          ListTile(
-                            leading: Icon(Icons.wifi_protected_setup,color: Color(getColorHexFromStr('#48CEAD')),),
-                            title: Text("Exchange",
-                              // style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
-                            ),
-                          ),
-                          ListTile(
-                            leading: Icon(Icons.comment_bank,color: Color(getColorHexFromStr('#48CEAD')),),
-                            title: Text("About",
-                              // style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
-                            ),
-                          ),
-                          ListTile(
-                            leading: Icon(Icons.shield,color: Color(getColorHexFromStr('#48CEAD')),),
-                            title: Text("Terms and conditions",
-                              // style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
-                            ),
                           ),
                           ListTile(
                             leading: Icon(Icons.logout,color: Color(getColorHexFromStr('#48CEAD')),),

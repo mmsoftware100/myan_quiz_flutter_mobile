@@ -8,7 +8,8 @@ import 'package:provider/provider.dart';
 import '../utils/loader.dart';
 
 class PlayingTypeChoosePage extends StatefulWidget {
-  const PlayingTypeChoosePage({Key? key}) : super(key: key);
+  String? userNameFromSF;
+  PlayingTypeChoosePage(this.userNameFromSF);
 
   @override
   _PlayingTypeChoosePageState createState() => _PlayingTypeChoosePageState();
@@ -20,12 +21,12 @@ class _PlayingTypeChoosePageState extends State<PlayingTypeChoosePage> {
   bool defaultAccessTokenAtatus = false;
   Future<bool> requestAccessToken()async{
      return await Provider.of<UserProvider>(context, listen:false).loginWithEmailPlz(email: "aung@gmail.com", password: "12345678");
-
   }
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
   }
 
 
@@ -34,130 +35,144 @@ class _PlayingTypeChoosePageState extends State<PlayingTypeChoosePage> {
     return Scaffold(
       // backgroundColor: Colors.transparent,
       backgroundColor: Color(getColorHexFromStr('#48CEAD')),
-      body: SafeArea(
-        child: // try align widget
-        SingleChildScrollView(
-          child: Container(
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height,
-            child: Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  // height: 300,
-                  height: MediaQuery.of(context).size.height / 3.54,
-                  width: double.infinity,
-                  decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                      BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30))
-                    // BorderRadius.all(Radius.circular(30))
-                  ),
-                  child: Image.asset("assets/images/question_choose.jpg"),
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("ကစားမည့်ပုံစံကိုရွေးချယ်ပါ",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 60,
-                    width: MediaQuery.of(context).size.width/1.5,
-                    child: InkWell(
-                      child: Card(
-                        child: Center(child: Text("အလွတ်တမ်းကစားမည်")),
+      body: Stack(
+        alignment: Alignment.topLeft,
+        children: [
+          SafeArea(
+            child: // try align widget
+            SingleChildScrollView(
+              child: Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height,
+                child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      // height: 300,
+                      height: MediaQuery.of(context).size.height / 3.54,
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                          BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30))
+                        // BorderRadius.all(Radius.circular(30))
                       ),
-                      onTap: ()async{
-
-                        // show loading indicator
-                        Dialogs.showLoadingDialog(context, _keyLoader);
-                        defaultAccessTokenAtatus = await requestAccessToken();
-                        if(defaultAccessTokenAtatus == true){
-                          String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
-                          bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
-                          // hide loading indicator
-                          Navigator.pop(context);
-                          if(status == true){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
-                          }
-                        }
-
-
-                      },
+                      child: Image.asset("assets/images/question_choose.jpg"),
                     ),
-                  ),
-                ),
 
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 60,
-                    width: MediaQuery.of(context).size.width/1.5,
-                    child: InkWell(
-                      child: Card(
-                        child: Center(child: Text("မစ်ရှင်ဖြင့်ကစားမည်")),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("ကစားမည့်ပုံစံကိုရွေးချယ်ပါ",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 60,
+                        width: MediaQuery.of(context).size.width/1.5,
+                        child: InkWell(
+                          child: Card(
+                            child: Center(child: Text("အလွတ်တမ်းကစားမည်")),
+                          ),
+                          onTap: ()async{
+
+                            // show loading indicator
+                            Dialogs.showLoadingDialog(context, _keyLoader);
+                            defaultAccessTokenAtatus = await requestAccessToken();
+                            if(defaultAccessTokenAtatus == true){
+                              String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                              bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
+                              // hide loading indicator
+                              Navigator.pop(context);
+                              if(status == true){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
+                              }
+                            }
+
+
+                          },
+                        ),
                       ),
-                      onTap: ()async{
-
-                        // show loading indicator
-                        Dialogs.showLoadingDialog(context, _keyLoader);
-
-                        defaultAccessTokenAtatus = await requestAccessToken();
-                        if(defaultAccessTokenAtatus == true){
-                          String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
-                          bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
-                          // hide loading indicator
-                          Navigator.pop(context);
-                          if(status == true){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
-                          }
-                        }
-
-
-
-                      },
                     ),
-                  ),
-                ),
 
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 60,
-                    width: MediaQuery.of(context).size.width/1.5,
-                    child: InkWell(
-                      child: Card(
-                        child: Center(child: Text("စိန်ခေါ်ကစားမည်")),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 60,
+                        width: MediaQuery.of(context).size.width/1.5,
+                        child: InkWell(
+                          child: Card(
+                            child: Center(child: Text("မစ်ရှင်ဖြင့်ကစားမည်")),
+                          ),
+                          onTap: ()async{
+
+                            // show loading indicator
+                            Dialogs.showLoadingDialog(context, _keyLoader);
+
+                            defaultAccessTokenAtatus = await requestAccessToken();
+                            if(defaultAccessTokenAtatus == true){
+                              String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                              bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
+                              // hide loading indicator
+                              Navigator.pop(context);
+                              if(status == true){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
+                              }
+                            }
+
+
+
+                          },
+                        ),
                       ),
-                      onTap: ()async{
-
-                        // show loading indicator
-                        Dialogs.showLoadingDialog(context, _keyLoader);
-
-                        defaultAccessTokenAtatus = await requestAccessToken();
-                        if(defaultAccessTokenAtatus == true){
-                          String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
-                          bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
-                          // hide loading indicator
-                          Navigator.pop(context);
-                          if(status == true){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
-                          }
-                        }
-
-
-                      },
                     ),
-                  ),
-                )
 
-              ],
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 60,
+                        width: MediaQuery.of(context).size.width/1.5,
+                        child: InkWell(
+                          child: Card(
+                            child: Center(child: Text("စိန်ခေါ်ကစားမည်")),
+                          ),
+                          onTap: ()async{
+
+                            // show loading indicator
+                            Dialogs.showLoadingDialog(context, _keyLoader);
+
+                            defaultAccessTokenAtatus = await requestAccessToken();
+                            if(defaultAccessTokenAtatus == true){
+                              String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                              bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
+                              // hide loading indicator
+                              Navigator.pop(context);
+                              if(status == true){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
+                              }
+                            }
+
+
+                          },
+                        ),
+                      ),
+                    )
+
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
+          widget.userNameFromSF != "" ?Padding(
+            padding: const EdgeInsets.only(top: 28),
+            child: IconButton(
+              icon: Icon(Icons.arrow_back_ios_new),
+              onPressed: (){
+                Navigator.pop(context);
+              },
+            ),
+          ):Container()
+        ],
       ),
       /*
       bottomNavigationBar:  BottomNavigationBar(

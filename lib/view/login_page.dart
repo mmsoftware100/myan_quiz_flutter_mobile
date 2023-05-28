@@ -254,6 +254,7 @@ class _LoginPageState extends State<LoginPage> {
 
                             print("My status is "+status.toString());
                             if(status == true){
+                              Provider.of<UserProvider>(context, listen:false).createUserNameToSF(_emailTextETextEditingController.text);
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
                             }
                             else{

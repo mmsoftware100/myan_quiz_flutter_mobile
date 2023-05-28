@@ -23,7 +23,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     Timer(
         Duration(seconds: 3),
             () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => PlayingTypeChoosePage()))
+            builder: (BuildContext context) => PlayingTypeChoosePage("")))
     );
   }
 
