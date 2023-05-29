@@ -142,32 +142,32 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                InkWell(
-                                    child: Text("Gifts"),
-                                  onTap: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ChooseOperatorBillPage()));
-                                  },
-                                ),
-                                InkWell(
-                                    child: Text("Status"),
-                                  onTap: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>StatusPage()));
-                                  },
-                                ),
-                                InkWell(
-                                    child: Text("Matchs"),
-                                  onTap: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>MatchPage()));
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
+                          // Padding(
+                          //   padding: const EdgeInsets.all(8.0),
+                          //   child: Row(
+                          //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          //     children: [
+                          //       InkWell(
+                          //           child: Text("Gifts"),
+                          //         onTap: (){
+                          //             Navigator.push(context, MaterialPageRoute(builder: (context)=>ChooseOperatorBillPage()));
+                          //         },
+                          //       ),
+                          //       InkWell(
+                          //           child: Text("Status"),
+                          //         onTap: (){
+                          //             Navigator.push(context, MaterialPageRoute(builder: (context)=>StatusPage()));
+                          //         },
+                          //       ),
+                          //       InkWell(
+                          //           child: Text("Matchs"),
+                          //         onTap: (){
+                          //             Navigator.push(context, MaterialPageRoute(builder: (context)=>MatchPage()));
+                          //         },
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
 
                           Card(
                             elevation: 5,
@@ -330,7 +330,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const SizedBox(),
-                        Provider.of<UserProvider>(context,listen: false).user.photoUrl != "photoUrl"?
+                        Provider.of<UserProvider>(context,listen: false).user.photoUrl != "photo_url"?
                         Align(alignment: Alignment.bottomCenter,
                           child: CircleAvatar(
                             backgroundColor: Color(getColorHexFromStr('#9CCB5B')),

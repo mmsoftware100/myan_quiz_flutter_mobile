@@ -352,8 +352,6 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                                                 selectedIndex = e.id;
                                                 print("selectedIndex is "+selectedIndex.toString()+ " correct answer id is "+Provider.of<GamePlayProvider>(context, listen: false).question.correctAnswer.answerId.toString());
                                               });
-
-
                                               // submit answer
                                               String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
                                               int questionId = Provider.of<GamePlayProvider>(context, listen: false).question.id;
@@ -366,10 +364,8 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                                                 print("submit answer exp");
                                                 print(exp);
                                               }
-
                                               // show Button to go next
                                             }
-
 
                                           },
                                         )
