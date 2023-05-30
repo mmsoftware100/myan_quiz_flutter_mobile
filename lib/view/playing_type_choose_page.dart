@@ -52,28 +52,39 @@ class _PlayingTypeChoosePageState extends State<PlayingTypeChoosePage> {
                       height: MediaQuery.of(context).size.height / 3.54,
                       width: double.infinity,
                       decoration: const BoxDecoration(
-                          color: Colors.white,
+                          // color: Colors.white,
                           borderRadius:
-                          BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30))
+                          BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
                         // BorderRadius.all(Radius.circular(30))
+                          image: DecorationImage(
+                      image: AssetImage("assets/images/playing_type_choose_title_bg.jpg"),
+                fit: BoxFit.fill,
+              ),
                       ),
-                      child: Image.asset("assets/images/question_choose.jpg"),
+                      // child: Image.asset("assets/images/playing_type_choose_title_bg.jpg"),
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("ကစားမည့်ပုံစံကိုရွေးချယ်ပါ",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
+                        ),
+                      ),
                     ),
 
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text("ကစားမည့်ပုံစံကိုရွေးချယ်ပါ",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
-                    ),
+
 
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
-                        height: 60,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/button_bg_paper.png"),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        height: MediaQuery.of(context).size.height/6,
                         width: MediaQuery.of(context).size.width/1.5,
                         child: InkWell(
-                          child: Card(
-                            child: Center(child: Text("အလွတ်တမ်းကစားမည်")),
-                          ),
+                          child: Center(child: Text("အလွတ်တမ်းကစားမည်",style: TextStyle(color: Colors.white),)),
                           onTap: ()async{
 
                             // show loading indicator
@@ -98,12 +109,16 @@ class _PlayingTypeChoosePageState extends State<PlayingTypeChoosePage> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
-                        height: 60,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/button_bg_paper.png"),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        height: MediaQuery.of(context).size.height/6,
                         width: MediaQuery.of(context).size.width/1.5,
                         child: InkWell(
-                          child: Card(
-                            child: Center(child: Text("မစ်ရှင်ဖြင့်ကစားမည်")),
-                          ),
+                          child: Center(child: Text("မစ်ရှင်ဖြင့်ကစားမည်",style: TextStyle(color: Colors.white),)),
                           onTap: ()async{
 
                             // show loading indicator
@@ -130,12 +145,16 @@ class _PlayingTypeChoosePageState extends State<PlayingTypeChoosePage> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
-                        height: 60,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/button_bg_paper.png"),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        height: MediaQuery.of(context).size.height/6,
                         width: MediaQuery.of(context).size.width/1.5,
                         child: InkWell(
-                          child: Card(
-                            child: Center(child: Text("စိန်ခေါ်ကစားမည်")),
-                          ),
+                          child: Center(child: Text("စိန်ခေါ်ကစားမည်",style: TextStyle(color: Colors.white),)),
                           onTap: ()async{
 
                             // show loading indicator

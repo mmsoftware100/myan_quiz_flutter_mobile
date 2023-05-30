@@ -70,6 +70,9 @@ void main()async{
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              fontFamily: 'MyanmarSager'
+            ),
             home: SplashScreenPage(),
             // home: TestPage(),
           )
