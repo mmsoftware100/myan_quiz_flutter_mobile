@@ -477,8 +477,7 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                                           PlayingTypeChoosePage(userNameFromSF)), (Route<dynamic> route) => false);
                                     },
                                     btnOkOnPress: () {
-                                      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                                          LoginPage()), (Route<dynamic> route) => false);
+                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginPage()));
                                     },
                                   ).show();
                                 }

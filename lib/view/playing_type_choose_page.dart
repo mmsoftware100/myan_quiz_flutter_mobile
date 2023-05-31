@@ -58,14 +58,14 @@ class _PlayingTypeChoosePageState extends State<PlayingTypeChoosePage> {
                         // BorderRadius.all(Radius.circular(30))
                           image: DecorationImage(
                       image: AssetImage("assets/images/playing_type_choose_title_bg.jpg"),
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               ),
                       ),
                       // child: Image.asset("assets/images/playing_type_choose_title_bg.jpg"),
                       child: Center(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text("ကစားမည့်ပုံစံကိုရွေးချယ်ပါ",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
+                          child: Text("ကစားမည့်ပုံစံကိုရွေးချယ်ပါ",style: TextStyle(color: Colors.white70,fontWeight: FontWeight.bold,fontSize: 18),),
                         ),
                       ),
                     ),

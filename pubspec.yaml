@@ -145,7 +145,7 @@ flutter:
   fonts:
     - family: MyanmarSager
       fonts:
-        - asset: assets/fonts/MyanmarPhetsot.ttf
+        - asset: assets/fonts/NKSSmart3.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

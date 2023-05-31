@@ -26,6 +26,11 @@ class _CategoriesChosenPageState extends State<CategoriesChosenPage> {
         body: Stack(
           alignment: Alignment.topLeft,
           children: [
+            new Container(
+              decoration: new BoxDecoration(
+                image: new DecorationImage(image: new AssetImage("assets/images/choose_category_scaffold_bg.jpeg"), fit: BoxFit.cover,),
+              ),
+            ),
             SafeArea(
               child: // try align widget
               SingleChildScrollView(
@@ -33,25 +38,31 @@ class _CategoriesChosenPageState extends State<CategoriesChosenPage> {
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height,
                   child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        // height: 300,
-                        height: MediaQuery.of(context).size.height / 3.54,
-                        width: double.infinity,
-                        decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius:
-                            BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30))
-                          // BorderRadius.all(Radius.circular(30))
-                        ),
-                        child: Image.asset("assets/images/answer_baby.png"),
-                      ),
+                      // Container(
+                      //   // height: 300,
+                      //   height: MediaQuery.of(context).size.height / 3.54,
+                      //   width: double.infinity,
+                      //   decoration: const BoxDecoration(
+                      //       color: Colors.white,
+                      //       borderRadius:
+                      //       BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
+                      //     // BorderRadius.all(Radius.circular(30))
+                      //     image: DecorationImage(
+                      //       image: AssetImage("assets/images/choose_category_bg.jpeg"),
+                      //       fit: BoxFit.cover,
+                      //     ),
+                      //   ),
+                      //
+                      //   child: Padding(
+                      //     padding: const EdgeInsets.all(8.0),
+                      //     child: Center(child: Text("မေးခွန်းအမျိုးအစားတစ်ခုကိုရွေးချယ်ပါ",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)),
+                      //   ),
+                      //
+                      // ),
 
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text("မေးခွန်းအမျိုးအစားတစ်ခုကိုရွေးချယ်ပါ",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
-                      ),
+
 
 
 
@@ -84,13 +95,16 @@ class _CategoriesChosenPageState extends State<CategoriesChosenPage> {
                                 (e) => Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
-                                height: 60,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage("assets/images/button_bg_paper.png"),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                                height: MediaQuery.of(context).size.height/6,
                                 width: MediaQuery.of(context).size.width/1.5,
                                 child: InkWell(
-                                  child: Card(
-                                    child: Center(child: Text(e.name)),
-                                    //child: Center(child: Text("ကိုးကွယ်ရာဘာသာ")),
-                                  ),
+                                  child: Center(child: Text(e.name,style: TextStyle(color: Colors.white),)),
                                   onTap: ()async{
 
                                     // show loading indicator
@@ -159,7 +173,7 @@ class _CategoriesChosenPageState extends State<CategoriesChosenPage> {
             Padding(
               padding: const EdgeInsets.only(top: 28),
               child: IconButton(
-                icon: Icon(Icons.arrow_back_ios_new),
+                icon: Icon(Icons.arrow_back_ios_new,color: Colors.white,),
                 onPressed: (){
                   Navigator.pop(context);
                 },
