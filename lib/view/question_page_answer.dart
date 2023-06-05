@@ -179,7 +179,7 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                                   SizedBox(
                                     height: 20,
                                   ),
-                                  Text("Question: NA/NA",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+                                  Text("Question: 1/1",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
                                   SizedBox(
                                     height: 50,
                                   ),
@@ -434,64 +434,129 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                       SizedBox(
                         height: 20,
                       ),
-                      hasBeenSelected == false ? Container():Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 28.0,right: 45),
-                            child: InkWell(
-                                child: Text("Next",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
-                              onTap: ()async{
-                                  // _controller.start();
-
-                                String? userNameFromSF = await Provider.of<UserProvider>(context, listen: false).getUserNameFromSF();
-                                print("Hey .."+userNameFromSF!);
-                                if(userNameFromSF == ""){
-                                  AwesomeDialog(
-                                    context: context,
-                                    dialogType: DialogType.warning,
-                                    borderSide: const BorderSide(
-                                      color: Colors.green,
-                                      width: 2,
-                                    ),
-                                    width: 280,
-                                    buttonsBorderRadius: const BorderRadius.all(
-                                      Radius.circular(2),
-                                    ),
-                                    dismissOnTouchOutside: true,
-                                    dismissOnBackKeyPress: false,
-                                    // onDismissCallback: (type) {
-                                    //   ScaffoldMessenger.of(context).showSnackBar(
-                                    //     SnackBar(
-                                    //       content: Text('Dismissed by $type'),
-                                    //     ),
-                                    //   );
-                                    // },
-                                    headerAnimationLoop: false,
-                                    animType: AnimType.bottomSlide,
-                                    title: 'Alert',
-                                    desc: 'Do you want to collect points',
-                                    showCloseIcon: true,
-                                    btnCancelOnPress: () {
-                                      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                                          PlayingTypeChoosePage(userNameFromSF)), (Route<dynamic> route) => false);
-                                    },
-                                    btnOkOnPress: () {
-                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginPage()));
-                                    },
-                                  ).show();
-                                }
-                                else{
+                      hasBeenSelected == false ? Container():
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.end,
+                      //   children: [
+                      //     Padding(
+                      //       padding: const EdgeInsets.only(bottom: 28.0,right: 45),
+                      //       child: InkWell(
+                      //           child: Text("Next",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+                      //         onTap: ()async{
+                      //             // _controller.start();
+                      //
+                      //           String? userNameFromSF = await Provider.of<UserProvider>(context, listen: false).getUserNameFromSF();
+                      //           print("Hey .."+userNameFromSF!);
+                      //           if(userNameFromSF == ""){
+                      //             AwesomeDialog(
+                      //               context: context,
+                      //               dialogType: DialogType.warning,
+                      //               borderSide: const BorderSide(
+                      //                 color: Colors.green,
+                      //                 width: 2,
+                      //               ),
+                      //               width: 280,
+                      //               buttonsBorderRadius: const BorderRadius.all(
+                      //                 Radius.circular(2),
+                      //               ),
+                      //               dismissOnTouchOutside: true,
+                      //               dismissOnBackKeyPress: false,
+                      //               // onDismissCallback: (type) {
+                      //               //   ScaffoldMessenger.of(context).showSnackBar(
+                      //               //     SnackBar(
+                      //               //       content: Text('Dismissed by $type'),
+                      //               //     ),
+                      //               //   );
+                      //               // },
+                      //               headerAnimationLoop: false,
+                      //               animType: AnimType.bottomSlide,
+                      //               title: 'Alert',
+                      //               desc: 'Do you want to collect points',
+                      //               showCloseIcon: true,
+                      //               btnCancelOnPress: () {
+                      //                 Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                      //                     PlayingTypeChoosePage(userNameFromSF)), (Route<dynamic> route) => false);
+                      //               },
+                      //               btnOkOnPress: () {
+                      //                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginPage()));
+                      //               },
+                      //             ).show();
+                      //           }
+                      //           else{
+                      //             Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                      //                 ProfilePage()), (Route<dynamic> route) => false);
+                      //           }
+                      //
+                      //
+                      //         },
+                      //       ),
+                      //     )
+                      //   ],
+                      // ),
+                      Padding(
+                              padding: const EdgeInsets.only(bottom: 28.0,left:45,right: 45),
+                        child: MaterialButton(
+                          minWidth: double.infinity,
+                          // minWidth: MediaQuery.of(context).size.width/1.5,
+                          height:40,
+                          onPressed: ()async{
+                            String? userNameFromSF = await Provider.of<UserProvider>(context, listen: false).getUserNameFromSF();
+                            print("Hey .."+userNameFromSF!);
+                            if(userNameFromSF == ""){
+                              AwesomeDialog(
+                                context: context,
+                                dialogType: DialogType.warning,
+                                borderSide: const BorderSide(
+                                  color: Colors.green,
+                                  width: 2,
+                                ),
+                                width: 280,
+                                buttonsBorderRadius: const BorderRadius.all(
+                                  Radius.circular(2),
+                                ),
+                                dismissOnTouchOutside: true,
+                                dismissOnBackKeyPress: false,
+                                // onDismissCallback: (type) {
+                                //   ScaffoldMessenger.of(context).showSnackBar(
+                                //     SnackBar(
+                                //       content: Text('Dismissed by $type'),
+                                //     ),
+                                //   );
+                                // },
+                                headerAnimationLoop: false,
+                                animType: AnimType.bottomSlide,
+                                title: 'Alert',
+                                desc: 'Do you want to collect points',
+                                showCloseIcon: true,
+                                btnCancelOnPress: () {
                                   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                                      ProfilePage()), (Route<dynamic> route) => false);
-                                }
+                                      PlayingTypeChoosePage(userNameFromSF)), (Route<dynamic> route) => false);
+                                },
+                                btnOkOnPress: () {
+                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginPage()));
+                                },
+                              ).show();
+                            }
+                            else{
+                              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                                  ProfilePage()), (Route<dynamic> route) => false);
+                            }
+                          },
+                          // color: Colors.indigoAccent[400],
+                          color: Color(getColorHexFromStr('#FFCE55')),
+                          shape: RoundedRectangleBorder(
+                            // side: BorderSide(
+                            //   color: Colors.black,
+                            // ),
+                              borderRadius: BorderRadius.circular(10)
+                          ),
+                          child: Text("Next",style: TextStyle(
+                            fontWeight: FontWeight.w600,fontSize: 16,
+                            // color: Colors.white70
 
-
-                              },
-                            ),
-                          )
-                        ],
+                          ),),),
                       ),
+
                       SizedBox(
                         height: 20,
                       ),
