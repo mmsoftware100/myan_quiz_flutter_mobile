@@ -103,13 +103,13 @@ class _SettingPageState extends State<SettingPage> {
                                 ),
                                 dismissOnTouchOutside: true,
                                 dismissOnBackKeyPress: false,
-                                onDismissCallback: (type) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text('Log out $type'),
-                                    ),
-                                  );
-                                },
+                                // onDismissCallback: (type) {
+                                //   ScaffoldMessenger.of(context).showSnackBar(
+                                //     SnackBar(
+                                //       content: Text('Log out $type'),
+                                //     ),
+                                //   );
+                                // },
                                 headerAnimationLoop: false,
                                 animType: AnimType.bottomSlide,
                                 title: 'Attention',
