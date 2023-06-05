@@ -266,6 +266,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                     print("My Login status is "+status.toString());
                                     if(loginStatus == true){
                                       Provider.of<UserProvider>(context, listen:false).setEmailToSP(_txtEmailController.text);
+                                      Provider.of<UserProvider>(context, listen:false).setPasswordToSP(_txtPasswordController.text);
                                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
                                     }
                                     else{

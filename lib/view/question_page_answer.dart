@@ -500,9 +500,9 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                           // minWidth: MediaQuery.of(context).size.width/1.5,
                           height:40,
                           onPressed: ()async{
-                            String? userNameFromSF = await Provider.of<UserProvider>(context, listen: false).getEmailFromSP();
+                            String? userNameFromSF = await Provider.of<UserProvider>(context, listen: false).user.email;
                             print("Hey .."+userNameFromSF!);
-                            if(userNameFromSF == ""){
+                            if(userNameFromSF == "aung@email.com"){
                               AwesomeDialog(
                                 context: context,
                                 dialogType: DialogType.warning,
