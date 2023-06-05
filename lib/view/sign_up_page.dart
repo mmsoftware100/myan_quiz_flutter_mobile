@@ -239,7 +239,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               onPressed: ()async{
                                 if(_txtNameController.text != ""
                                     && _txtEmailController.text != ""
-                                    && _txtPhoneNumberController.text != ""
+                                    // && _txtPhoneNumberController.text != ""
                                     // && _txtCityController.text != ""
                                     // && _txtAgeController.text != ""
                                     && _txtPasswordController.text != ""
