@@ -1,5 +1,16 @@
 # Myan Quiz Mobile App
 
+
+## Errors
+
+Could not build the precompiled application for the device.
+Error (Xcode): File not found: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/arc/libarclite_iphoneos.a
+
+
+Error (Xcode): Linker command failed with exit code 1 (use -v to see invocation)
+
+
+
 ## TO Do List for iOS Launch
 
 - [x] မေးခွန်း နဲ့ အဖြေ စာမျက်နှာမှာ Question NA/NA အစား Question 1/1 လို့ ပြောင်းပြရန်။
