@@ -1,5 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:myan_quiz/components/custom_widgets.dart';
@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
 
   final GlobalKey<State> _keyLoader = new GlobalKey<State>();
   bool _agreedToTOS = true;
-  User? firebaseUser;
+  // User? firebaseUser;
   TextEditingController _emailTextETextEditingController = TextEditingController();
   TextEditingController _passwordTextETextEditingController = TextEditingController();
 
@@ -60,35 +60,35 @@ class _LoginPageState extends State<LoginPage> {
 
 
 
-  Future<bool> _signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
-
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
-
-    // Once signed in, return the UserCredential
-    UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
-
-    IdTokenResult? tokenResult = await FirebaseAuth.instance.currentUser?.getIdTokenResult();
-    print(tokenResult?.token);
-    String accessToken = tokenResult?.token ?? "accessToken";
-
-    // now we have idToken
-    // we can login with this idToken to our backend api
-
-    Dialogs.showLoadingDialog(context, _keyLoader);
-    bool status = await Provider.of<UserProvider>(context,listen:false).loginWithGooglePlz(accessToken: accessToken);
-    print("TestPage->login status $status");
-    Navigator.pop(context);
-    return status;
-  }
+  // Future<bool> _signInWithGoogle() async {
+  //   // Trigger the authentication flow
+  //   final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  //
+  //   // Obtain the auth details from the request
+  //   final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+  //
+  //   // Create a new credential
+  //   final credential = GoogleAuthProvider.credential(
+  //     accessToken: googleAuth?.accessToken,
+  //     idToken: googleAuth?.idToken,
+  //   );
+  //
+  //   // Once signed in, return the UserCredential
+  //   UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+  //
+  //   IdTokenResult? tokenResult = await FirebaseAuth.instance.currentUser?.getIdTokenResult();
+  //   print(tokenResult?.token);
+  //   String accessToken = tokenResult?.token ?? "accessToken";
+  //
+  //   // now we have idToken
+  //   // we can login with this idToken to our backend api
+  //
+  //   Dialogs.showLoadingDialog(context, _keyLoader);
+  //   bool status = await Provider.of<UserProvider>(context,listen:false).loginWithGooglePlz(accessToken: accessToken);
+  //   print("TestPage->login status $status");
+  //   Navigator.pop(context);
+  //   return status;
+  // }
 
 
 
@@ -96,20 +96,20 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    FirebaseAuth.instance
-        .authStateChanges()
-        .listen((User? user) {
-      if (user != null) {
-        print(user.email);
-        print(user.displayName);
-        print(user.photoURL);
-        print(user.getIdToken());
-        print(user.uid);
-        setState(() {
-          firebaseUser = user;
-        });
-      }
-    });
+    // FirebaseAuth.instance
+    //     .authStateChanges()
+    //     .listen((User? user) {
+    //   if (user != null) {
+    //     print(user.email);
+    //     print(user.displayName);
+    //     print(user.photoURL);
+    //     print(user.getIdToken());
+    //     print(user.uid);
+    //     setState(() {
+    //       firebaseUser = user;
+    //     });
+    //   }
+    // });
   }
 
   @override
