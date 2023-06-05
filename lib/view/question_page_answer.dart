@@ -2,6 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myan_quiz/data/const/const.dart';
 import 'package:myan_quiz/providers/game_play_provider.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
 import 'package:myan_quiz/view/playing_type_choose_page.dart';
@@ -502,7 +503,7 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                           onPressed: ()async{
                             String? userNameFromSF = await Provider.of<UserProvider>(context, listen: false).user.email;
                             print("Hey .."+userNameFromSF!);
-                            if(userNameFromSF == "aung@email.com"){
+                            if(userNameFromSF == defaultEmail ){
                               AwesomeDialog(
                                 context: context,
                                 dialogType: DialogType.warning,

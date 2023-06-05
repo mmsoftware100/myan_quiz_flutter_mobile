@@ -9,6 +9,7 @@ import 'package:myan_quiz/view/pre_login_pag.dart';
 import 'package:myan_quiz/view/profile_page.dart';
 import 'package:provider/provider.dart';
 
+import '../data/const/const.dart';
 import 'categories_chosen_page.dart';
 
 class SplashScreenPage extends StatefulWidget {
@@ -41,13 +42,13 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     String password =  await Provider.of<UserProvider>(context , listen: false).getPasswordFromSP();
 
     bool status = await Provider.of<UserProvider>(context, listen: false).loginWithEmailPlz(
-        email: email.isEmpty ? 'aung@email.com' : email,
-        password: password.isEmpty ? '12345678' : password
+        email: email.isEmpty ? defaultEmail : email,
+        password: password.isEmpty ? defaultPassword : password
     );
 
     if(status){
       // check default or custom
-      if(Provider.of<UserProvider>(context, listen: false).user.email == 'aung@email.com'){
+      if(Provider.of<UserProvider>(context, listen: false).user.email == defaultEmail ){
         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => PlayingTypeChoosePage("")));
       }
       else{

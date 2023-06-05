@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:myan_quiz/providers/game_play_provider.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
@@ -6,6 +7,7 @@ import 'package:myan_quiz/view/categories_chosen_page.dart';
 import 'package:provider/provider.dart';
 
 import '../utils/loader.dart';
+import 'login_page.dart';
 
 class PlayingTypeChoosePage extends StatefulWidget {
   String? userNameFromSF;
@@ -89,16 +91,54 @@ class _PlayingTypeChoosePageState extends State<PlayingTypeChoosePage> {
 
                             // show loading indicator
                             Dialogs.showLoadingDialog(context, _keyLoader);
+
+                            String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                            bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
+                            // hide loading indicator
+                            Navigator.pop(context);
+                            if(status == true){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
+                            }
+                            else{
+
+                              AwesomeDialog(
+                                context: context,
+                                dialogType: DialogType.warning,
+                                borderSide: const BorderSide(
+                                  color: Colors.green,
+                                  width: 2,
+                                ),
+                                width: 280,
+                                buttonsBorderRadius: const BorderRadius.all(
+                                  Radius.circular(2),
+                                ),
+                                dismissOnTouchOutside: true,
+                                dismissOnBackKeyPress: false,
+                                // onDismissCallback: (type) {
+                                //   ScaffoldMessenger.of(context).showSnackBar(
+                                //     SnackBar(
+                                //       content: Text('Dismissed by $type'),
+                                //     ),
+                                //   );
+                                // },
+                                headerAnimationLoop: false,
+                                animType: AnimType.bottomSlide,
+                                title: 'Please Login',
+                                desc: 'You need to login to proceed!!!',
+                                showCloseIcon: true,
+                                btnOkOnPress: () {
+                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginPage()));
+                                },
+                              ).show();
+                            }
+
+                            /*
                             defaultAccessTokenAtatus = await requestAccessToken();
                             if(defaultAccessTokenAtatus == true){
-                              String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
-                              bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
-                              // hide loading indicator
-                              Navigator.pop(context);
-                              if(status == true){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
-                              }
+
                             }
+
+                             */
 
 
                           },
@@ -121,21 +161,49 @@ class _PlayingTypeChoosePageState extends State<PlayingTypeChoosePage> {
                           child: Center(child: Text("မစ်ရှင်ဖြင့်ကစားမည်",style: TextStyle(color: Colors.white),)),
                           onTap: ()async{
 
+
                             // show loading indicator
                             Dialogs.showLoadingDialog(context, _keyLoader);
 
-                            defaultAccessTokenAtatus = await requestAccessToken();
-                            if(defaultAccessTokenAtatus == true){
-                              String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
-                              bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
-                              // hide loading indicator
-                              Navigator.pop(context);
-                              if(status == true){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
-                              }
+                            String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                            bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
+                            // hide loading indicator
+                            Navigator.pop(context);
+                            if(status == true){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
                             }
+                            else{
 
-
+                              AwesomeDialog(
+                                context: context,
+                                dialogType: DialogType.warning,
+                                borderSide: const BorderSide(
+                                  color: Colors.green,
+                                  width: 2,
+                                ),
+                                width: 280,
+                                buttonsBorderRadius: const BorderRadius.all(
+                                  Radius.circular(2),
+                                ),
+                                dismissOnTouchOutside: true,
+                                dismissOnBackKeyPress: false,
+                                // onDismissCallback: (type) {
+                                //   ScaffoldMessenger.of(context).showSnackBar(
+                                //     SnackBar(
+                                //       content: Text('Dismissed by $type'),
+                                //     ),
+                                //   );
+                                // },
+                                headerAnimationLoop: false,
+                                animType: AnimType.bottomSlide,
+                                title: 'Please Login',
+                                desc: 'You need to login to proceed!!!',
+                                showCloseIcon: true,
+                                btnOkOnPress: () {
+                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginPage()));
+                                },
+                              ).show();
+                            }
 
                           },
                         ),
@@ -157,20 +225,49 @@ class _PlayingTypeChoosePageState extends State<PlayingTypeChoosePage> {
                           child: Center(child: Text("စိန်ခေါ်ကစားမည်",style: TextStyle(color: Colors.white),)),
                           onTap: ()async{
 
+
                             // show loading indicator
                             Dialogs.showLoadingDialog(context, _keyLoader);
 
-                            defaultAccessTokenAtatus = await requestAccessToken();
-                            if(defaultAccessTokenAtatus == true){
-                              String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
-                              bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
-                              // hide loading indicator
-                              Navigator.pop(context);
-                              if(status == true){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
-                              }
+                            String accessToken = Provider.of<UserProvider>(context, listen: false).user.accessToken;
+                            bool status = await Provider.of<GamePlayProvider>(context, listen:false).selectCategories(accessToken: accessToken);
+                            // hide loading indicator
+                            Navigator.pop(context);
+                            if(status == true){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesChosenPage()));
                             }
+                            else{
 
+                              AwesomeDialog(
+                                context: context,
+                                dialogType: DialogType.warning,
+                                borderSide: const BorderSide(
+                                  color: Colors.green,
+                                  width: 2,
+                                ),
+                                width: 280,
+                                buttonsBorderRadius: const BorderRadius.all(
+                                  Radius.circular(2),
+                                ),
+                                dismissOnTouchOutside: true,
+                                dismissOnBackKeyPress: false,
+                                // onDismissCallback: (type) {
+                                //   ScaffoldMessenger.of(context).showSnackBar(
+                                //     SnackBar(
+                                //       content: Text('Dismissed by $type'),
+                                //     ),
+                                //   );
+                                // },
+                                headerAnimationLoop: false,
+                                animType: AnimType.bottomSlide,
+                                title: 'Please Login',
+                                desc: 'You need to login to proceed!!!',
+                                showCloseIcon: true,
+                                btnOkOnPress: () {
+                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginPage()));
+                                },
+                              ).show();
+                            }
 
                           },
                         ),

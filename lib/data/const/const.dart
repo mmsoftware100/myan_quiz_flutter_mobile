@@ -15,3 +15,7 @@ const String exchangeBillEndpoint = apiVersion + '/exchange/bills';
 const String selectBillEndpoint = apiVersion + '/bills';
 const String selectBillExchangesEndpoint = apiVersion + '/exchange/histories';
 const String selectTelephoneOperatorsEndpoint = apiVersion + '/phoneoperators';
+
+
+String defaultEmail = "aung@gmail.com";
+String defaultPassword = "12345678";

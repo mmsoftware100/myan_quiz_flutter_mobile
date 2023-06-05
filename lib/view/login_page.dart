@@ -255,7 +255,7 @@ class _LoginPageState extends State<LoginPage> {
                                       headerAnimationLoop: false,
                                       animType: AnimType.bottomSlide,
                                       title: 'SORRY',
-                                      desc: 'Please contact to software100.com',
+                                      desc: 'Please contact to Page',
                                       showCloseIcon: true,
                                       // btnCancelOnPress: () {},
                                       btnOkOnPress: () {},
