@@ -68,13 +68,13 @@ class _SignUpPageState extends State<SignUpPage> {
       ),
       dismissOnTouchOutside: true,
       dismissOnBackKeyPress: false,
-      onDismissCallback: (type) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Try Again'),
-          ),
-        );
-      },
+      // onDismissCallback: (type) {
+      //   ScaffoldMessenger.of(context).showSnackBar(
+      //     SnackBar(
+      //       content: Text('Try Again'),
+      //     ),
+      //   );
+      // },
       headerAnimationLoop: false,
       animType: AnimType.bottomSlide,
       title: '$title',
@@ -407,7 +407,6 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
         ),
         SizedBox(height: 16,)
-
       ],
     );
   }

@@ -460,13 +460,13 @@ class _QuestionPageAnswerState extends State<QuestionPageAnswer> {
                                     ),
                                     dismissOnTouchOutside: true,
                                     dismissOnBackKeyPress: false,
-                                    onDismissCallback: (type) {
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                          content: Text('Dismissed by $type'),
-                                        ),
-                                      );
-                                    },
+                                    // onDismissCallback: (type) {
+                                    //   ScaffoldMessenger.of(context).showSnackBar(
+                                    //     SnackBar(
+                                    //       content: Text('Dismissed by $type'),
+                                    //     ),
+                                    //   );
+                                    // },
                                     headerAnimationLoop: false,
                                     animType: AnimType.bottomSlide,
                                     title: 'Alert',

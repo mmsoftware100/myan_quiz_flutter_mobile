@@ -284,10 +284,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                       ),
                                     ),
                                   ),
-
-                                  SizedBox(
-                                    height: 10,
-                                  ),
+                                  //
+                                  // SizedBox(
+                                  //   height: 10,
+                                  // ),
 
                                   MaterialButton(
                                     minWidth: double.infinity,
@@ -366,9 +366,9 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ) :  myCurrentBottomNavigationBarItemIndex == 2 ? SettingPage(): BillsPage(),
       bottomNavigationBar: new Container(
-        height: 80.0,
+        // height: 80.0,0
         color: Colors.white,
-        padding: new EdgeInsets.only(top: 20.0),
+        // padding: new EdgeInsets.only(top: 20.0),
         child: new Theme(
 
           data: Theme.of(context).copyWith(
