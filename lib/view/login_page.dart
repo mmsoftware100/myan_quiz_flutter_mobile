@@ -232,6 +232,34 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
+                                    AwesomeDialog(
+                                      context: context,
+                                      dialogType: DialogType.warning,
+                                      borderSide: const BorderSide(
+                                        color: Colors.green,
+                                        width: 2,
+                                      ),
+                                      width: 280,
+                                      buttonsBorderRadius: const BorderRadius.all(
+                                        Radius.circular(2),
+                                      ),
+                                      dismissOnTouchOutside: true,
+                                      dismissOnBackKeyPress: false,
+                                      // onDismissCallback: (type) {
+                                      //   ScaffoldMessenger.of(context).showSnackBar(
+                                      //     SnackBar(
+                                      //       content: Text('Dismissed by $type'),
+                                      //     ),
+                                      //   );
+                                      // },
+                                      headerAnimationLoop: false,
+                                      animType: AnimType.bottomSlide,
+                                      title: 'SORRY',
+                                      desc: 'Please contact to software100.com',
+                                      showCloseIcon: true,
+                                      // btnCancelOnPress: () {},
+                                      btnOkOnPress: () {},
+                                    ).show();
 
                                   },
                                   child: const Text(
