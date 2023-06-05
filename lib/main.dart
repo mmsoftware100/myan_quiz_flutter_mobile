@@ -1,7 +1,7 @@
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
+//import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myan_quiz/providers/game_play_provider.dart';
 import 'package:myan_quiz/providers/reward_provider.dart';
 import 'package:myan_quiz/providers/user_provider.dart';
@@ -37,7 +37,7 @@ void main()async{
   print("WidgetsFlutterBinding.ensureInitialized");
   // await Firebase.initializeApp();
   try{
-    MobileAds.instance.initialize();
+    //MobileAds.instance.initialize();
 
     print("MobileAds.instance.initialize");
   }
