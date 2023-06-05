@@ -2,8 +2,10 @@
 
 ## TO Do List for iOS Launch
 
-- [ ] မေးခွန်း နဲ့ အဖြေ စာမျက်နှာမှာ Question NA/NA အစား Question 1/1 လို့ ပြောင်းပြရန်။
-- [ ] Next ကို Text Button အစား Elevated Button ဖြင့်ပြရန်။
+- [x] မေးခွန်း နဲ့ အဖြေ စာမျက်နှာမှာ Question NA/NA အစား Question 1/1 လို့ ပြောင်းပြရန်။
+- [x] Next ကို Text Button အစား Elevated Button ဖြင့်ပြရန်။
+- [ ] Snack Bar Message များ ဖျောက်ရန်။
+- [ ] Sign Up Form မှာ ဖုန်းနံပတ် ဖြုတ်ရန်]
 
 ## 2023-03-21 Tue Bug List
 
