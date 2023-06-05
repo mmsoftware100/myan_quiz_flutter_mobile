@@ -140,16 +140,28 @@ class UserProvider extends ChangeNotifier{
   }
 
 
-  Future<String?> getUserNameFromSF()async{
+  Future<String> getEmailFromSP()async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
-    String stringValue = prefs.getString('UserName')??"";
+    String stringValue = prefs.getString('email')??"";
     return stringValue;
   }
 
-  createUserNameToSF(String userName)async{
+  setEmailToSP(String email)async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('UserName', userName);
+    prefs.setString('email', email);
+  }
+
+  Future<String> getPasswordFromSP()async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    //Return String
+    String stringValue = prefs.getString('password') ?? "";
+    return stringValue;
+  }
+
+  setPasswordToSP(String password)async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('password', password);
   }
 }
 

@@ -294,7 +294,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     // minWidth: MediaQuery.of(context).size.width/1.5,
                                     height:40,
                                     onPressed: ()async{
-                                      userNameFromSF = await Provider.of<UserProvider>(context, listen: false).getUserNameFromSF();
+                                      userNameFromSF = await Provider.of<UserProvider>(context, listen: false).getEmailFromSP();
                                       Navigator.push(context, MaterialPageRoute(builder: (context)=>PlayingTypeChoosePage(userNameFromSF)));
                                     },
                                     // color: Colors.indigoAccent[400],

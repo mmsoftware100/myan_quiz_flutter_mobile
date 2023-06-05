@@ -257,7 +257,7 @@ class _LoginPageState extends State<LoginPage> {
 
                                 print("My status is "+status.toString());
                                 if(status == true){
-                                  Provider.of<UserProvider>(context, listen:false).createUserNameToSF(_emailTextETextEditingController.text);
+                                  Provider.of<UserProvider>(context, listen:false).setEmailToSP(_emailTextETextEditingController.text);
                                   Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
                                 }
                                 else{
@@ -422,7 +422,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          Provider.of<UserProvider>(context, listen: false).getUserNameFromSF() != "" ?Padding(
+          Provider.of<UserProvider>(context, listen: false).getEmailFromSP() != "" ?Padding(
             padding: const EdgeInsets.only(top: 28),
             child: IconButton(
               icon: Icon(Icons.arrow_back_ios_new),

@@ -117,7 +117,7 @@ class _SettingPageState extends State<SettingPage> {
                                 showCloseIcon: true,
                                 btnCancelOnPress: () {},
                                 btnOkOnPress: () {
-                                  Provider.of<UserProvider>(context, listen:false).createUserNameToSF("");
+                                  Provider.of<UserProvider>(context, listen:false).setEmailToSP("");
                                   Navigator.pushAndRemoveUntil(
                                       context,
                                       MaterialPageRoute(builder: (BuildContext context) => SplashScreenPage()),

@@ -1,9 +1,13 @@
 import 'dart:async';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:myan_quiz/providers/user_provider.dart';
 import 'package:myan_quiz/view/login_page.dart';
 import 'package:myan_quiz/view/playing_type_choose_page.dart';
 import 'package:myan_quiz/view/pre_login_pag.dart';
+import 'package:myan_quiz/view/profile_page.dart';
+import 'package:provider/provider.dart';
 
 import 'categories_chosen_page.dart';
 
@@ -20,11 +24,41 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _login();
+    /*
     Timer(
         Duration(seconds: 3),
             () => Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (BuildContext context) => PlayingTypeChoosePage("")))
     );
+
+     */
+  }
+
+  void _login() async{
+    // get saved email and password
+    String email =  await Provider.of<UserProvider>(context , listen: false).getEmailFromSP();
+    String password =  await Provider.of<UserProvider>(context , listen: false).getPasswordFromSP();
+
+    bool status = await Provider.of<UserProvider>(context, listen: false).loginWithEmailPlz(
+        email: email.isEmpty ? 'aung@email.com' : email,
+        password: password.isEmpty ? '12345678' : password
+    );
+
+    if(status){
+      // check default or custom
+      if(Provider.of<UserProvider>(context, listen: false).user.email == 'aung@email.com'){
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => PlayingTypeChoosePage("")));
+      }
+      else{
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => ProfilePage()));
+      }
+    }
+    else{
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => LoginPage()));
+    }
+
+    // login
   }
 
   @override
