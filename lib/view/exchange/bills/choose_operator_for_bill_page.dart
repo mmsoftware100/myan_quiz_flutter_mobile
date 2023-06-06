@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+//import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:myan_quiz/utils/global.dart';
 import 'package:myan_quiz/view/exchange/bills/bills_page.dart';
 import 'package:myan_quiz/view/exchange/gifts/exchage_page_gift.dart';
@@ -37,6 +37,7 @@ class _ChooseOperatorBillPageState extends State<ChooseOperatorBillPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("သင်ဖြည့်လိုသည့်ဖုန်းနံပါတ်အားဖြည့်သွင်းပါ။",style:TextStyle(),),
+                /*
                 Neumorphic(
                   margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
                   style: NeumorphicStyle(
@@ -50,6 +51,8 @@ class _ChooseOperatorBillPageState extends State<ChooseOperatorBillPage> {
                     decoration: InputDecoration.collapsed(hintText: "phone number"),
                   ),
                 ),
+
+                 */
                 ElevatedButton(
                     onPressed: (){
                       // playLocalAsset();

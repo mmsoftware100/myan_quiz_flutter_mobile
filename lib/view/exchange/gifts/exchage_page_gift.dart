@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+//import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:myan_quiz/utils/global.dart';
 
 class ExchangePageGift extends StatefulWidget {
@@ -19,7 +19,13 @@ class _ExchangePageGiftState extends State<ExchangePageGift> {
       builder: (ctx) => Dialog(
         shape: RoundedRectangleBorder(
             borderRadius:BorderRadius.circular(15.0)),
-        child: Container(
+        child:   Container()
+      ),
+    );
+  }
+
+  /*
+  Container(
           // height: 150,
           color: Colors.transparent,
           child: Padding(
@@ -135,9 +141,7 @@ class _ExchangePageGiftState extends State<ExchangePageGift> {
             ),
           ),
         ),
-      ),
-    );
-  }
+   */
 
   @override
   Widget build(BuildContext context) {
