@@ -6,6 +6,7 @@ import 'package:myan_quiz/utils/global.dart';
 import 'package:myan_quiz/view/categories_chosen_page.dart';
 import 'package:provider/provider.dart';
 
+import '../components/custom_back_key.dart';
 import '../utils/loader.dart';
 import 'login_page.dart';
 
@@ -279,15 +280,8 @@ class _PlayingTypeChoosePageState extends State<PlayingTypeChoosePage> {
               ),
             ),
           ),
-          widget.userNameFromSF != "" ?Padding(
-            padding: const EdgeInsets.only(top: 28),
-            child: IconButton(
-              icon: Icon(Icons.arrow_back_ios_new),
-              onPressed: (){
-                Navigator.pop(context);
-              },
-            ),
-          ):Container()
+          widget.userNameFromSF != "" ?            CustomBackKey()
+              :Container()
         ],
       ),
       /*

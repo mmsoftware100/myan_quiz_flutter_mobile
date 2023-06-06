@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myan_quiz/utils/global.dart';
 
+import '../components/custom_back_key.dart';
+
 class LeaderBoardPage extends StatefulWidget {
   const LeaderBoardPage({Key? key}) : super(key: key);
 
@@ -297,15 +299,7 @@ class _LeaderBoardPageState extends State<LeaderBoardPage> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 28),
-              child: IconButton(
-                icon: Icon(Icons.arrow_back_ios_new),
-                onPressed: (){
-                  Navigator.pop(context);
-                },
-              ),
-            )
+            CustomBackKey()
           ],
         )
     );

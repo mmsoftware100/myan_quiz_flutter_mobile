@@ -11,6 +11,8 @@ import 'package:myan_quiz/view/profile_page.dart';
 import 'package:myan_quiz/view/sign_up_page.dart';
 import 'package:provider/provider.dart';
 
+import '../components/custom_back_key.dart';
+
 class LoginPage extends StatefulWidget {
   LoginPage();
 
@@ -452,15 +454,9 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          Provider.of<UserProvider>(context, listen: false).getEmailFromSP() != "" ?Padding(
-            padding: const EdgeInsets.only(top: 28),
-            child: IconButton(
-              icon: Icon(Icons.arrow_back_ios_new),
-              onPressed: (){
-                Navigator.pop(context);
-              },
-            ),
-          ):Container()
+          Provider.of<UserProvider>(context, listen: false).getEmailFromSP() != "" ?
+          CustomBackKey()
+              :Container()
         ],
       )
     );
