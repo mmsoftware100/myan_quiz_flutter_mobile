@@ -11,7 +11,7 @@ class _CustomBackKeyState extends State<CustomBackKey> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 38),
+      padding: const EdgeInsets.only(top: 48),
       child: IconButton(
         icon: Icon(Icons.arrow_back_ios_new,color: Colors.white,),
         onPressed: (){
