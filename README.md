@@ -1,6 +1,24 @@
 # Myan Quiz Mobile App
 
 
+
+post_install do |installer|
+installer.pods_project.targets.each do |target|
+flutter_additional_ios_build_settings(target)
+end
+end
+
+
+post_install do |installer|
+installer.pods_project.targets.each do |target|
+flutter_additional_ios_build_settings(target)
+target.build_configurations.each do |config| #Added this line
+config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+end
+end
+end
+
+
 ## Errors
 
 Could not build the precompiled application for the device.
