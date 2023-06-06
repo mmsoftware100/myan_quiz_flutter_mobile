@@ -5,6 +5,7 @@ import 'package:myan_quiz/utils/global.dart';
 import 'package:myan_quiz/view/question_page_answer.dart';
 import 'package:provider/provider.dart';
 
+import '../components/custom_back_key.dart';
 import '../utils/loader.dart';
 
 class CategoriesChosenPage extends StatefulWidget {
@@ -170,15 +171,7 @@ class _CategoriesChosenPageState extends State<CategoriesChosenPage> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 28),
-              child: IconButton(
-                icon: Icon(Icons.arrow_back_ios_new,color: Colors.white,),
-                onPressed: (){
-                  Navigator.pop(context);
-                },
-              ),
-            )
+            CustomBackKey()
           ],
         ),
         /*

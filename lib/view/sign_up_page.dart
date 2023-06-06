@@ -9,6 +9,7 @@ import 'package:myan_quiz/view/profile_page.dart';
 import 'package:myan_quiz/view/setting_page.dart';
 import 'package:provider/provider.dart';
 
+import '../components/custom_back_key.dart';
 import '../providers/user_provider.dart';
 import '../utils/loader.dart';
 
@@ -365,15 +366,8 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 28),
-            child: IconButton(
-              icon: Icon(Icons.arrow_back_ios_new),
-              onPressed: (){
-                Navigator.pop(context);
-              },
-            ),
-          )
+          CustomBackKey()
+
         ],
       )
     );
