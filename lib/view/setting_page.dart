@@ -91,7 +91,12 @@ class _SettingPageState extends State<SettingPage> {
                           ),
 
                            */
+                                Divider(
+                                  height: 1,
+                                  color: Colors.grey,
+                                ),
                                 ListTile(
+                                  tileColor: Colors.red,
                                   leading: Icon(Icons.logout,color: Color(getColorHexFromStr('#48CEAD')),),
                                   title: Text("Logout",
                                     // style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
@@ -134,6 +139,10 @@ class _SettingPageState extends State<SettingPage> {
                                     ).show();
                                   },
                                 ),
+                                Divider(
+                                  height: 1,
+                                  color: Colors.grey,
+                                ),
                               ],
                             ),
                           ),
@@ -147,7 +156,7 @@ class _SettingPageState extends State<SettingPage> {
                   ),
                 ),
                 Container(
-                  height: MediaQuery.of(context).size.height / 5.5,
+                  height:MediaQuery.of(context).orientation == Orientation.portrait ? MediaQuery.of(context).size.height / 9.5 : MediaQuery.of(context).size.height / 7.5,
                   width: double.infinity,
                   color: Colors.transparent,
                   child: Padding(
