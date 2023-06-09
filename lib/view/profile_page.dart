@@ -350,7 +350,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             backgroundColor: Color(getColorHexFromStr('#9CCB5B')),
                             radius: 60.0,
                             child: ClipRRect(
-                              child: Image.asset('assets/images/girl_profile.png'),
+                              child: Image.asset('assets/images/myan_quiz_logo.png'),
                               borderRadius: BorderRadius.circular(100.0),
                             ),
                           ),

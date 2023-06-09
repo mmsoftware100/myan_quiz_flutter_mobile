@@ -149,6 +149,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               child: makeInput(txtController: _txtNameController,myKeyBoardType: TextInputType.text,label: "Name"),
                             ),
                             makeInput(txtController: _txtEmailController,myKeyBoardType: TextInputType.emailAddress,label: "Email"),
+                            /*
                             makeInput(txtController: _txtPhoneNumberController,myKeyBoardType: TextInputType.phone,label: "Phone Number"),
                             makeInput(txtController: _txtCityController,myKeyBoardType: TextInputType.text,label: "City"),
                             Flexible(
@@ -232,6 +233,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                 ],
                               ),
                             ),
+
+                             */
                             makeInput(txtController: _txtPasswordController,myKeyBoardType: TextInputType.text,label: "Password"),
                             MaterialButton(
                               minWidth: double.infinity,

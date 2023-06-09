@@ -19,3 +19,5 @@ const String selectTelephoneOperatorsEndpoint = apiVersion + '/phoneoperators';
 
 String defaultEmail = "aung@gmail.com";
 String defaultPassword = "12345678";
+
+String currentVersion = "0.1.1";

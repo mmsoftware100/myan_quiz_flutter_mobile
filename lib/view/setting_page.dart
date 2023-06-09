@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:myan_quiz/data/const/const.dart';
 import 'package:myan_quiz/view/leader_board_page.dart';
 import 'package:myan_quiz/view/splash_screen_page.dart';
 import 'package:provider/provider.dart';
@@ -47,7 +48,7 @@ class _SettingPageState extends State<SettingPage> {
         SingleChildScrollView(
           child: Container(
             width: double.infinity,
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.height/1.12,
             child: Stack(
               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -55,7 +56,7 @@ class _SettingPageState extends State<SettingPage> {
                   padding: const EdgeInsets.only(top:90),
                   child: Container(
                     // height: 300,
-                    height: double.infinity,
+                    // height: double.infinity,
                     width: double.infinity,
                     decoration: const BoxDecoration(
                         color: Colors.white,
@@ -72,9 +73,13 @@ class _SettingPageState extends State<SettingPage> {
                         children: [
                           SizedBox(height: 30,),
                           SizedBox(height: 30,),
-                          Text(Provider.of<UserProvider>(context,listen: false).user.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
-                          ),
+                          Text(Provider.of<UserProvider>(context,listen: false).user.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                          Expanded(
+                            child: ListView(
+                              physics: ScrollPhysics(),
+                              children: [
 
+                                /*
                           ListTile(
                             leading: Icon(Icons.assessment,color: Color(getColorHexFromStr('#48CEAD')),),
                             title: Text("Level",
@@ -84,50 +89,58 @@ class _SettingPageState extends State<SettingPage> {
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>LeaderBoardPage()));
                             },
                           ),
-                          ListTile(
-                            leading: Icon(Icons.logout,color: Color(getColorHexFromStr('#48CEAD')),),
-                            title: Text("Logout",
-                              // style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
-                            ),
-                            onTap: (){
-                              AwesomeDialog(
-                                context: context,
-                                dialogType: DialogType.warning,
-                                borderSide: const BorderSide(
-                                  color: Colors.green,
-                                  width: 2,
-                                ),
-                                width: 280,
-                                buttonsBorderRadius: const BorderRadius.all(
-                                  Radius.circular(2),
-                                ),
-                                dismissOnTouchOutside: true,
-                                dismissOnBackKeyPress: false,
-                                // onDismissCallback: (type) {
-                                //   ScaffoldMessenger.of(context).showSnackBar(
-                                //     SnackBar(
-                                //       content: Text('Log out $type'),
-                                //     ),
-                                //   );
-                                // },
-                                headerAnimationLoop: false,
-                                animType: AnimType.bottomSlide,
-                                title: 'Attention',
-                                desc: 'Are you sure to log out ?',
-                                showCloseIcon: true,
-                                btnCancelOnPress: () {},
-                                btnOkOnPress: () {
-                                  Provider.of<UserProvider>(context, listen:false).setEmailToSP("");
-                                  Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(builder: (BuildContext context) => SplashScreenPage()),
-                                      ModalRoute.withName('/')
-                                  );
-                                },
-                              ).show();
-                            },
-                          ),
 
+                           */
+                                ListTile(
+                                  leading: Icon(Icons.logout,color: Color(getColorHexFromStr('#48CEAD')),),
+                                  title: Text("Logout",
+                                    // style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
+                                  ),
+                                  onTap: (){
+                                    AwesomeDialog(
+                                      context: context,
+                                      dialogType: DialogType.warning,
+                                      borderSide: const BorderSide(
+                                        color: Colors.green,
+                                        width: 2,
+                                      ),
+                                      width: 280,
+                                      buttonsBorderRadius: const BorderRadius.all(
+                                        Radius.circular(2),
+                                      ),
+                                      dismissOnTouchOutside: true,
+                                      dismissOnBackKeyPress: false,
+                                      // onDismissCallback: (type) {
+                                      //   ScaffoldMessenger.of(context).showSnackBar(
+                                      //     SnackBar(
+                                      //       content: Text('Log out $type'),
+                                      //     ),
+                                      //   );
+                                      // },
+                                      headerAnimationLoop: false,
+                                      animType: AnimType.bottomSlide,
+                                      title: 'Attention',
+                                      desc: 'Are you sure to log out ?',
+                                      showCloseIcon: true,
+                                      btnCancelOnPress: () {},
+                                      btnOkOnPress: () {
+                                        Provider.of<UserProvider>(context, listen:false).setEmailToSP("");
+                                        Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(builder: (BuildContext context) => SplashScreenPage()),
+                                            ModalRoute.withName('/')
+                                        );
+                                      },
+                                    ).show();
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Text("Version : "+currentVersion),
+                          )
                         ],
                       ),
                     ),
@@ -149,7 +162,7 @@ class _SettingPageState extends State<SettingPage> {
                             backgroundColor: Color(getColorHexFromStr('#9CCB5B')),
                             radius: 60.0,
                             child: ClipRRect(
-                              child: Image.asset('assets/images/girl_profile.png'),
+                              child: Image.asset('assets/images/myan_quiz_logo.png'),
                               borderRadius: BorderRadius.circular(100.0),
                             ),
                           ),
