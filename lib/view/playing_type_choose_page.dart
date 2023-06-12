@@ -7,6 +7,7 @@ import 'package:myan_quiz/view/categories_chosen_page.dart';
 import 'package:provider/provider.dart';
 
 import '../components/custom_back_key.dart';
+import '../components/terms_and_condition_alert_box.dart';
 import '../utils/loader.dart';
 import 'login_page.dart';
 
@@ -29,7 +30,11 @@ class _PlayingTypeChoosePageState extends State<PlayingTypeChoosePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+  }
 
+  @override
+  void afterFirstLayout(BuildContext context) {
+    TermsAndConditionAlertBox.showTermsAndCondition(context);
   }
 
 

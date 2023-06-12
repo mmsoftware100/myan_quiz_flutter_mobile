@@ -97,6 +97,58 @@ class _SettingPageState extends State<SettingPage> {
                                 ),
                                 ListTile(
                                   tileColor: Colors.red,
+                                  leading: Icon(Icons.delete_forever,color: Colors.red,),
+                                  title: Text("Delete",
+                                    // style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
+                                  ),
+                                  onTap: (){
+                                    AwesomeDialog(
+                                      context: context,
+                                      dialogType: DialogType.warning,
+                                      borderSide: const BorderSide(
+                                        color: Colors.green,
+                                        width: 2,
+                                      ),
+                                      width: 280,
+                                      buttonsBorderRadius: const BorderRadius.all(
+                                        Radius.circular(2),
+                                      ),
+                                      dismissOnTouchOutside: true,
+                                      dismissOnBackKeyPress: false,
+                                      // onDismissCallback: (type) {
+                                      //   ScaffoldMessenger.of(context).showSnackBar(
+                                      //     SnackBar(
+                                      //       content: Text('Log out $type'),
+                                      //     ),
+                                      //   );
+                                      // },
+                                      headerAnimationLoop: false,
+                                      animType: AnimType.bottomSlide,
+                                      title: 'Attention',
+                                      desc: 'Are you sure to delete your account ?',
+                                      showCloseIcon: true,
+                                      btnCancelOnPress: () {},
+                                      btnOkOnPress: () {
+                                        Provider.of<UserProvider>(context, listen:false).setEmailToSP("");
+                                        Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(builder: (BuildContext context) => SplashScreenPage()),
+                                            ModalRoute.withName('/')
+                                        );
+                                      },
+                                    ).show();
+                                  },
+                                ),
+                                Divider(
+                                  height: 1,
+                                  color: Colors.grey,
+                                ),
+                                Divider(
+                                  height: 1,
+                                  color: Colors.grey,
+                                ),
+                                ListTile(
+                                  tileColor: Colors.red,
                                   leading: Icon(Icons.logout,color: Color(getColorHexFromStr('#48CEAD')),),
                                   title: Text("Logout",
                                     // style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),

@@ -1,3 +1,4 @@
+import 'package:after_layout/after_layout.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ import 'package:myan_quiz/view/sign_up_page.dart';
 import 'package:provider/provider.dart';
 
 import '../components/custom_back_key.dart';
+import '../components/terms_and_condition_alert_box.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage();
@@ -20,7 +22,8 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage>
+    with AfterLayoutMixin<LoginPage>{
 
   final GlobalKey<State> _keyLoader = new GlobalKey<State>();
   bool _agreedToTOS = true;
@@ -98,21 +101,30 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // FirebaseAuth.instance
-    //     .authStateChanges()
-    //     .listen((User? user) {
-    //   if (user != null) {
-    //     print(user.email);
-    //     print(user.displayName);
-    //     print(user.photoURL);
-    //     print(user.getIdToken());
-    //     print(user.uid);
-    //     setState(() {
-    //       firebaseUser = user;
-    //     });
-    //   }
-    // });
+    /*
+    FirebaseAuth.instance
+        .authStateChanges()
+        .listen((User? user) {
+      if (user != null) {
+        print(user.email);
+        print(user.displayName);
+        print(user.photoURL);
+        print(user.getIdToken());
+        print(user.uid);
+        setState(() {
+          firebaseUser = user;
+        });
+      }
+    });
+    */
   }
+
+  @override
+  void afterFirstLayout(BuildContext context) {
+    TermsAndConditionAlertBox.showTermsAndCondition(context);
+  }
+
+
 
   @override
   Widget build(BuildContext context) {

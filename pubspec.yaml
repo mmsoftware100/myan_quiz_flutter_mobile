@@ -64,6 +64,8 @@ dependencies:
 
   awesome_dialog: ^3.0.2
 
+  after_layout: any
+
 
 dev_dependencies:
   # json serialization

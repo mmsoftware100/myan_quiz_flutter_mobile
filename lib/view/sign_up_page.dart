@@ -10,6 +10,7 @@ import 'package:myan_quiz/view/setting_page.dart';
 import 'package:provider/provider.dart';
 
 import '../components/custom_back_key.dart';
+import '../components/terms_and_condition_alert_box.dart';
 import '../providers/user_provider.dart';
 import '../utils/loader.dart';
 
@@ -85,6 +86,19 @@ class _SignUpPageState extends State<SignUpPage> {
       btnOkOnPress: () {},
     ).show();
   }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void afterFirstLayout(BuildContext context) {
+    TermsAndConditionAlertBox.showTermsAndCondition(context);
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -319,31 +333,34 @@ class _SignUpPageState extends State<SignUpPage> {
                                     )),
                               ),
                             ]),
-                            // Padding(
-                            //   padding: const EdgeInsets.all(20.0),
-                            //   child: Row(
-                            //     mainAxisAlignment: MainAxisAlignment.center,
-                            //     children: [
-                            //
-                            //       CustomWidgets.socialButtonCircle(
-                            //           googleColor, FontAwesomeIcons.googlePlusG,
-                            //           iconColor: Colors.white, onTap: () {
-                            //       }),
-                            //       // CustomWidgets.socialButtonCircle(
-                            //       //     whatsappColor, FontAwesomeIcons.whatsapp,
-                            //       //     iconColor: Colors.white, onTap: () {
-                            //       // }),
-                            //       CustomWidgets.socialButtonCircle(
-                            //           appleColor,FontAwesomeIcons.apple,
-                            //           iconColor: Colors.grey, onTap: () {
-                            //       }),
-                            //       CustomWidgets.socialButtonCircle(
-                            //           facebookColor, FontAwesomeIcons.facebookF,
-                            //           iconColor: Colors.white, onTap: () {
-                            //       }),
-                            //     ],
-                            //   ),
-                            // ),onTap
+                            /*
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+
+                                  CustomWidgets.socialButtonCircle(
+                                      googleColor, FontAwesomeIcons.googlePlusG,
+                                      iconColor: Colors.white, onTap: () {
+                                  }),
+                                  // CustomWidgets.socialButtonCircle(
+                                  //     whatsappColor, FontAwesomeIcons.whatsapp,
+                                  //     iconColor: Colors.white, onTap: () {
+                                  // }),
+                                  CustomWidgets.socialButtonCircle(
+                                      appleColor,FontAwesomeIcons.apple,
+                                      iconColor: Colors.grey, onTap: () {
+                                  }),
+                                  CustomWidgets.socialButtonCircle(
+                                      facebookColor, FontAwesomeIcons.facebookF,
+                                      iconColor: Colors.white, onTap: () {
+                                  }),
+                                ],
+                              ),
+                            ),onTap
+
+                             */
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [

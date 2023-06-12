@@ -16,6 +16,7 @@ import 'package:myan_quiz/view/splash_screen_page.dart';
 import 'package:myan_quiz/view/test_page.dart';
 import 'package:provider/provider.dart';
 
+import 'components/terms_and_condition_alert_box.dart';
 import 'injection_container.dart' as di;
 
 
@@ -74,6 +75,7 @@ void main()async{
               fontFamily: 'MyanmarSager'
             ),
             home: SplashScreenPage(),
+            // home: DialogDemo(),
             // home: TestPage(),
           )
       )
