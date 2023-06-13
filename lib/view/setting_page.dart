@@ -98,7 +98,7 @@ class _SettingPageState extends State<SettingPage> {
                                 ListTile(
                                   tileColor: Colors.red,
                                   leading: Icon(Icons.delete_forever,color: Colors.red,),
-                                  title: Text("Delete",
+                                  title: Text("Delete My Account",
                                     // style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
                                   ),
                                   onTap: (){

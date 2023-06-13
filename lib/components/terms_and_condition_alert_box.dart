@@ -82,11 +82,11 @@ class TermsAndConditionAlertBox{
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return CupertinoAlertDialog(
-          title: Text('Terms and condition'),
+          title: Text('Upload Scores to Global Leaderboard'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('According to https://aungkoman.github.io/myanquiz-tos/index.html, accept our terms and condition '),
+                Text('Your score will be displayed on Global Leaderboard.'),
                 Text(''),
               ],
             ),
@@ -94,7 +94,7 @@ class TermsAndConditionAlertBox{
           actions: <Widget>[
 
             TextButton(
-              child: Text('Accept'),
+              child: Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
