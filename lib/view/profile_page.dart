@@ -65,14 +65,15 @@ class _ProfilePageState extends State<ProfilePage> {
             child: Stack(
               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                // main card
                 Padding(
-                  padding: const EdgeInsets.only(top:90),
+                  padding: EdgeInsets.only(top: (MediaQuery.of(context).size.height / 6.5) - 30),
                   child: Container(
                     // height: 300,
                     height: MediaQuery.of(context).size.height / 1.05,
                     width: double.infinity,
                     decoration: const BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.green,
                         borderRadius:
                         // BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30))
                       BorderRadius.all(Radius.circular(30))
@@ -320,6 +321,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                 ),
+                // personal picture
                 Container(
                   height: MediaQuery.of(context).size.height / 6.5,
                   width: double.infinity,

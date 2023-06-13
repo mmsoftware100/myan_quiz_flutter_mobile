@@ -18,6 +18,17 @@ end
 end
 
 
+## Login Page  က နောက်ပြန်ဆုတ်ရင် Blank
+
+## Sign Up Page က နောက်ပြန်ဆုတ်ရင် Blacnk
+
+## Auto Login က Credential မှားတယ်ပဲ ပြောနေ။
+
+
+အနwww.facebook.com/mmsoftware100ိိ်ိ 
+
+test2@email.com
+password
 post_install do |installer|
 installer.pods_project.targets.each do |target|
 flutter_additional_ios_build_settings(target)
