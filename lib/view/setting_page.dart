@@ -4,6 +4,7 @@ import 'package:myan_quiz/data/const/const.dart';
 import 'package:myan_quiz/view/leader_board_page.dart';
 import 'package:myan_quiz/view/splash_screen_page.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../providers/user_provider.dart';
 
@@ -36,6 +37,14 @@ class _SettingPageState extends State<SettingPage> {
       }
     }
     return val;
+  }
+
+  openURL(String url)async{
+    if(await canLaunch(url)){
+    await launch(url);
+    }else {
+    throw 'Could not launch $url';
+    }
   }
 
   @override
@@ -91,6 +100,20 @@ class _SettingPageState extends State<SettingPage> {
                           ),
 
                            */
+                                Divider(
+                                  height: 1,
+                                  color: Colors.grey,
+                                ),
+                                ListTile(
+                                  tileColor: Colors.blue,
+                                  leading: Icon(Icons.privacy_tip,color: Colors.blue,),
+                                  title: Text("Privacy Policy",
+                                    // style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
+                                  ),
+                                  onTap: (){
+                                    openURL(privacyPolicyURL);
+                                  },
+                                ),
                                 Divider(
                                   height: 1,
                                   color: Colors.grey,

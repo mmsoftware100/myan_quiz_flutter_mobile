@@ -20,4 +20,6 @@ const String selectTelephoneOperatorsEndpoint = apiVersion + '/phoneoperators';
 String defaultEmail = "aung@gmail.com";
 String defaultPassword = "12345678";
 
+String privacyPolicyURL = "https://aungkoman.github.io/myanquiz-tos/index.html";
+
 String currentVersion = "0.1.1";
